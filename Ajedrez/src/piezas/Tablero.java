@@ -17,7 +17,6 @@ public class Tablero {
 		boolean condicion = true;
 		boolean finBla = true;
 		boolean finNeg = true;
-		boolean posBuena = false;
 		String posicion_actual = tablero[0][0];
 		String posicion_futura = tablero[0][0];
 
