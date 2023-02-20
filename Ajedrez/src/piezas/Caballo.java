@@ -1,5 +1,10 @@
 package piezas;
 
+/**
+ * 
+ * @author USUARIO CCC
+ *
+ */
 public class Caballo implements Piezas{
 
 	//poner los metodos de los movimientos
