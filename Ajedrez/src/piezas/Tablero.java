@@ -14,9 +14,10 @@ public class Tablero {
 		int seleccionar_fila = 0;
 		int seleccionar_columna = 0;
 		String posicion_reemplazada;
-		boolean bien = true;
+		boolean condicion = true;
 		boolean finBla = true;
 		boolean finNeg = true;
+		boolean posBuena = false;
 		String posicion_actual = tablero[0][0];
 		String posicion_futura = tablero[0][0];
 
@@ -134,23 +135,28 @@ public class Tablero {
 		 */
 
 		while (finBla) {
-			while (bien) {
+			while (condicion) {
 				System.out.println("jugador blanco elige fila para seleccionar pieza: ");
 				seleccionar_fila = reader.nextInt();
 				System.out.println("jugador blanco elige columna para seleccionar pieza: ");
 				seleccionar_columna = reader.nextInt();
 
-				posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
+				// verificamos que las coordenadas sean validas
+				if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8
+						&& seleccionar_columna <= 8) {
+					posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
+					System.out.print("has elegido mover " + posicion_actual);
 
-				System.out.print("has elegido mover " + posicion_actual);
+					// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
+					// de blanca
+					if (posicion_actual.contains("B")) {
+						condicion = false;
+					} else {
+						System.out.print(" no se puede mover, no es tu ficha, ");
 
-				// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
-				// de blanca   
-				if (posicion_actual.contains("B")) {
-					bien = false;
+					}
 				} else {
-					System.out.print(" no se puede mover, no es tu ficha, ");
-
+					System.out.print("las coordenadas elegidas se salen del tablero, ");
 				}
 			}
 
@@ -162,45 +168,52 @@ public class Tablero {
 			 * moverse
 			 */
 
-			while (bien == false) {
+			while (condicion == false) {
 				System.out.println("jugador blanco elige la fila a la que quieres moverte: ");
 				mover_fila = reader.nextInt();
 				System.out.println("jugador blanco elige la columna a la que quieres moverte: ");
 				mover_columna = reader.nextInt();
 
-				posicion_futura = tablero[mover_fila][mover_columna];
-				System.out.println("has elegido mover hacia" + posicion_futura);
+				// verificamos que las coordenadas sean validas
+				if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8
+						&& mover_columna <= 8) {
 
-				// si ya hay una ficha nuestra, no nos va a dejar mover
-				if (posicion_futura.contains("B")) {
-					System.out.print(" pero no se puede mover ahi, es tu ficha, ");
-				} else {
-					posicion_futura = posicion_futura.replace(posicion_futura, posicion_actual);
-					posicion_reemplazada = posicion_actual = " *";
-					tablero[mover_fila][mover_columna] = posicion_futura;
-					tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
-					bien = true;
-					finNeg = false;
-					finBla = false;
+					posicion_futura = tablero[mover_fila][mover_columna];
+					System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
 
-					// Imprimimos todo para ver el movimiento
+					// si ya hay una ficha nuestra, no nos va a dejar mover
+					if (posicion_futura.contains("B")) {
+						System.out.print(" pero no se puede mover ahi, es tu ficha, ");
+					} else {
+						posicion_futura = posicion_futura.replace(posicion_futura, posicion_actual);
+						posicion_reemplazada = posicion_actual = " *";
+						tablero[mover_fila][mover_columna] = posicion_futura;
+						tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
+						condicion = true;
+						finNeg = false;
+						finBla = false;
 
-					for (int i = 0; i <= 8; i++) {
-						for (int s = 0; s <= 8; s++) {
+						// Imprimimos todo para ver el movimiento
 
-							System.out.print(tablero[i][s] + "  ");
+						for (int i = 0; i <= 8; i++) {
+							for (int s = 0; s <= 8; s++) {
 
-							if (tablero[i][s].contains("kN")) {
-								finNeg = true;
+								System.out.print(tablero[i][s] + "  ");
+
+								if (tablero[i][s].contains("kN")) {
+									finNeg = true;
+								}
+
 							}
+
+							System.out.println();
 
 						}
 
 						System.out.println();
-
 					}
-
-					System.out.println();
+				} else {
+					System.out.print("las coordenadas elegidas se salen del tablero, ");
 				}
 			}
 
@@ -210,22 +223,29 @@ public class Tablero {
 			while (finNeg) {
 
 				// turno del jugador Negro
-				while (bien) {
+				while (condicion) {
 					System.out.println("jugador Negro elige fila para seleccionar pieza: ");
 					seleccionar_fila = reader.nextInt();
 					System.out.println("jugador Negro elige columna para seleccionar pieza: ");
 					seleccionar_columna = reader.nextInt();
 
-					posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
+					// verificamos que las coordenadas sean validas
+					if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8
+							&& seleccionar_columna <= 8) {
 
-					System.out.print("has elegido mover " + posicion_actual);
+						posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
 
-					// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
-					// de blanca
-					if (posicion_actual.contains("N")) {
-						bien = false;
+						System.out.print("has elegido mover " + posicion_actual);
+
+						// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
+						// de blanca
+						if (posicion_actual.contains("N")) {
+							condicion = false;
+						} else {
+							System.out.print("no se puede mover, no es tu ficha, ");
+						}
 					} else {
-						System.out.print("no se puede mover, no es tu ficha, ");
+						System.out.print("las coordenadas elegidas se salen del tablero, ");
 					}
 				}
 
@@ -237,14 +257,19 @@ public class Tablero {
 				 * moverse
 				 */
 
-				while (bien == false) {
+				while (condicion == false) {
 					System.out.println("jugador negro elige la fila a la que quieres moverte: ");
 					mover_fila = reader.nextInt();
 					System.out.println("jugador negro elige la columna a la que quieres moverte: ");
 					mover_columna = reader.nextInt();
-
+					
+					
+					// verificamos que las coordenadas sean validas
+					if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8
+							&& mover_columna <= 8) {
+					
 					posicion_futura = tablero[mover_fila][mover_columna];
-					System.out.println("has elegido mover hacia" + posicion_futura);
+					System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
 
 					// si ya hay una ficha nuestra, no nos va a dejar mover
 					if (posicion_futura.contains("N")) {
@@ -255,7 +280,7 @@ public class Tablero {
 						posicion_reemplazada = posicion_actual = " *";
 						tablero[mover_fila][mover_columna] = posicion_futura;
 						tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
-						bien = true;
+						condicion = true;
 						finBla = false;
 						finNeg = false;
 
@@ -275,7 +300,9 @@ public class Tablero {
 
 						}
 					}
-					System.out.println();
+					} else {
+						System.out.print("las coordenadas elegidas se salen del tablero, ");
+					}
 				}
 			}
 		}
