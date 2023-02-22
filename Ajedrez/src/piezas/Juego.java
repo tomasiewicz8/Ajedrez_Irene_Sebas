@@ -3,7 +3,7 @@ package piezas;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Tablero {
+public class Juego {
 	public static void main(String[] args) {
 
 		// creamos el tablero, escaner y las variables
