@@ -4,22 +4,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Juego {
-	public static void main(String[] args) {
 
-		// creamos el tablero, escaner y las variables
-		String[][] tablero = new String[9][9];
-		Scanner reader = new Scanner(System.in);
-		int mover_fila;
-		int mover_columna;
-		int seleccionar_fila = 0;
-		int seleccionar_columna = 0;
-		String posicion_reemplazada;
-		boolean condicion = true;
-		boolean finBla = true;
-		boolean finNeg = true;
-		String posicion_actual = tablero[0][0];
-		String posicion_futura = tablero[0][0];
+	public static String[][] tablero;
+	public static boolean finBla = true;
+	public static boolean finNeg = true;
+	public static boolean posBuena = false;
 
+	/**
+	 * 
+	 * @param tablero
+	 */
+	public static void inicializarTablero(String[][] tablero) {
 		// creamos todas las fichas Blancas
 		String tB = "tB";
 		String cB = "cB";
@@ -114,11 +109,25 @@ public class Juego {
 			}
 		}
 
-		// Imprimimos todo
+	}
+
+	/**
+	 * 
+	 */
+	public static void imprimirTablero() {
+
 		for (int i = 0; i <= 8; i++) {
 			for (int s = 0; s <= 8; s++) {
 
 				System.out.print(tablero[i][s] + "  ");
+
+				if (tablero[i][s].contains("kN")) {
+					finNeg = true;
+				}
+
+				if (tablero[i][s].contains("kB")) {
+					finBla = true;
+				}
 
 			}
 
@@ -127,37 +136,99 @@ public class Juego {
 		}
 
 		System.out.println();
+	}
+
+	
+	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, String posicion_actual, boolean condicion, String color) {
+		// verificamos que las coordenadas sean validas
+		if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8
+				&& seleccionar_columna <= 8) {
+			posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
+			System.out.print("has elegido mover " + posicion_actual);
+
+			// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
+			// de blanca
+			if (posicion_actual.contains(color)) {
+				condicion = false;
+			} else {
+				System.out.print(" no se puede mover, no es tu ficha, ");
+
+			}
+		} else {
+			System.out.print("las coordenadas elegidas se salen del tablero, ");
+		}
+		return condicion;
+	}
+	
+	
+	public static boolean validarPosicion(int mover_fila, int mover_columna, String posicion_reemplazada, String posicion_futura, String posicion_actual, int seleccionar_fila, int seleccionar_columna, String color, boolean fallo) {
+		
+		// verificamos que las coordenadas sean validas
+		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8
+				&& mover_columna <= 8) {
+
+			posicion_futura = tablero[mover_fila][mover_columna];
+			System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
+
+			// si ya hay una ficha nuestra, no nos va a dejar mover
+			if (posicion_futura.contains(color)) {
+				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
+			} else {
+				posicion_futura = posicion_futura.replace(posicion_futura, posicion_actual);
+				posicion_reemplazada = posicion_actual = " *";
+				tablero[mover_fila][mover_columna] = posicion_futura;
+				tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
+				fallo = true;
+				finNeg = false;
+				finBla = false;
+
+				// Imprimimos todo para ver el movimiento
+				imprimirTablero();
+			}
+				
+		} else {
+			System.out.print("las coordenadas elegidas se salen del tablero, ");
+		}
+		return fallo;
+	}
+	
+	
+	
+	public static void main(String[] args) {
+
+		// creamos el tablero, escaner y las variables
+		tablero = new String[9][9];
+		Scanner reader = new Scanner(System.in);
+		int mover_fila;
+		int mover_columna;
+		int seleccionar_fila = 0;
+		int seleccionar_columna = 0;
+		String posicion_reemplazada = null;
+		String posicion_actual = tablero[0][0];
+		String posicion_futura = tablero[0][0];
+
+				
+		
+		
+		// Imprimimos todo
+		
 
 		/*
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
 		 * bucle por si elige una ficha del rival o un espacio sin ficha
 		 */
+		boolean fallo = true;
 
 		while (finBla) {
-			while (condicion) {
+			while (fallo) {
 				System.out.println("jugador blanco elige fila para seleccionar pieza: ");
 				seleccionar_fila = reader.nextInt();
 				System.out.println("jugador blanco elige columna para seleccionar pieza: ");
 				seleccionar_columna = reader.nextInt();
 
-				// verificamos que las coordenadas sean validas
-				if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8
-						&& seleccionar_columna <= 8) {
-					posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
-					System.out.print("has elegido mover " + posicion_actual);
-
-					// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
-					// de blanca
-					if (posicion_actual.contains("B")) {
-						condicion = false;
-					} else {
-						System.out.print(" no se puede mover, no es tu ficha, ");
-
-					}
-				} else {
-					System.out.print("las coordenadas elegidas se salen del tablero, ");
-				}
-			}
+				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, "B");
+				
+			} //Fin primer while
 
 			System.out.println();
 
@@ -167,54 +238,15 @@ public class Juego {
 			 * moverse
 			 */
 
-			while (condicion == false) {
+			while (fallo == false) {
 				System.out.println("jugador blanco elige la fila a la que quieres moverte: ");
 				mover_fila = reader.nextInt();
 				System.out.println("jugador blanco elige la columna a la que quieres moverte: ");
 				mover_columna = reader.nextInt();
 
-				// verificamos que las coordenadas sean validas
-				if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8
-						&& mover_columna <= 8) {
-
-					posicion_futura = tablero[mover_fila][mover_columna];
-					System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
-
-					// si ya hay una ficha nuestra, no nos va a dejar mover
-					if (posicion_futura.contains("B")) {
-						System.out.print(" pero no se puede mover ahi, es tu ficha, ");
-					} else {
-						posicion_futura = posicion_futura.replace(posicion_futura, posicion_actual);
-						posicion_reemplazada = posicion_actual = " *";
-						tablero[mover_fila][mover_columna] = posicion_futura;
-						tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
-						condicion = true;
-						finNeg = false;
-						finBla = false;
-
-						// Imprimimos todo para ver el movimiento
-
-						for (int i = 0; i <= 8; i++) {
-							for (int s = 0; s <= 8; s++) {
-
-								System.out.print(tablero[i][s] + "  ");
-
-								if (tablero[i][s].contains("kN")) {
-									finNeg = true;
-								}
-
-							}
-
-							System.out.println();
-
-						}
-
-						System.out.println();
-					}
-				} else {
-					System.out.print("las coordenadas elegidas se salen del tablero, ");
-				}
+				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura, posicion_actual, seleccionar_fila, seleccionar_columna, "B", fallo);
 			}
+			
 
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
 			// siguiente bucle
@@ -222,30 +254,13 @@ public class Juego {
 			while (finNeg) {
 
 				// turno del jugador Negro
-				while (condicion) {
+				while (fallo) {
 					System.out.println("jugador Negro elige fila para seleccionar pieza: ");
 					seleccionar_fila = reader.nextInt();
 					System.out.println("jugador Negro elige columna para seleccionar pieza: ");
 					seleccionar_columna = reader.nextInt();
 
-					// verificamos que las coordenadas sean validas
-					if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8
-							&& seleccionar_columna <= 8) {
-
-						posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
-
-						System.out.print("has elegido mover " + posicion_actual);
-
-						// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
-						// de blanca
-						if (posicion_actual.contains("N")) {
-							condicion = false;
-						} else {
-							System.out.print("no se puede mover, no es tu ficha, ");
-						}
-					} else {
-						System.out.print("las coordenadas elegidas se salen del tablero, ");
-					}
+					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, "N");
 				}
 
 				System.out.println();
@@ -256,55 +271,19 @@ public class Juego {
 				 * moverse
 				 */
 
-				while (condicion == false) {
+				while (fallo == false) {
 					System.out.println("jugador negro elige la fila a la que quieres moverte: ");
 					mover_fila = reader.nextInt();
 					System.out.println("jugador negro elige la columna a la que quieres moverte: ");
 					mover_columna = reader.nextInt();
 					
+					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura, posicion_actual, seleccionar_fila, seleccionar_columna, "N", fallo);
 					
-					// verificamos que las coordenadas sean validas
-					if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8
-							&& mover_columna <= 8) {
-					
-					posicion_futura = tablero[mover_fila][mover_columna];
-					System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
-
-					// si ya hay una ficha nuestra, no nos va a dejar mover
-					if (posicion_futura.contains("N")) {
-						System.out.println(" pero no se puede mover ahi, es tu ficha, ");
-
-					} else {
-						posicion_futura = posicion_futura.replace(posicion_futura, posicion_actual);
-						posicion_reemplazada = posicion_actual = " *";
-						tablero[mover_fila][mover_columna] = posicion_futura;
-						tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
-						condicion = true;
-						finBla = false;
-						finNeg = false;
-
-						// Imprimimos todo para ver el movimiento
-						for (int i = 0; i <= 8; i++) {
-							for (int s = 0; s <= 8; s++) {
-
-								System.out.print(tablero[i][s] + "  ");
-
-								if (tablero[i][s].contains("kB")) {
-									finBla = true;
-								}
-
-							}
-
-							System.out.println();
-
-						}
-					}
-					} else {
-						System.out.print("las coordenadas elegidas se salen del tablero, ");
-					}
 				}
 			}
 		}
 	}
+		
+	
 
 }
