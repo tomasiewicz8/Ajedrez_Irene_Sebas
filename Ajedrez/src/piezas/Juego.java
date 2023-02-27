@@ -274,6 +274,8 @@ public class Juego {
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
 			// siguiente bucle
 
+			jugador = "Negro";
+			
 			while (finNeg) {
 
 				// turno del jugador Negro
