@@ -9,6 +9,10 @@ public class Juego {
 	public static boolean finBla = true;
 	public static boolean finNeg = true;
 	public static boolean posBuena = false;
+	public static int seleccionar_fila;
+	public static int seleccionar_columna;
+	public static int mover_fila;
+	public static int mover_columna;
 
 	/**
 	 * 
@@ -138,11 +142,10 @@ public class Juego {
 		System.out.println();
 	}
 
-	
-	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, String posicion_actual, boolean condicion, String color) {
+	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, String posicion_actual,
+			boolean condicion, String color) {
 		// verificamos que las coordenadas sean validas
-		if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8
-				&& seleccionar_columna <= 8) {
+		if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8 && seleccionar_columna <= 8) {
 			posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
 			System.out.print("has elegido mover " + posicion_actual);
 
@@ -159,13 +162,13 @@ public class Juego {
 		}
 		return condicion;
 	}
-	
-	
-	public static boolean validarPosicion(int mover_fila, int mover_columna, String posicion_reemplazada, String posicion_futura, String posicion_actual, int seleccionar_fila, int seleccionar_columna, String color, boolean fallo) {
-		
+
+	public static boolean validarPosicion(int mover_fila, int mover_columna, String posicion_reemplazada,
+			String posicion_futura, String posicion_actual, int seleccionar_fila, int seleccionar_columna, String color,
+			boolean fallo) {
+
 		// verificamos que las coordenadas sean validas
-		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8
-				&& mover_columna <= 8) {
+		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
 
 			posicion_futura = tablero[mover_fila][mover_columna];
 			System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
@@ -185,15 +188,37 @@ public class Juego {
 				// Imprimimos todo para ver el movimiento
 				imprimirTablero();
 			}
-				
+
 		} else {
 			System.out.print("las coordenadas elegidas se salen del tablero, ");
 		}
 		return fallo;
 	}
-	
-	
-	
+
+	public static int select_fila(Scanner reader, String jugador) {
+		System.out.println("jugador " + jugador + " elige fila para seleccionar pieza: ");
+		seleccionar_fila = reader.nextInt();
+		return seleccionar_fila;
+	}
+
+	public static int select_columna(Scanner reader, String jugador) {
+		System.out.println("jugador " + jugador + " elige fila para seleccionar pieza: ");
+		seleccionar_columna = reader.nextInt();
+		return seleccionar_columna;
+	}
+
+	public static int mover_fila(Scanner reader, String jugador) {
+		System.out.println("jugador " + jugador + " elige fila para mover pieza: ");
+		mover_fila = reader.nextInt();
+		return mover_fila;
+	}
+
+	public static int mover_columna(Scanner reader, String jugador) {
+		System.out.println("jugador " + jugador + " elige fila para mover pieza: ");
+		mover_columna = reader.nextInt();
+		return mover_columna;
+	}
+
 	public static void main(String[] args) {
 
 		// creamos el tablero, escaner y las variables
@@ -206,12 +231,7 @@ public class Juego {
 		String posicion_reemplazada = null;
 		String posicion_actual = tablero[0][0];
 		String posicion_futura = tablero[0][0];
-
-				
-		
-		
-		// Imprimimos todo
-		
+		String jugador;
 
 		/*
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
@@ -220,15 +240,18 @@ public class Juego {
 		boolean fallo = true;
 
 		while (finBla) {
+
+			jugador = "Blanco";
+
 			while (fallo) {
-				System.out.println("jugador blanco elige fila para seleccionar pieza: ");
-				seleccionar_fila = reader.nextInt();
-				System.out.println("jugador blanco elige columna para seleccionar pieza: ");
-				seleccionar_columna = reader.nextInt();
+
+				seleccionar_fila = select_fila(reader, jugador);
+
+				seleccionar_columna = select_columna(reader, jugador);
 
 				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, "B");
-				
-			} //Fin primer while
+
+			} // Fin primer while
 
 			System.out.println();
 
@@ -239,26 +262,28 @@ public class Juego {
 			 */
 
 			while (fallo == false) {
-				System.out.println("jugador blanco elige la fila a la que quieres moverte: ");
-				mover_fila = reader.nextInt();
-				System.out.println("jugador blanco elige la columna a la que quieres moverte: ");
-				mover_columna = reader.nextInt();
 
-				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura, posicion_actual, seleccionar_fila, seleccionar_columna, "B", fallo);
+				mover_fila = mover_fila(reader, jugador);
+
+				mover_columna = mover_columna(reader, jugador);
+
+				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+						posicion_actual, seleccionar_fila, seleccionar_columna, "B", fallo);
 			}
-			
 
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
 			// siguiente bucle
 
+			jugador = "Negro";
+			
 			while (finNeg) {
 
 				// turno del jugador Negro
 				while (fallo) {
-					System.out.println("jugador Negro elige fila para seleccionar pieza: ");
-					seleccionar_fila = reader.nextInt();
-					System.out.println("jugador Negro elige columna para seleccionar pieza: ");
-					seleccionar_columna = reader.nextInt();
+
+					seleccionar_fila = select_fila(reader, jugador);
+
+					seleccionar_columna = select_columna(reader, jugador);
 
 					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, "N");
 				}
@@ -272,18 +297,17 @@ public class Juego {
 				 */
 
 				while (fallo == false) {
-					System.out.println("jugador negro elige la fila a la que quieres moverte: ");
-					mover_fila = reader.nextInt();
-					System.out.println("jugador negro elige la columna a la que quieres moverte: ");
-					mover_columna = reader.nextInt();
-					
-					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura, posicion_actual, seleccionar_fila, seleccionar_columna, "N", fallo);
-					
+
+					mover_fila = mover_fila(reader, jugador);
+
+					mover_columna = mover_columna(reader, jugador);
+
+					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+							posicion_actual, seleccionar_fila, seleccionar_columna, "N", fallo);
+
 				}
 			}
 		}
 	}
-		
-	
 
 }

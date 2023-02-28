@@ -14,6 +14,10 @@ public class Torre extends Queen {
 		int min = 0;
 		int max = 0;
 		int fija = 0;
+		boolean camVacio = false;
+		
+		
+		while (camVacio==false) {
 		System.out.println("jugador blanco elige fila para seleccionar pieza: ");
 		seleccionar_fila = reader.nextInt();
 		System.out.println("jugador blanco elige columna para seleccionar pieza: ");
@@ -42,7 +46,17 @@ public class Torre extends Queen {
 				}
 				
 				for (int i = min ; i > max ; i++) {
-					tablero[fija][i];
+					
+					System.out.println("cambia");
+					
+					//cambiamos el valor del boolean para comprobar si hay piezas por el camino
+					camVacio = true;
+					
+					//if que compruebe si hay ficha por el camino
+					if (tablero[fija][i].contains("N")||tablero[fija][i].contains("B")) {
+						camVacio = false;
+						System.out.println("entra bien");
+					}
 				}
 	
 			} else {
@@ -60,7 +74,7 @@ public class Torre extends Queen {
 					}
 					
 					for (int i = min ; i > max ; i++) {
-						tablero[i][fija];
+						tablero[i][fija] = tablero[i][fija];
 					}
 
 					
@@ -74,6 +88,7 @@ public class Torre extends Queen {
 
 		} else {
 			System.out.println("esta fuera del tablero");
+		}
 		}
 
 		
