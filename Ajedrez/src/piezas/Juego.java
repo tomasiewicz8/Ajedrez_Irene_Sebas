@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Juego {
 
-	public static String[][] tablero;
+	public static Piezas[][] tablero;
 	public static boolean finBla = true;
 	public static boolean finNeg = true;
 	public static boolean posBuena = false;
@@ -18,24 +18,27 @@ public class Juego {
 	 * 
 	 * @param tablero
 	 */
-	public static void inicializarTablero(String[][] tablero) {
+	public static void inicializarTablero(Piezas[][] tablero) {
 		// creamos todas las fichas Blancas
-		String tB = "tB";
-		String cB = "cB";
-		String aB = "aB";
-		String qB = "qB";
-		String kB = "kB";
-		String pB = "pB";
+		Piezas qB = new Queen();
+		Piezas kB = new King("kN");
+		Piezas aB = new Alfil("aN");
+		Piezas cB = new Caballo();
+		Piezas tB = new Torre("tN");
+		Piezas pB = new Peones();
+		
+		//creamos las posiciones en blanco
+		Piezas vacio = new Vacio(" *");
 
 		// creamos todas las fichas Negras
-		String tN = "tN";
-		String cN = "cN";
-		String aN = "aN";
-		String qN = "qN";
-		String kN = "kN";
-		String pN = "pN";
+		Piezas qN = new Queen();
+		Piezas kN = new King("kB");
+		Piezas aN = new Alfil("aB");
+		Piezas cN = new Caballo();
+		Piezas tN = new Torre("tB");
+		Piezas pN = new Peones();
 
-		// Creamos las letras de los bordes
+		/* Creamos las letras de los bordes
 		String T = "A/1 ";
 		String A = "A ";
 		String B = "B ";
@@ -45,6 +48,7 @@ public class Juego {
 		String F = "F ";
 		String G = "G ";
 		String H = "H ";
+		*/
 
 		// Colocamos las figuras Blancas
 		tablero[1][1] = tB;
@@ -86,7 +90,7 @@ public class Juego {
 		tablero[7][7] = pN;
 		tablero[7][8] = pN;
 
-		// Colocamos las letras y los numeros del borde
+		/* Colocamos las letras y los numeros del borde
 		tablero[0][0] = T;
 		tablero[0][1] = A;
 		tablero[0][2] = B;
@@ -105,11 +109,12 @@ public class Juego {
 		tablero[6][0] = " 6 ";
 		tablero[7][0] = " 7 ";
 		tablero[8][0] = " 8 ";
+		*/
 
 		// bucle para rellenar los espacios en blanco
 		for (int i = 3; i <= 6; i++) {
 			for (int s = 1; s <= 8; s++) {
-				tablero[i][s] = " *";
+				tablero[i][s] = vacio;
 			}
 		}
 
@@ -118,18 +123,18 @@ public class Juego {
 	/**
 	 * 
 	 */
-	public static void imprimirTablero() {
+	public static void imprimirTablero(Piezas kN, Piezas kB) {
 
 		for (int i = 0; i <= 8; i++) {
 			for (int s = 0; s <= 8; s++) {
 
 				System.out.print(tablero[i][s] + "  ");
 
-				if (tablero[i][s].contains("kN")) {
+				if (tablero[i][s].getName().equals("kN")) {
 					finNeg = true;
 				}
 
-				if (tablero[i][s].contains("kB")) {
+				if (tablero[i][s].equals(kB)) {
 					finBla = true;
 				}
 
@@ -142,7 +147,7 @@ public class Juego {
 		System.out.println();
 	}
 
-	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, String posicion_actual,
+	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, Piezas posicion_actual,
 			boolean condicion, String color) {
 		// verificamos que las coordenadas sean validas
 		if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8 && seleccionar_columna <= 8) {
@@ -151,7 +156,7 @@ public class Juego {
 
 			// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
 			// de blanca
-			if (posicion_actual.contains(color)) {
+			if (posicion_actual.equals(color)) {
 				condicion = false;
 			} else {
 				System.out.print(" no se puede mover, no es tu ficha, ");
@@ -163,9 +168,9 @@ public class Juego {
 		return condicion;
 	}
 
-	public static boolean validarPosicion(int mover_fila, int mover_columna, String posicion_reemplazada,
-			String posicion_futura, String posicion_actual, int seleccionar_fila, int seleccionar_columna, String color,
-			boolean fallo) {
+	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
+			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna, String color,
+			boolean fallo, Piezas Vacio) {
 
 		// verificamos que las coordenadas sean validas
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
@@ -174,11 +179,11 @@ public class Juego {
 			System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
 
 			// si ya hay una ficha nuestra, no nos va a dejar mover
-			if (posicion_futura.contains(color)) {
+			if (posicion_futura.equals(color)) {
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
-				posicion_futura = posicion_futura.replace(posicion_futura, posicion_actual);
-				posicion_reemplazada = posicion_actual = " *";
+				posicion_futura = posicion_actual;
+				posicion_reemplazada = Vacio;
 				tablero[mover_fila][mover_columna] = posicion_futura;
 				tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
 				fallo = true;
@@ -186,7 +191,7 @@ public class Juego {
 				finBla = false;
 
 				// Imprimimos todo para ver el movimiento
-				imprimirTablero();
+				imprimirTablero(Vacio, Vacio);
 			}
 
 		} else {
@@ -222,7 +227,7 @@ public class Juego {
 	public static void main(String[] args) {
 
 		// creamos el tablero, escaner y las variables
-		tablero = new String[9][9];
+		tablero = new Piezas[9][9];
 		Scanner reader = new Scanner(System.in);
 		int mover_fila;
 		int mover_columna;

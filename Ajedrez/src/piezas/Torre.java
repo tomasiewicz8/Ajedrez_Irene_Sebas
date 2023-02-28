@@ -3,6 +3,23 @@ package piezas;
 import java.util.Scanner;
 
 public class Torre extends Queen {
+	
+	private String name;
+
+	//constructor
+	public Torre(String name) {
+		this.name = name;
+	}
+	
+	
+	//getters y setters
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public static void main(String[] args) {
 		String[][] tablero = new String[9][9];
@@ -15,6 +32,8 @@ public class Torre extends Queen {
 		int max = 0;
 		int fija = 0;
 		boolean camVacio = false;
+		
+		
 		
 		
 		while (camVacio==false) {

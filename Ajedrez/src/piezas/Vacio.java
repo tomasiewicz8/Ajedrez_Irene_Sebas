@@ -1,11 +1,11 @@
 package piezas;
 
-public class Peones extends King{
-	
+public class Vacio extends Queen{
+
 	private String name;
 
 	//constructor
-	public Peones(String name) {
+	public Vacio(String name) {
 		this.name = name;
 	}
 	

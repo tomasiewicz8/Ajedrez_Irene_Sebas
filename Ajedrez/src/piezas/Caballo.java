@@ -20,5 +20,22 @@ public class Caballo implements Piezas{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	private String name;
+
+	//constructor
+	public Caballo(String name) {
+		this.name = name;
+	}
+	
+	
+	//getters y setters
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
