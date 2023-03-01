@@ -12,6 +12,7 @@ public class Torre extends Queen {
 	}
 	
 	
+	
 	//getters y setters
 	public String getName() {
 		return name;

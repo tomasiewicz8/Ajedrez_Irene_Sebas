@@ -6,12 +6,8 @@ public class Peones extends King{
 
 	//constructor
 	public Peones(String name) {
+		super(name);
 		this.name = name;
-	}
-	
-	public String toString() {
-		name = "pN";
-		return name;
 	}
 	
 	
