@@ -15,11 +15,12 @@ public class Juego {
 	public static int mover_columna;
 	public static Piezas Vacio;
 
+	
 	/**
-	 * 
+	 * Rellena piezas del tablero
 	 * @param tablero
 	 */
-	public static void inicializarTablero(Piezas[][] tablero) {
+	public static void inicializarTablero() {
 		// creamos todas las fichas Negras
 		Piezas qB = new Queen("qN");
 		Piezas kB = new King("kN");
@@ -39,17 +40,8 @@ public class Juego {
 		Piezas tN = new Torre("tB");
 		Piezas pN = new Peones("pB");
 
-		/* Creamos las letras de los bordes
-		String T = "A/1 ";
-		String A = "A ";
-		String B = "B ";
-		String C = "C ";
-		String D = "D ";
-		String E = "E ";
-		String F = "F ";
-		String G = "G ";
-		String H = "H ";
-		*/
+		
+		
 
 		// Colocamos las figuras Blancas
 		tablero[1][1] = tB;
@@ -110,6 +102,16 @@ public class Juego {
 		tablero[6][0] = " 6 ";
 		tablero[7][0] = " 7 ";
 		tablero[8][0] = " 8 ";
+		
+		String T = "A/1 ";
+		String A = "A ";
+		String B = "B ";
+		String C = "C ";
+		String D = "D ";
+		String E = "E ";
+		String F = "F ";
+		String G = "G ";
+		String H = "H ";
 		*/
 
 		// bucle para rellenar los espacios en blanco
@@ -124,20 +126,34 @@ public class Juego {
 	/**
 	 * 
 	 */
-	public static void imprimirTablero(Piezas kN, Piezas kB) {
+	public static void imprimirTablero() {
 
+		String[] primeraFila = {"A/1 ","A ","B ","C ","D ","F ","G ","H ","I "};
+		String[] lateral = {"A/1 "," 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "};
+		/* Creamos las letras de los bordes*/
+		
+		
 		for (int i = 0; i <= 8; i++) {
 			for (int s = 0; s <= 8; s++) {
-
-				System.out.print(tablero[i][s] + "  ");
-
-				if (tablero[i][s].getName().equals("kN")) {
-					finNeg = true;
+				if(i==0 ) {
+					System.out.print(primeraFila[s]);
 				}
-
-				if (tablero[i][s].equals("kB")) {
-					finBla = true;
+				if(s==0) {
+					System.out.print(primeraFila[i]);
 				}
+				
+				if (s != 0 && i != 0) {
+					System.out.print(tablero[i][s] + "  ");
+
+					if (tablero[i][s].getName().equals("kN")) {
+						finNeg = true;
+					}
+
+					if (tablero[i][s].equals("kB")) {
+						finBla = true;
+					}
+				}
+				
 
 			}
 
@@ -194,7 +210,7 @@ public class Juego {
 				finBla = false;
 
 				// Imprimimos todo para ver el movimiento
-				imprimirTablero(Vacio, Vacio);
+				imprimirTablero();
 			}
 
 		} else {
@@ -237,12 +253,12 @@ public class Juego {
 		int seleccionar_fila = 0;
 		int seleccionar_columna = 0;
 		Piezas posicion_reemplazada = null;
+		inicializarTablero();
 		Piezas posicion_actual = tablero[0][0];
 		Piezas posicion_futura = tablero[0][0];
 		String jugador;
 		
-
-		imprimirTablero(Vacio, Vacio);
+		imprimirTablero();
 		
 		/*
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
