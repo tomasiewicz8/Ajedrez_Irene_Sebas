@@ -25,6 +25,8 @@ public class Queen implements Piezas{
 		this.name = name;
 	}
 	
+	public Queen() {}
+	
 	
 	//getters y setters
 	public String getName() {

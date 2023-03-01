@@ -13,30 +13,31 @@ public class Juego {
 	public static int seleccionar_columna;
 	public static int mover_fila;
 	public static int mover_columna;
+	public static Piezas Vacio;
 
 	/**
 	 * 
 	 * @param tablero
 	 */
 	public static void inicializarTablero(Piezas[][] tablero) {
-		// creamos todas las fichas Blancas
-		Piezas qB = new Queen();
+		// creamos todas las fichas Negras
+		Piezas qB = new Queen("qN");
 		Piezas kB = new King("kN");
 		Piezas aB = new Alfil("aN");
-		Piezas cB = new Caballo();
+		Piezas cB = new Caballo("cN");
 		Piezas tB = new Torre("tN");
-		Piezas pB = new Peones();
+		Piezas pB = new Peones("pN");
 		
 		//creamos las posiciones en blanco
 		Piezas vacio = new Vacio(" *");
 
-		// creamos todas las fichas Negras
-		Piezas qN = new Queen();
+		// creamos todas las fichas Blancas
+		Piezas qN = new Queen("qB");
 		Piezas kN = new King("kB");
 		Piezas aN = new Alfil("aB");
-		Piezas cN = new Caballo();
+		Piezas cN = new Caballo("cB");
 		Piezas tN = new Torre("tB");
-		Piezas pN = new Peones();
+		Piezas pN = new Peones("pB");
 
 		/* Creamos las letras de los bordes
 		String T = "A/1 ";
@@ -134,7 +135,7 @@ public class Juego {
 					finNeg = true;
 				}
 
-				if (tablero[i][s].equals(kB)) {
+				if (tablero[i][s].equals("kB")) {
 					finBla = true;
 				}
 
@@ -171,6 +172,8 @@ public class Juego {
 	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
 			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna, String color,
 			boolean fallo, Piezas Vacio) {
+		
+	
 
 		// verificamos que las coordenadas sean validas
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
@@ -233,11 +236,14 @@ public class Juego {
 		int mover_columna;
 		int seleccionar_fila = 0;
 		int seleccionar_columna = 0;
-		String posicion_reemplazada = null;
-		String posicion_actual = tablero[0][0];
-		String posicion_futura = tablero[0][0];
+		Piezas posicion_reemplazada = null;
+		Piezas posicion_actual = tablero[0][0];
+		Piezas posicion_futura = tablero[0][0];
 		String jugador;
+		
 
+		imprimirTablero(Vacio, Vacio);
+		
 		/*
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
 		 * bucle por si elige una ficha del rival o un espacio sin ficha
@@ -273,7 +279,7 @@ public class Juego {
 				mover_columna = mover_columna(reader, jugador);
 
 				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-						posicion_actual, seleccionar_fila, seleccionar_columna, "B", fallo);
+						posicion_actual, seleccionar_fila, seleccionar_columna, "B", fallo, Vacio);
 			}
 
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
@@ -308,7 +314,7 @@ public class Juego {
 					mover_columna = mover_columna(reader, jugador);
 
 					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-							posicion_actual, seleccionar_fila, seleccionar_columna, "N", fallo);
+							posicion_actual, seleccionar_fila, seleccionar_columna, "N", fallo, Vacio);
 
 				}
 			}

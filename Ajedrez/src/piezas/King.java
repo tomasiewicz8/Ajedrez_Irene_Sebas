@@ -8,6 +8,7 @@ public class King extends Queen{
 	public King(String name) {
 		this.name = name;
 	}
+	public King() {}
 	
 	
 	//getters y setters
