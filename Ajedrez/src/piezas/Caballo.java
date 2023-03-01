@@ -5,21 +5,21 @@ package piezas;
  * @author USUARIO CCC
  *
  */
-public class Caballo implements Piezas{
-	
+public class Caballo implements Piezas {
+
 	private String name;
 
-	//constructor
+	// constructor
 	public Caballo(String name) {
 		this.name = name;
 	}
-	
+
 	public String toString() {
 		name = "cA";
 		return name;
 	}
-	
-	//getters y setters
+
+	// getters y setters
 	public String getName() {
 		return name;
 	}
@@ -28,12 +28,52 @@ public class Caballo implements Piezas{
 		this.name = name;
 	}
 
-	//poner los metodos de los movimientos
-	
+	// poner los metodos de los movimientos
+
 	@Override
-	public String mover() {
-		// TODO Auto-generated method stub
-		return null;
+	public void mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas tablero) {
+
+		if (mover_fila >= 1 && mover_fila <= 8 && mover_columna <= 8 && mover_columna >= 1) {
+			System.out.println("esta dentro del tablero");
+
+			if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
+		        posicion_futura = tablero[mover_fila][mover_columna];
+		    } else {
+		    	if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila+1) {
+			        posicion_futura = tablero[mover_fila][mover_columna];
+		    	} else {
+		    		if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila-1) {
+		    			 posicion_futura = tablero[mover_fila][mover_columna];
+		    		} else {
+		    			if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila+1) {
+		    				posicion_futura = tablero[mover_fila][mover_columna];
+		    			} else {
+		    				if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila-2) {
+		    					posicion_futura = tablero[mover_fila][mover_columna];
+		    				} else {
+		    					if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila-2) {
+		    						posicion_futura = tablero[mover_fila][mover_columna];
+		    					} else {
+		    						if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila+2) {
+		    							posicion_futura = tablero[mover_fila][mover_columna];
+		    						} else {
+		    							if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila+2) {
+		    								posicion_futura = tablero[mover_fila][mover_columna];
+		    							} else {
+		    								System.out.println("primo asi no mueve el caballo");
+		    							}
+		    						}
+		    					}
+		    				}
+		    			}
+		    		}
+		    	}
+		    }
+		   
+
+		} else {
+			System.out.println("pavo tus cordenadas estan fuera del tablero");
+		}
 	}
 
 	@Override
@@ -41,7 +81,5 @@ public class Caballo implements Piezas{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
 
 }

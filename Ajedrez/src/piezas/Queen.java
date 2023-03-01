@@ -7,9 +7,8 @@ public class Queen implements Piezas{
 	
 	
 	@Override
-	public String mover() {
-		// TODO Auto-generated method stub
-		return null;
+	public void mover() {
+		
 	}
 
 	@Override
