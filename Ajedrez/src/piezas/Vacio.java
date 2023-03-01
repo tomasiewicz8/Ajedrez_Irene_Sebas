@@ -9,6 +9,10 @@ public class Vacio extends Queen{
 		this.name = name;
 	}
 	
+	public String toString() {
+		name = " *";
+		return name;
+	}
 	
 	//getters y setters
 	public String getName() {

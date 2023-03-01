@@ -9,6 +9,11 @@ public class Peones extends King{
 		this.name = name;
 	}
 	
+	public String toString() {
+		name = "pN";
+		return name;
+	}
+	
 	
 	//getters y setters
 	public String getName() {

@@ -83,36 +83,7 @@ public class Juego {
 		tablero[7][7] = pN;
 		tablero[7][8] = pN;
 
-		/* Colocamos las letras y los numeros del borde
-		tablero[0][0] = T;
-		tablero[0][1] = A;
-		tablero[0][2] = B;
-		tablero[0][3] = C;
-		tablero[0][4] = D;
-		tablero[0][5] = E;
-		tablero[0][6] = F;
-		tablero[0][7] = G;
-		tablero[0][8] = H;
-
-		tablero[1][0] = " 1 ";
-		tablero[2][0] = " 2 ";
-		tablero[3][0] = " 3 ";
-		tablero[4][0] = " 4 ";
-		tablero[5][0] = " 5 ";
-		tablero[6][0] = " 6 ";
-		tablero[7][0] = " 7 ";
-		tablero[8][0] = " 8 ";
 		
-		String T = "A/1 ";
-		String A = "A ";
-		String B = "B ";
-		String C = "C ";
-		String D = "D ";
-		String E = "E ";
-		String F = "F ";
-		String G = "G ";
-		String H = "H ";
-		*/
 
 		// bucle para rellenar los espacios en blanco
 		for (int i = 3; i <= 6; i++) {
@@ -129,7 +100,7 @@ public class Juego {
 	public static void imprimirTablero() {
 
 		String[] primeraFila = {"A/1 ","A ","B ","C ","D ","F ","G ","H ","I "};
-		String[] lateral = {"A/1 "," 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "};
+		String[] lateral = {"A/1 ","  1 ","  2 ","  3 ","  4 ","  5 ","  6 ","  7 ","  8 "};
 		/* Creamos las letras de los bordes*/
 		
 		
