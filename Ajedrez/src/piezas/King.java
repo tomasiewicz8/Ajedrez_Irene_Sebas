@@ -9,6 +9,11 @@ public class King extends Queen{
 		this.name = name;
 	}
 	
+	public String toString() {
+		name = "kN";
+		return name;
+	}
+	
 	
 	//getters y setters
 	public String getName() {

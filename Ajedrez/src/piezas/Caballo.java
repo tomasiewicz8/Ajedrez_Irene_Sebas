@@ -15,7 +15,7 @@ public class Caballo implements Piezas{
 	}
 	
 	public String toString() {
-		name = "cB";
+		name = "cA";
 		return name;
 	}
 	

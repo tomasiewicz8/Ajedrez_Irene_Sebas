@@ -21,24 +21,24 @@ public class Juego {
 	 * @param tablero
 	 */
 	public static void inicializarTablero() {
-		// creamos todas las fichas Negras
-		Piezas qB = new Queen("qN");
-		Piezas kB = new King("kN");
-		Piezas aB = new Alfil("aN");
-		Piezas cB = new Caballo("cN");
-		Piezas tB = new Torre("tN");
-		Piezas pB = new Peones("pN");
+		// creamos todas las fichas Blancas
+		Piezas qB = new Queen("qB");
+		Piezas kB = new King("kB");
+		Piezas aB = new Alfil("aB");
+		Piezas cB = new Caballo("cB");
+		Piezas tB = new Torre("tB");
+		Piezas pB = new Peones("pB");
 		
 		//creamos las posiciones en blanco
 		Piezas vacio = new Vacio(" *");
 
-		// creamos todas las fichas Blancas
-		Piezas qN = new Queen("qB");
-		Piezas kN = new King("kB");
-		Piezas aN = new Alfil("aB");
-		Piezas cN = new Caballo("cB");
-		Piezas tN = new Torre("tB");
-		Piezas pN = new Peones("pB");
+		// creamos todas las fichas Negras
+		Piezas qN = new Queen("qN");
+		Piezas kN = new King("kN");
+		Piezas aN = new Alfil("aN");
+		Piezas cN = new Caballo("cN");
+		Piezas tN = new Torre("tN");
+		Piezas pN = new Peones("pN");
 
 		
 		
@@ -100,7 +100,7 @@ public class Juego {
 	public static void imprimirTablero() {
 
 		String[] primeraFila = {"A/1 ","A ","B ","C ","D ","F ","G ","H ","I "};
-		String[] lateral = {"A/1 ","  1 ","  2 ","  3 ","  4 ","  5 ","  6 ","  7 ","  8 "};
+		String[] lateral = {"A/1 "," 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "};
 		/* Creamos las letras de los bordes*/
 		
 		
@@ -108,10 +108,15 @@ public class Juego {
 			for (int s = 0; s <= 8; s++) {
 				if(i==0 ) {
 					System.out.print(primeraFila[s]);
+					System.out.print("  ");
+				} else {
+				if(s==0 ) {
+					System.out.print(lateral[i]);
+					System.out.print("  ");
 				}
-				if(s==0) {
-					System.out.print(primeraFila[i]);
 				}
+				
+				
 				
 				if (s != 0 && i != 0) {
 					System.out.print(tablero[i][s] + "  ");

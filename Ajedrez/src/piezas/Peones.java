@@ -11,6 +11,17 @@ public class Peones extends King{
 	}
 	
 	
+	
+	
+	@Override
+	public String toString() {
+		name = "pN";
+		return name;
+	}
+
+
+
+
 	//getters y setters
 	public String getName() {
 		return name;

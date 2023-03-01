@@ -27,6 +27,11 @@ public class Queen implements Piezas{
 	
 	public Queen() {}
 	
+	public String toString() {
+		name = "qN";
+		return name;
+	}
+	
 	
 	//getters y setters
 	public String getName() {
