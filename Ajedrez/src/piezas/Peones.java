@@ -3,20 +3,25 @@ package piezas;
 public class Peones extends King{
 	
 	private String name;
+	private boolean blanco;
 
 	//constructor
-	public Peones(String name) {
-		super(name);
+	public Peones(String name, boolean blanco) {
+		super(name, blanco);
 		this.name = name;
+		this.blanco = blanco;
 	}
-	
-	
 	
 	
 	@Override
 	public String toString() {
-		name = "pN";
-		return name;
+		if (blanco == true) {
+			name = "pB";
+			return name;
+		} else {
+			name = "pN";
+			return name;
+		}
 	}
 
 
@@ -29,6 +34,16 @@ public class Peones extends King{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+	public boolean isBlanco() {
+		return blanco;
+	}
+
+
+	public void setBlanco(boolean blanco) {
+		this.blanco = blanco;
 	}
 
 }

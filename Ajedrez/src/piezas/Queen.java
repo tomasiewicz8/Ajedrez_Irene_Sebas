@@ -5,6 +5,47 @@ public class Queen implements Piezas{
 	
 	//poner los metodos de los movimientos
 	
+	private String name;
+	private boolean blanco;
+
+	//constructor
+	public Queen(String name, boolean blanco) {
+		this.name = name;
+		this.blanco=blanco;
+	}
+	
+	public Queen() {}
+	
+	public String toString() {
+		if (blanco == true) {
+			name = "qB";
+			return name;
+		} else {
+			name = "qN";
+			return name;
+		}
+		
+	}
+	
+	
+	public boolean isBlanco() {
+		return blanco;
+	}
+
+	public void setBlanco(boolean blanco) {
+		this.blanco = blanco;
+	}
+
+	//getters y setters
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 	
 	@Override
 	public void mover() {
@@ -17,28 +58,5 @@ public class Queen implements Piezas{
 		return null;
 	}
 	
-	private String name;
-
-	//constructor
-	public Queen(String name) {
-		this.name = name;
-	}
 	
-	public Queen() {}
-	
-	public String toString() {
-		name = "qN";
-		return name;
-	}
-	
-	
-	//getters y setters
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 }

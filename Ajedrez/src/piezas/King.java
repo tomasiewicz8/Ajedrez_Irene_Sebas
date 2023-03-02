@@ -3,15 +3,23 @@ package piezas;
 public class King extends Queen{
 	
 	private String name;
+	private boolean blanco;
 
 	//constructor
-	public King(String name) {
+	public King(String name, boolean blanco) {
 		this.name = name;
+		this.blanco = blanco;
 	}
 	
 	public String toString() {
-		name = "kN";
-		return name;
+		if (blanco == true) {
+			name = "kB";
+			return name;
+		} else {
+			name = "kN";
+			return name;
+		}
+		
 	}
 	
 	
@@ -24,5 +32,12 @@ public class King extends Queen{
 		this.name = name;
 	}
 
+	public boolean isBlanco() {
+		return blanco;
+	}
+
+	public void setBlanco(boolean blanco) {
+		this.blanco = blanco;
+	}
 
 }

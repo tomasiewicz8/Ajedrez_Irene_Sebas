@@ -5,15 +5,23 @@ import java.util.Scanner;
 public class Torre extends Queen {
 	
 	private String name;
+	private boolean blanco;
 
 	//constructor
-	public Torre(String name) {
+	public Torre(String name, boolean blanco) {
 		this.name = name;
+		this.blanco = blanco;
 	}
 	
 	public String toString() {
-		name = "tB";
-		return name;
+		if (blanco == true) {
+			name = "tB";
+			return name;
+		} else {
+			name = "tN";
+			return name;
+		}
+		
 	}
 	
 	
@@ -24,6 +32,14 @@ public class Torre extends Queen {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isBlanco() {
+		return blanco;
+	}
+
+	public void setBlanco(boolean blanco) {
+		this.blanco = blanco;
 	}
 
 	public static void main(String[] args) {

@@ -8,24 +8,41 @@ package piezas;
 public class Caballo implements Piezas {
 
 	private String name;
+	private boolean blanco;
 
-	// constructor
-	public Caballo(String name) {
+	//constructor
+	public Caballo(String name, boolean blanco) {
 		this.name = name;
+		this.blanco = blanco;
 	}
-
+	
 	public String toString() {
-		name = "cA";
-		return name;
+		if (blanco == true) {
+			name = "cB";
+			return name;
+		} else {
+			name = "cN";
+			return name;
+		}
+		
 	}
-
-	// getters y setters
+	
+	
+	//getters y setters
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isBlanco() {
+		return blanco;
+	}
+
+	public void setBlanco(boolean blanco) {
+		this.blanco = blanco;
 	}
 
 	// poner los metodos de los movimientos

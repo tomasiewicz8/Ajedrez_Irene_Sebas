@@ -8,5 +8,7 @@ public interface Piezas {
 	public String getName();
 	public void setName(String name);
 	
+	public boolean isBlanco();
+	public void setBlanco(boolean blanco);
 
 }

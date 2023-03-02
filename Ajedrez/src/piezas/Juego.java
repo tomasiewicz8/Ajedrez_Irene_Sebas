@@ -13,7 +13,7 @@ public class Juego {
 	public static int seleccionar_columna;
 	public static int mover_fila;
 	public static int mover_columna;
-	public static Piezas Vacio;
+	public static Piezas Vacio = new Vacio(" *");;
 
 	
 	/**
@@ -22,23 +22,21 @@ public class Juego {
 	 */
 	public static void inicializarTablero() {
 		// creamos todas las fichas Blancas
-		Piezas qB = new Queen("qB");
-		Piezas kB = new King("kB");
-		Piezas aB = new Alfil("aB");
-		Piezas cB = new Caballo("cB");
-		Piezas tB = new Torre("tB");
-		Piezas pB = new Peones("pB");
+		Piezas qB = new Queen("qB",true);
+		Piezas kB = new King("kB",true);
+		Piezas aB = new Alfil("aB",true);
+		Piezas cB = new Caballo("cB",true);
+		Piezas tB = new Torre("tB",true);
+		Piezas pB = new Peones("pB",true);
 		
-		//creamos las posiciones en blanco
-		Piezas vacio = new Vacio(" *");
 
 		// creamos todas las fichas Negras
-		Piezas qN = new Queen("qN");
-		Piezas kN = new King("kN");
-		Piezas aN = new Alfil("aN");
-		Piezas cN = new Caballo("cN");
-		Piezas tN = new Torre("tN");
-		Piezas pN = new Peones("pN");
+		Piezas qN = new Queen("qN",false);
+		Piezas kN = new King("kN",false);
+		Piezas aN = new Alfil("aN",false);
+		Piezas cN = new Caballo("cN",false);
+		Piezas tN = new Torre("tN",false);
+		Piezas pN = new Peones("pN",false);
 
 		
 		
@@ -49,9 +47,9 @@ public class Juego {
 		tablero[1][3] = aB;
 		tablero[1][4] = qB;
 		tablero[1][5] = kB;
-		tablero[1][6] = tB;
+		tablero[1][6] = aB;
 		tablero[1][7] = cB;
-		tablero[1][8] = aB;
+		tablero[1][8] = tB;
 
 		// Colocamos los peones Blancos
 		tablero[2][1] = pB;
@@ -69,9 +67,9 @@ public class Juego {
 		tablero[8][3] = aN;
 		tablero[8][4] = qN;
 		tablero[8][5] = kN;
-		tablero[8][6] = tN;
+		tablero[8][6] = aN;
 		tablero[8][7] = cN;
-		tablero[8][8] = aN;
+		tablero[8][8] = tN;
 
 		// colocamos los peones Negros
 		tablero[7][1] = pN;
@@ -88,7 +86,7 @@ public class Juego {
 		// bucle para rellenar los espacios en blanco
 		for (int i = 3; i <= 6; i++) {
 			for (int s = 1; s <= 8; s++) {
-				tablero[i][s] = vacio;
+				tablero[i][s] = Vacio;
 			}
 		}
 
@@ -141,7 +139,7 @@ public class Juego {
 	}
 
 	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, Piezas posicion_actual,
-			boolean condicion, String color) {
+			boolean condicion, boolean blanco) {
 		// verificamos que las coordenadas sean validas
 		if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8 && seleccionar_columna <= 8) {
 			posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
@@ -149,7 +147,7 @@ public class Juego {
 
 			// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
 			// de blanca
-			if (posicion_actual.equals(color)) {
+			if (posicion_actual.isBlanco()==blanco) {
 				condicion = false;
 			} else {
 				System.out.print(" no se puede mover, no es tu ficha, ");
@@ -162,8 +160,8 @@ public class Juego {
 	}
 
 	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
-			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna, String color,
-			boolean fallo, Piezas Vacio) {
+			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna, boolean blanco,
+			boolean fallo) {
 		
 	
 
@@ -174,13 +172,13 @@ public class Juego {
 			System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
 
 			// si ya hay una ficha nuestra, no nos va a dejar mover
-			if (posicion_futura.equals(color)) {
+			if (posicion_futura.isBlanco()==blanco) {
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
-				posicion_futura = posicion_actual;
-				posicion_reemplazada = Vacio;
-				tablero[mover_fila][mover_columna] = posicion_futura;
-				tablero[seleccionar_fila][seleccionar_columna] = posicion_actual;
+				posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
+				tablero[seleccionar_fila][seleccionar_columna] = Vacio;
+				tablero[mover_fila][mover_columna] = posicion_actual;
+			
 				fallo = true;
 				finNeg = false;
 				finBla = false;
@@ -252,7 +250,7 @@ public class Juego {
 
 				seleccionar_columna = select_columna(reader, jugador);
 
-				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, "B");
+				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, true);
 
 			} // Fin primer while
 
@@ -271,7 +269,7 @@ public class Juego {
 				mover_columna = mover_columna(reader, jugador);
 
 				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-						posicion_actual, seleccionar_fila, seleccionar_columna, "B", fallo, Vacio);
+						posicion_actual, seleccionar_fila, seleccionar_columna, true, fallo);
 			}
 
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
@@ -288,7 +286,7 @@ public class Juego {
 
 					seleccionar_columna = select_columna(reader, jugador);
 
-					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, "N");
+					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, false);
 				}
 
 				System.out.println();
@@ -306,7 +304,7 @@ public class Juego {
 					mover_columna = mover_columna(reader, jugador);
 
 					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-							posicion_actual, seleccionar_fila, seleccionar_columna, "N", fallo, Vacio);
+							posicion_actual, seleccionar_fila, seleccionar_columna, false, fallo);
 
 				}
 			}
