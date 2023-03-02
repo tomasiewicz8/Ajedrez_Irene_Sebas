@@ -18,6 +18,7 @@ public class Caballo implements Piezas {
 		this.bien = bien;
 	}
 	
+	@Override
 	public String toString() {
 		if (blanco == true) {
 			name = "cB";
@@ -30,23 +31,6 @@ public class Caballo implements Piezas {
 	}
 	
 	
-	//getters y setters
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public boolean isBlanco() {
-		return blanco;
-	}
-
-	public void setBlanco(boolean blanco) {
-		this.blanco = blanco;
-	}
-
 	// poner los metodos de los movimientos
 
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas[][] tablero) {
@@ -87,7 +71,27 @@ public class Caballo implements Piezas {
 		    }
 		return bien;
 	}
+	
 
+	
+	
+	//getters y setters
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public boolean isBlanco() {
+		return blanco;
+	}
+
+	public void setBlanco(boolean blanco) {
+		this.blanco = blanco;
+	}
+	
 	public boolean isBien() {
 		return bien;
 	}
@@ -95,5 +99,6 @@ public class Caballo implements Piezas {
 	public void setBien(boolean bien) {
 		this.bien = bien;
 	}
+	
 
 }

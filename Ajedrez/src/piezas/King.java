@@ -11,6 +11,7 @@ public class King extends Queen{
 		this.blanco = blanco;
 	}
 	
+	@Override
 	public String toString() {
 		if (blanco == true) {
 			name = "kB";

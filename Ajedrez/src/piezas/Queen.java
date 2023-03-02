@@ -10,9 +10,10 @@ public class Queen implements Piezas{
 	private boolean bien;
 
 	//constructor
-	public Queen(String name, boolean blanco) {
+	public Queen(String name, boolean blanco, boolean bien) {
 		this.name = name;
 		this.blanco=blanco;
+		this.bien=bien;
 	}
 	
 	public Queen() {}
@@ -28,7 +29,23 @@ public class Queen implements Piezas{
 		
 	}
 	
+	@Override
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas [][] tablero) {
+		return bien;
+	}
 	
+	
+	
+	//getters y setters
+	
+	public boolean isBien() {
+		return bien;
+	}
+
+	public void setBien(boolean bien) {
+		this.bien = bien;
+	}
+
 	public boolean isBlanco() {
 		return blanco;
 	}
@@ -47,9 +64,4 @@ public class Queen implements Piezas{
 	}
 
 	
-	
-	@Override
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas [][] tablero) {
-		return bien;
-	}
 }
