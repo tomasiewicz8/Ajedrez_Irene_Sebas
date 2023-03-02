@@ -9,6 +9,7 @@ public class Vacio extends Queen{
 		this.name = name;
 	}
 	
+	@Override
 	public String toString() {
 		name = " *";
 		return name;

@@ -23,20 +23,20 @@ public class Juego {
 	 */
 	public static void inicializarTablero() {
 		// creamos todas las fichas Blancas
-		Piezas qB = new Queen("qB",true);
+		Piezas qB = new Queen("qB",true, true);
 		Piezas kB = new King("kB",true);
 		Piezas aB = new Alfil("aB",true);
 		Piezas cB = new Caballo("cB",true, true);
-		Piezas tB = new Torre("tB",true);
+		Piezas tB = new Torre("tB",true, buena, mover_columna, mover_columna, mover_columna, buena);
 		Piezas pB = new Peones("pB",true);
 		
 
 		// creamos todas las fichas Negras
-		Piezas qN = new Queen("qN",false);
+		Piezas qN = new Queen("qN",false, true);
 		Piezas kN = new King("kN",false);
 		Piezas aN = new Alfil("aN",false);
 		Piezas cN = new Caballo("cN",false, true);
-		Piezas tN = new Torre("tN",false);
+		Piezas tN = new Torre("tN",false, buena, mover_columna, mover_columna, mover_columna, buena);
 		Piezas pN = new Peones("pN",false);
 
 		
@@ -113,7 +113,7 @@ public class Juego {
 					System.out.print(lateral[i]);
 					System.out.print("  ");
 				}
-				}
+			}
 				
 				
 				
@@ -139,8 +139,12 @@ public class Juego {
 		System.out.println();
 	}
 
+	
+	
+	
 	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, Piezas posicion_actual,
 			boolean condicion, boolean blanco) {
+		
 		// verificamos que las coordenadas sean validas
 		if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8 && seleccionar_columna <= 8) {
 			posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
@@ -159,12 +163,16 @@ public class Juego {
 		}
 		return condicion;
 	}
+	
+	
+	
+	
+	
+	
 
 	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
 			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna, boolean blanco,
 			boolean fallo) {
-		
-	
 
 		// verificamos que las coordenadas sean validas
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
@@ -190,11 +198,13 @@ public class Juego {
 				finBla = false;
 
 				// Imprimimos todo para ver el movimiento
+				
 				imprimirTablero();
+				
 			} else {
 				System.out.print(" esta figura no puede mover a esa direccion, ");
 			}
-			} 
+		} 
 
 		} else {
 			System.out.print(" las coordenadas elegidas se salen del tablero, ");
@@ -202,6 +212,11 @@ public class Juego {
 		return fallo;
 	}
 
+	
+	
+	
+	
+	
 	public static int select_fila(Scanner reader, String jugador) {
 		System.out.println("jugador " + jugador + " elige fila para seleccionar pieza: ");
 		seleccionar_fila = reader.nextInt();
@@ -209,7 +224,7 @@ public class Juego {
 	}
 
 	public static int select_columna(Scanner reader, String jugador) {
-		System.out.println("jugador " + jugador + " elige fila para seleccionar pieza: ");
+		System.out.println("jugador " + jugador + " elige columna para seleccionar pieza: ");
 		seleccionar_columna = reader.nextInt();
 		return seleccionar_columna;
 	}
@@ -221,10 +236,16 @@ public class Juego {
 	}
 
 	public static int mover_columna(Scanner reader, String jugador) {
-		System.out.println("jugador " + jugador + " elige fila para mover pieza: ");
+		System.out.println("jugador " + jugador + " elige columna para mover pieza: ");
 		mover_columna = reader.nextInt();
 		return mover_columna;
 	}
+	
+	
+	
+	
+	
+	
 
 	public static void main(String[] args) {
 
