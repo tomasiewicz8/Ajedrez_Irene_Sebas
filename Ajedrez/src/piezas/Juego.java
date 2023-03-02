@@ -14,7 +14,7 @@ public class Juego {
 	public static int mover_fila;
 	public static int mover_columna;
 	public static Piezas Vacio = new Vacio(" *");
-	public static boolean bien = true;
+	public static boolean buena = true;
 
 	
 	/**
@@ -26,7 +26,7 @@ public class Juego {
 		Piezas qB = new Queen("qB",true);
 		Piezas kB = new King("kB",true);
 		Piezas aB = new Alfil("aB",true);
-		Piezas cB = new Caballo("cB",true);
+		Piezas cB = new Caballo("cB",true, true);
 		Piezas tB = new Torre("tB",true);
 		Piezas pB = new Peones("pB",true);
 		
@@ -35,7 +35,7 @@ public class Juego {
 		Piezas qN = new Queen("qN",false);
 		Piezas kN = new King("kN",false);
 		Piezas aN = new Alfil("aN",false);
-		Piezas cN = new Caballo("cN",false);
+		Piezas cN = new Caballo("cN",false, true);
 		Piezas tN = new Torre("tN",false);
 		Piezas pN = new Peones("pN",false);
 
@@ -177,9 +177,9 @@ public class Juego {
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
 				
-				/*bien = posicion_actual.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, seleccionar_columna, null);*/
+				buena = tablero[mover_fila][mover_columna].mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, seleccionar_columna, tablero);
 				
-				if (bien) {
+				if (buena==true) {
 				
 				posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
 				tablero[seleccionar_fila][seleccionar_columna] = Vacio;

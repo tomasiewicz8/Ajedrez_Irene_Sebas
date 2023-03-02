@@ -9,12 +9,13 @@ public class Caballo implements Piezas {
 
 	private String name;
 	private boolean blanco;
-	private boolean bien;
+	private boolean bien = true;
 
 	//constructor
-	public Caballo(String name, boolean blanco) {
+	public Caballo(String name, boolean blanco, boolean bien) {
 		this.name = name;
 		this.blanco = blanco;
+		this.bien = bien;
 	}
 	
 	public String toString() {
@@ -48,33 +49,33 @@ public class Caballo implements Piezas {
 
 	// poner los metodos de los movimientos
 
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, int[][] tablero) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas[][] tablero) {
 
 		if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
-		        posicion_futura = tablero[mover_fila][mover_columna];
+		        
 		    } else {
 		    	if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila+1) {
-			        posicion_futura = tablero[mover_fila][mover_columna];
+			        
 		    	} else {
 		    		if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila-1) {
-		    			 posicion_futura = tablero[mover_fila][mover_columna];
+		    			 System.out.println("entra");
 		    		} else {
 		    			if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila+1) {
-		    				posicion_futura = tablero[mover_fila][mover_columna];
+		    				
 		    			} else {
 		    				if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila-2) {
-		    					posicion_futura = tablero[mover_fila][mover_columna];
+		    					
 		    				} else {
 		    					if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila-2) {
-		    						posicion_futura = tablero[mover_fila][mover_columna];
+		    						
 		    					} else {
 		    						if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila+2) {
-		    							posicion_futura = tablero[mover_fila][mover_columna];
+		    							
 		    						} else {
 		    							if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila+2) {
-		    								posicion_futura = tablero[mover_fila][mover_columna];
+		    								
 		    							} else {
-		    								System.out.println("primo asi no mueve el caballo");
+		    								System.out.println(" primo asi no mueve el caballo");
 		    								bien = false;
 		    							}
 		    						}
@@ -85,6 +86,14 @@ public class Caballo implements Piezas {
 		    	}
 		    }
 		return bien;
+	}
+
+	public boolean isBien() {
+		return bien;
+	}
+
+	public void setBien(boolean bien) {
+		this.bien = bien;
 	}
 
 }
