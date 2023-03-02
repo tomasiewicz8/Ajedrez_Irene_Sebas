@@ -48,7 +48,7 @@ public class Caballo implements Piezas {
 	// poner los metodos de los movimientos
 
 	@Override
-	public void mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas tablero) {
+	public void mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, int[][] tablero) {
 
 		if (mover_fila >= 1 && mover_fila <= 8 && mover_columna <= 8 && mover_columna >= 1) {
 			System.out.println("esta dentro del tablero");

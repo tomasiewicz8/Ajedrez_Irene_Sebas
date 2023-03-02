@@ -48,7 +48,7 @@ public class Queen implements Piezas{
 	
 	
 	@Override
-	public void mover() {
+	public void mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas tablero) {
 		
 	}
 
