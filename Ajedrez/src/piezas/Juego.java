@@ -13,7 +13,8 @@ public class Juego {
 	public static int seleccionar_columna;
 	public static int mover_fila;
 	public static int mover_columna;
-	public static Piezas Vacio = new Vacio(" *");;
+	public static Piezas Vacio = new Vacio(" *");
+	public static boolean bien = true;
 
 	
 	/**
@@ -175,6 +176,11 @@ public class Juego {
 			if (posicion_futura.isBlanco()==blanco) {
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
+				
+				/*bien = posicion_actual.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, seleccionar_columna, null);*/
+				
+				if (bien) {
+				
 				posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
 				tablero[seleccionar_fila][seleccionar_columna] = Vacio;
 				tablero[mover_fila][mover_columna] = posicion_actual;
@@ -185,10 +191,13 @@ public class Juego {
 
 				// Imprimimos todo para ver el movimiento
 				imprimirTablero();
+			} else {
+				System.out.print(" esta figura no puede mover a esa direccion, ");
 			}
+			} 
 
 		} else {
-			System.out.print("las coordenadas elegidas se salen del tablero, ");
+			System.out.print(" las coordenadas elegidas se salen del tablero, ");
 		}
 		return fallo;
 	}

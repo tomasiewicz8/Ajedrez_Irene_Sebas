@@ -9,6 +9,7 @@ public class Caballo implements Piezas {
 
 	private String name;
 	private boolean blanco;
+	private boolean bien;
 
 	//constructor
 	public Caballo(String name, boolean blanco) {
@@ -47,13 +48,9 @@ public class Caballo implements Piezas {
 
 	// poner los metodos de los movimientos
 
-	@Override
-	public void mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, int[][] tablero) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, int[][] tablero) {
 
-		if (mover_fila >= 1 && mover_fila <= 8 && mover_columna <= 8 && mover_columna >= 1) {
-			System.out.println("esta dentro del tablero");
-
-			if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
+		if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
 		        posicion_futura = tablero[mover_fila][mover_columna];
 		    } else {
 		    	if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila+1) {
@@ -78,6 +75,7 @@ public class Caballo implements Piezas {
 		    								posicion_futura = tablero[mover_fila][mover_columna];
 		    							} else {
 		    								System.out.println("primo asi no mueve el caballo");
+		    								bien = false;
 		    							}
 		    						}
 		    					}
@@ -86,17 +84,7 @@ public class Caballo implements Piezas {
 		    		}
 		    	}
 		    }
-		   
-
-		} else {
-			System.out.println("pavo tus cordenadas estan fuera del tablero");
-		}
-	}
-
-	@Override
-	public String comer() {
-		// TODO Auto-generated method stub
-		return null;
+		return bien;
 	}
 
 }

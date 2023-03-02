@@ -2,8 +2,7 @@ package piezas;
 
 public interface Piezas {
 
-	public void mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas tablero);
-	public String comer();
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, int[][] tablero);
 	
 	public String getName();
 	public void setName(String name);

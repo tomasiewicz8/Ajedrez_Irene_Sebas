@@ -7,6 +7,7 @@ public class Queen implements Piezas{
 	
 	private String name;
 	private boolean blanco;
+	private boolean bien;
 
 	//constructor
 	public Queen(String name, boolean blanco) {
@@ -48,15 +49,7 @@ public class Queen implements Piezas{
 	
 	
 	@Override
-	public void mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas tablero) {
-		
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, int [][] tablero) {
+		return bien;
 	}
-
-	@Override
-	public String comer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 }
