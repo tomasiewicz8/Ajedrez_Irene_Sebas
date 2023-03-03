@@ -30,7 +30,7 @@ public class Queen implements Piezas{
 	}
 	
 	@Override
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas [][] tablero) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila) {
 		return bien;
 	}
 	

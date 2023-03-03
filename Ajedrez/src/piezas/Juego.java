@@ -185,7 +185,7 @@ public class Juego {
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
 				
-				buena = tablero[mover_fila][mover_columna].mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, seleccionar_columna, tablero);
+				buena = tablero[mover_fila][mover_columna].mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila);
 				
 				if (buena==true) {
 				
