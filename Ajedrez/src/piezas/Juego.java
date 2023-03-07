@@ -24,8 +24,8 @@ public class Juego {
 	public static void inicializarTablero() {
 		// creamos todas las fichas Blancas
 		Piezas qB = new Queen("qB",true, true);
-		Piezas kB = new King("kB",true);
-		Piezas aB = new Alfil("aB",true);
+		Piezas kB = new King("kB",true, buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas aB = new Alfil("aB",true, buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cB = new Caballo("cB",true, true);
 		Piezas tB = new Torre("tB",true, buena, mover_columna, mover_columna, mover_columna, buena);
 		Piezas pB = new Peones("pB",true);
@@ -33,8 +33,8 @@ public class Juego {
 
 		// creamos todas las fichas Negras
 		Piezas qN = new Queen("qN",false, true);
-		Piezas kN = new King("kN",false);
-		Piezas aN = new Alfil("aN",false);
+		Piezas kN = new King("kN",false, buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas aN = new Alfil("aN",false, buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cN = new Caballo("cN",false, true);
 		Piezas tN = new Torre("tN",false, buena, mover_columna, mover_columna, mover_columna, buena);
 		Piezas pN = new Peones("pN",false);
@@ -182,10 +182,10 @@ public class Juego {
 
 			// si ya hay una ficha nuestra, no nos va a dejar mover
 			if (posicion_futura.isBlanco()==blanco) {
+
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
-				
-				buena = tablero[mover_fila][mover_columna].mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, seleccionar_columna, tablero);
+				buena = tablero[seleccionar_fila][seleccionar_columna].mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero);
 				
 				if (buena==true) {
 				

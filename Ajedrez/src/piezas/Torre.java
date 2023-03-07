@@ -9,7 +9,9 @@ public class Torre extends Queen {
 	private int min;
 	private int max;
 	private int fija;
-	private boolean camVacio = false;
+	private boolean camVacio = true;
+	public boolean bien = true;
+	public static Piezas Vacio = new Vacio(" *");
 
 
 	//constructores
@@ -40,11 +42,10 @@ public class Torre extends Queen {
 	
 
 	@Override
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
-			int posicion_futura, Piezas[][] tablero) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		if (seleccionar_fila == mover_fila && seleccionar_columna != mover_columna) {
 			
-			fija = mover_fila;
+			fija = seleccionar_fila;
 			
 			if (seleccionar_columna > mover_columna) {
 				min = mover_columna;
@@ -54,29 +55,20 @@ public class Torre extends Queen {
 				max = mover_columna;
 			}
 			
-			for (int i = min ; i > max ; i++) {
-				
-				System.out.println("cambia");
-				
-				//cambiamos el valor del boolean para comprobar si hay piezas por el camino
-				camVacio = true;
-				
-				if (!tablero[fija][i].equals(" *")) {
-					
-					//if que compruebe si hay ficha por el camino
-					if (tablero[fija][i].isBlanco()!=blanco) {
-						camVacio = false;
-						System.out.println("entra bien");
-					}
-				}
-				
-				
+			
+			for (int i = min; i < max; i++) {
+			    if (!tablero[fija][i].equals(Vacio)) {
+			            bien = false;
+			    }
+			    
 			}
+			
+		    System.out.print("Hay piezas por el camino, ");
 
 		} else {
 			if (seleccionar_fila != mover_fila && seleccionar_columna == mover_columna) {
 				
-				fija = mover_columna;
+				fija = seleccionar_columna;
 				
 				if (seleccionar_fila > mover_fila) {
 					min = mover_fila;
@@ -87,28 +79,28 @@ public class Torre extends Queen {
 					max = mover_fila;
 				}
 				
-				for (int i = min ; i > max ; i++) {
+				for (int i = min ; i < max ; i++) {
 					
-					camVacio = true;
-					
-					if (!tablero[i][fija].equals(" *")) {
-						
+					if (!tablero[i][fija].equals(Vacio)) {
 						//if que compruebe si hay ficha por el camino
-						if (tablero[i][fija].isBlanco()!=blanco) {
-							camVacio = false;
-							System.out.println("entra bien");
-						}
-					}			
+							bien = false;
+					}	
 					
 				}
+<<<<<<< .merge_file_euUr1v
+=======
+				
+				System.out.print("Hay piezas por el camino, ");
+>>>>>>> .merge_file_NIyoZV
 
 				
 				
 			} else {
 				System.out.println("no es ni horizontal ni vertical");
+				bien = false;
 			}
 		}
-		return super.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, posicion_futura, tablero);
+		return bien;
 	}
 	
 
