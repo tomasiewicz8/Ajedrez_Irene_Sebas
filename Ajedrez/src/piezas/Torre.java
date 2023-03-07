@@ -101,7 +101,9 @@ public class Torre extends Queen {
 					}			
 					
 				}
-		
+
+				
+				
 			} else {
 				System.out.println("no es ni horizontal ni vertical");
 			}
@@ -109,12 +111,7 @@ public class Torre extends Queen {
 		return super.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, posicion_futura, tablero);
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	
 		// getters y setters
 		public String getName() {
