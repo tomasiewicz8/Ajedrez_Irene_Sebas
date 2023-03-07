@@ -40,8 +40,7 @@ public class Torre extends Queen {
 	
 
 	@Override
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
-			int posicion_futura, Piezas[][] tablero) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		if (seleccionar_fila == mover_fila && seleccionar_columna != mover_columna) {
 			
 			fija = mover_fila;
@@ -108,7 +107,7 @@ public class Torre extends Queen {
 				System.out.println("no es ni horizontal ni vertical");
 			}
 		}
-		return super.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, posicion_futura, tablero);
+		return super.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero);
 	}
 	
 

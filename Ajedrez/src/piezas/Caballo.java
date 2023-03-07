@@ -33,7 +33,7 @@ public class Caballo implements Piezas {
 	
 	// poner los metodos de los movimientos
 
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas[][] tablero) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila) {
 
 		if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
 		        
@@ -60,7 +60,7 @@ public class Caballo implements Piezas {
 		    								
 		    							} else {
 		    								System.out.println(" primo asi no mueve el caballo");
-		    								bien = false;
+		    								bien = true;
 		    							}
 		    						}
 		    					}

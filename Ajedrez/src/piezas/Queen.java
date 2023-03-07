@@ -30,7 +30,7 @@ public class Queen implements Piezas{
 	}
 	
 	@Override
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, int posicion_futura, Piezas [][] tablero) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		return bien;
 	}
 	
@@ -61,6 +61,13 @@ public class Queen implements Piezas{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
+			Piezas[][] tablero) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
