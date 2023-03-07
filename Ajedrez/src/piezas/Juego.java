@@ -28,7 +28,7 @@ public class Juego {
 		Piezas aB = new Alfil("aB",true, buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cB = new Caballo("cB",true, true);
 		Piezas tB = new Torre("tB",true, buena, mover_columna, mover_columna, mover_columna, buena);
-		Piezas pB = new Peones("pB",true);
+		Piezas pB = new Peones("pB",true, mover_columna);
 		
 
 		// creamos todas las fichas Negras
@@ -37,7 +37,7 @@ public class Juego {
 		Piezas aN = new Alfil("aN",false, buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cN = new Caballo("cN",false, true);
 		Piezas tN = new Torre("tN",false, buena, mover_columna, mover_columna, mover_columna, buena);
-		Piezas pN = new Peones("pN",false);
+		Piezas pN = new Peones("pN",false, mover_columna);
 
 		
 		

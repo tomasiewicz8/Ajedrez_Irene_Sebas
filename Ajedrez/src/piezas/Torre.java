@@ -87,11 +87,9 @@ public class Torre extends Queen {
 					}	
 					
 				}
-<<<<<<< .merge_file_euUr1v
-=======
+
 				
 				System.out.print("Hay piezas por el camino, ");
->>>>>>> .merge_file_NIyoZV
 
 				
 				
