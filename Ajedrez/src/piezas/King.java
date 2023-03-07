@@ -41,8 +41,8 @@ public class King extends Queen{
 	    
 		if (tablero[mover_fila][mover_columna].isBlanco() != blanco) {
 
-		int dif_fila = seleccionar_fila - mover_fila;
-		int dif_columna = seleccionar_columna - mover_columna;
+		int dif_fila = mover_fila - seleccionar_fila;
+		int dif_columna = mover_columna - seleccionar_columna;
 	    
 		    // El rey se puede mover una casilla en cualquier dirección.
 		    if (dif_fila <= 1 && dif_columna <= 1) {
