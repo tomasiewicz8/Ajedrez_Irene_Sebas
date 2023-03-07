@@ -9,7 +9,8 @@ public class Torre extends Queen {
 	private int min;
 	private int max;
 	private int fija;
-	private boolean camVacio = false;
+	private boolean camVacio = true;
+	public boolean bien = true;
 
 
 	//constructores
@@ -53,23 +54,15 @@ public class Torre extends Queen {
 				max = mover_columna;
 			}
 			
-			for (int i = min ; i > max ; i++) {
-				
-				System.out.println("cambia");
-				
-				//cambiamos el valor del boolean para comprobar si hay piezas por el camino
-				camVacio = true;
-				
-				if (!tablero[fija][i].equals(" *")) {
-					
-					//if que compruebe si hay ficha por el camino
-					if (tablero[fija][i].isBlanco()!=blanco) {
-						camVacio = false;
-						System.out.println("entra bien");
-					}
-				}
-				
-				
+			
+			for (int i = min; i < max; i++) {
+			    if (!tablero[fija][i].equals(" *")) {
+			        if (tablero[fija][i].isBlanco() != blanco) {
+			            // If there is an opposing piece in the way, return a message and exit the loop.
+			            System.out.println("Hay una pieza en el camino. No se puede hacer el movimiento.");
+			            bien = false;
+			        }
+			    }
 			}
 
 		} else {
@@ -88,13 +81,11 @@ public class Torre extends Queen {
 				
 				for (int i = min ; i > max ; i++) {
 					
-					camVacio = true;
-					
 					if (!tablero[i][fija].equals(" *")) {
 						
 						//if que compruebe si hay ficha por el camino
 						if (tablero[i][fija].isBlanco()!=blanco) {
-							camVacio = false;
+							bien = false;
 							System.out.println("entra bien");
 						}
 					}			
@@ -105,9 +96,10 @@ public class Torre extends Queen {
 				
 			} else {
 				System.out.println("no es ni horizontal ni vertical");
+				bien = false;
 			}
 		}
-		return super.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero);
+		return bien;
 	}
 	
 

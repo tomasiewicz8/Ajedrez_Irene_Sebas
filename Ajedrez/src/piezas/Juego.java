@@ -184,8 +184,7 @@ public class Juego {
 			if (posicion_futura.isBlanco()==blanco) {
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
-				
-				buena = tablero[mover_fila][mover_columna].mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila);
+				buena = tablero[seleccionar_fila][seleccionar_columna].mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero);
 				
 				if (buena==true) {
 				
