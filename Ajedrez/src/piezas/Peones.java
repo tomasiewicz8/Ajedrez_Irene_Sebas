@@ -2,12 +2,16 @@ package piezas;
 
 public class Peones extends King{
 	
+	private static int maxC;
+	private static int maxF;
+	private static int minF;
+	private static int minC;
 	private String name;
 	private boolean blanco;
 
 	//constructor
 	public Peones(String name, boolean blanco) {
-		super(name, blanco);
+		super(name, blanco, blanco, maxC, maxF, minF, minC);
 		this.name = name;
 		this.blanco = blanco;
 	}
