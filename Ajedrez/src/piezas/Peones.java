@@ -3,7 +3,7 @@ package piezas;
 public class Peones extends King {
 
 	private int fija;
-
+	private static Piezas Vacio;
 	
 
 	// constructor

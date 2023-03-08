@@ -7,7 +7,6 @@ public class Alfil extends Queen {
 	private int maxC;
 	private int maxF;
 
-
 	// constructor
 	public Alfil(String name, String colorFicha, boolean bien, int minC, int maxC, int minF, int maxF) {
 		super(name, colorFicha, bien);
@@ -26,56 +25,53 @@ public class Alfil extends Queen {
 			setName("tN");
 			return getName();
 		}
-		
+
 	}
-	
-	
 
 	@Override
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
-		
-		if (tablero[mover_fila][mover_columna].getColorFicha().equals("Blanco")) {
+	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
+			Piezas[][] tablero) {
 
-			if (seleccionar_columna > mover_columna) {
-				minC = mover_columna;
-				maxC = seleccionar_columna;
-			} else {
-				minC = seleccionar_columna;
-				maxC = mover_columna;
-			}
+		if (seleccionar_columna > mover_columna) {
+			minC = mover_columna;
+			maxC = seleccionar_columna;
+		} else {
+			minC = seleccionar_columna;
+			maxC = mover_columna;
+		}
 
-			if (seleccionar_fila > mover_fila) {
-				minF = mover_fila;
-				maxF = seleccionar_fila;
+		if (seleccionar_fila > mover_fila) {
+			minF = mover_fila;
+			maxF = seleccionar_fila;
 
-			} else {
-				minF = seleccionar_fila;
-				maxF = mover_fila;
-			}
+		} else {
+			minF = seleccionar_fila;
+			maxF = mover_fila;
+		}
 
-			for (int i = minC +1 ; i <= maxC - 1; i++) {
-				for (int s = minF + 1; s <= maxF - 1; s++) {
+		for (int i = minC + 1; i <= maxC - 1; i++) {
+			for (int s = minF + 1; s <= maxF - 1; s++) {
 
-					if (!tablero[seleccionar_fila - s][seleccionar_columna + i].getColorFicha().equals(" *")) {
+				if (!tablero[seleccionar_fila - s][seleccionar_columna + i].getColorFicha().equals(" *")) {
+					setBien(false);
+				} else {
+					if (!tablero[seleccionar_fila - s][seleccionar_columna - i].getColorFicha().equals(" *")) {
 						setBien(false);
 					} else {
-						if (!tablero[seleccionar_fila - s][seleccionar_columna - i].getColorFicha().equals(" *")) {
+						if (!tablero[seleccionar_fila + s][seleccionar_columna + i].getColorFicha().equals(" *")) {
 							setBien(false);
 						} else {
-							if (!tablero[seleccionar_fila + s][seleccionar_columna + i].getColorFicha().equals(" *")) {
+							if (!tablero[seleccionar_fila + s][seleccionar_columna - i].getColorFicha().equals(" *")) {
 								setBien(false);
-							} else {
-								if (!tablero[seleccionar_fila + s][seleccionar_columna - i].getColorFicha().equals(" *")) {
-									setBien(false);
-								}
 							}
 						}
-
 					}
-				}
 
+				}
 			}
+
 		}
+
 		return isBien();
 	}
 
@@ -112,7 +108,5 @@ public class Alfil extends Queen {
 	public void setMaxF(int maxF) {
 		this.maxF = maxF;
 	}
-
-	
 
 }

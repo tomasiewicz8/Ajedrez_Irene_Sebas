@@ -40,7 +40,7 @@ public class Juego {
 		Piezas cN = new Caballo("cN","Negro", true);
 		Piezas tN = new Torre("tN","Negro", buena, mover_columna, mover_columna, mover_columna, buena);
 		Piezas pN = new Peones("pN","Negro", buena, mover_columna);
-		Piezas vacio = new Vacio(" *", "verde");
+		Piezas vacio = new Vacio(" *", " *");
 
 		
 		
@@ -105,7 +105,6 @@ public class Juego {
 		String[] lateral = {"A/1 "," 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "};
 		/* Creamos las letras de los bordes*/
 		
-		
 		for (int i = 0; i <= 8; i++) {
 			for (int s = 0; s <= 8; s++) {
 				if(i==0 ) {
@@ -127,7 +126,7 @@ public class Juego {
 						finNeg = true;
 					}
 
-					if (tablero[i][s].equals("kB")) {
+					if (tablero[i][s].getName().equals("kB")) {
 						finBla = true;
 					}
 				}
@@ -176,15 +175,15 @@ public class Juego {
 	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
 			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna, String colorFicha,
 			boolean fallo) {
-
+		Piezas vacio = new Vacio(" *", " *");
 		// verificamos que las coordenadas sean validas
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
 
 			posicion_futura = tablero[mover_fila][mover_columna];
 			System.out.print("has elegido mover hacia " + tablero[mover_fila][mover_columna]);
-
+			System.out.println("");
 			// si ya hay una ficha nuestra, no nos va a dejar mover
-			if (!posicion_futura.getColorFicha().equals(jugador)) {
+			if (posicion_futura.getColorFicha().equals(jugador)) {
 
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {
@@ -193,7 +192,7 @@ public class Juego {
 				if (buena==true) {
 				
 				posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
-				tablero[seleccionar_fila][seleccionar_columna] = Vacio;
+				tablero[seleccionar_fila][seleccionar_columna] = vacio;
 				tablero[mover_fila][mover_columna] = posicion_actual;
 			
 				fallo = true;
