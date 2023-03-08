@@ -11,7 +11,7 @@ public class Torre extends Queen {
 	private int fija;
 	private boolean camVacio = true;
 	public boolean bien = true;
-	public static Piezas Vacio = new Vacio(" *");
+	public static Piezas Vacio = new Vacio(" *","");
 
 
 	//constructores

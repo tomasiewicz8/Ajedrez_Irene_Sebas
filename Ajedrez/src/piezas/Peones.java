@@ -102,7 +102,7 @@ public class Peones extends King{
 
 			} else {
 				// si está en la linea 8 para comenzar
-				if (seleccionar_fila == 8) {
+				if (seleccionar_fila == 7) {
 
 					// Se mueve solo una o dos
 					int dif_fila = mover_fila - seleccionar_fila;
@@ -124,7 +124,7 @@ public class Peones extends King{
 
 				} else {
 					// si la ficha no está para iniciar si no en mitad
-					if (seleccionar_fila < 8) {
+					if (seleccionar_fila < 7) {
 
 						// Se mueve solo una posicion
 						int dif_fila = mover_fila - seleccionar_fila;

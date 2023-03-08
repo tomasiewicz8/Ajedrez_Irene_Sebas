@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Juego {
 
+	private static final Piezas Vacio = null;
 	public static Piezas[][] tablero;
 	public static boolean finBla = true;
 	public static boolean finNeg = true;
@@ -40,7 +41,7 @@ public class Juego {
 		Piezas tN = new Torre("tN",false, buena, mover_columna, mover_columna, mover_columna, buena);
 		Piezas pN = new Peones("pN",false, mover_columna);
 		
-		Piezas vacio = new Vacio(" *", "verde");
+		
 
 		
 		
@@ -90,7 +91,7 @@ public class Juego {
 		// bucle para rellenar los espacios en blanco
 		for (int i = 3; i <= 6; i++) {
 			for (int s = 1; s <= 8; s++) {
-				tablero[i][s] = vacio;
+				tablero[i][s] = Vacio;
 			}
 		}
 
@@ -184,7 +185,7 @@ public class Juego {
 			System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
 
 			// si ya hay una ficha nuestra, no nos va a dejar mover
-			if (posicion_futura.getColorFicha().equals(jugador)) {
+			if (!posicion_futura.getColorFicha().equals(jugador)) {
 
 				System.out.print(" pero no se puede mover ahi, es tu ficha, ");
 			} else {

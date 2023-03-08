@@ -93,16 +93,12 @@ public class Caballo implements Piezas {
 		this.bien = bien;
 	}
 
-	@Override
 	public String getColorFicha() {
-		// TODO Auto-generated method stub
-		return null;
+		return colorFicha;
 	}
 
-	@Override
-	public void setColorFicha(String colorFicha) {
-		// TODO Auto-generated method stub
-		
+	
+	public void setColorFicha(String colorFicha) {	
 	}
 	
 
