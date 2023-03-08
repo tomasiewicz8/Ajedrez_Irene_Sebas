@@ -9,6 +9,7 @@ public class Peones extends King{
 	private String name;
 	private boolean blanco;
 	private int fija;
+	private boolean bien = true;
 
 	//constructor
 	public Peones(String name, boolean blanco, int fija) {
@@ -51,13 +52,13 @@ public class Peones extends King{
 						for (int i = seleccionar_fila; i <= mover_fila; i++) {
 							// ver si hay piezas por el camino
 							if (!tablero[i][fija].equals(Vacio)) {
-								bien = false;
+								bien = true;
 							}
 						}
 						System.out.print("Hay piezas por el camino, ");
 					} else {
 						System.out.println("no entra porque no son los parametros");
-						bien = false;
+						bien = true;
 					}
 
 				} else {
@@ -75,13 +76,13 @@ public class Peones extends King{
 							for (int i = seleccionar_fila; i <= mover_fila; i++) {
 
 								if (!tablero[i][fija].equals(Vacio)) {
-									bien = false;
+									bien = true;
 								}
 							}
 							System.out.print("Hay piezas por el camino, ");
 						} else {
 							System.out.println("no entra porque no son los parametros");
-							bien = false;
+							bien = true;
 						}
 
 						// movemos en diagonal izquierda y diagonal derecha si hay una ficha del
@@ -91,11 +92,11 @@ public class Peones extends King{
 
 						} else {
 							System.out.println("no hay ninguna pieza para comer");
-							bien = false;
+							bien = true;
 						}
 					} else {
 						System.out.println("estas selecionando una fila que no es, tienes que ir para arriba");
-						bien = false;
+						bien = true;
 					}
 				}
 
@@ -112,13 +113,13 @@ public class Peones extends King{
 						for (int i = seleccionar_fila; i >= mover_fila; i--) {
 							// ver si hay piezas por el camino
 							if (!tablero[i][fija].equals(Vacio)) {
-								bien = false;
+								bien = true;
 							}
 						}
 						System.out.print("Hay piezas por el camino, ");
 					} else {
 						System.out.println("no entra porque no son los parametros");
-						bien = false;
+						bien = true;
 					}
 
 				} else {
@@ -136,13 +137,13 @@ public class Peones extends King{
 							for (int i = seleccionar_fila; i >= mover_fila; i--) {
 
 								if (!tablero[i][fija].equals(Vacio)) {
-									bien = false;
+									bien = true;
 								}
 							}
 							System.out.print("Hay piezas por el camino, ");
 						} else {
 							System.out.println("no entra porque no son los parametros");
-							bien = false;
+							bien = true;
 						}
 
 						// movemos en diagonal izquierda y diagonal derecha si hay una ficha del
@@ -152,11 +153,11 @@ public class Peones extends King{
 
 						} else {
 							System.out.println("no hay ninguna pieza para comer");
-							bien = false;
+							bien = true;
 						}
 					} else {
 						System.out.println("estas selecionando una fila que no es, tienes que ir para arriba");
-						bien = false;
+						bien = true;
 					}
 				}
 

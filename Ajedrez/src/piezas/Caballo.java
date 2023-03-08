@@ -8,19 +8,19 @@ package piezas;
 public class Caballo implements Piezas {
 
 	private String name;
-	private boolean blanco;
+	private String colorFicha;
 	private boolean bien = true;
 
 	//constructor
-	public Caballo(String name, boolean blanco, boolean bien) {
+	public Caballo(String name, String colorFicha, boolean bien) {
 		this.name = name;
-		this.blanco = blanco;
+		this.colorFicha = colorFicha;
 		this.bien = bien;
 	}
 	
 	@Override
 	public String toString() {
-		if (blanco == true) {
+		if (colorFicha == "Blanco") {
 			name = "cB";
 			return name;
 		} else {
@@ -83,21 +83,26 @@ public class Caballo implements Piezas {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public boolean isBlanco() {
-		return blanco;
-	}
-
-	public void setBlanco(boolean blanco) {
-		this.blanco = blanco;
-	}
 	
+
 	public boolean isBien() {
 		return bien;
 	}
 
 	public void setBien(boolean bien) {
 		this.bien = bien;
+	}
+
+	@Override
+	public String getColorFicha() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setColorFicha(String colorFicha) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
