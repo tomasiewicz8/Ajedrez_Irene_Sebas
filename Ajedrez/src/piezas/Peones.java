@@ -150,30 +150,27 @@ public class Peones extends King {
 									System.out.println("no entra porque no son los parametros");
 									bien = true;
 								}
-				} else {
-					System.out.println("El movimiento no es valido, tiene que ser en vertical");
-				}
-						// movemos en diagonal izquierda y diagonal derecha si hay una ficha del
-						// oponente
-						if ((tablero[seleccionar_fila - 1][seleccionar_columna + 1] != Vacio)
-								|| (tablero[seleccionar_fila - 1][seleccionar_columna + 1] != Vacio)) {
+							} else {
+								System.out.println("estas selecionando una fila que no es, tienes que ir para arriba");
+								bien = true;
+							}
+			} else {
+				System.out.println("El movimiento no es valido, tiene que ser en vertical");
+			}
+			// movemos en diagonal izquierda y diagonal derecha si hay una ficha del oponente
+			if ((tablero[seleccionar_fila - 1][seleccionar_columna + 1] != Vacio) || (tablero[seleccionar_fila - 1][seleccionar_columna + 1] != Vacio)) {
 	
-						} else {
-							System.out.println("no hay ninguna pieza para comer");
-							bien = true;
-						}
-					} else {
-						System.out.println("estas selecionando una fila que no es, tienes que ir para arriba");
-						bien = true;
-					}
-				}
-
+			} else {
+				System.out.println("no hay ninguna pieza para comer");
+				bien = true;
+			}
+					
 		}
 	}
-
+		
 	return bien;
 
-	}
+}
 
 	// getters y setters
 	}
