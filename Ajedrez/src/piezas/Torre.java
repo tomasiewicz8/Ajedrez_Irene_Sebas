@@ -48,8 +48,8 @@ public class Torre extends Queen {
 				max = mover_columna;
 			}
 			
-			
-			for (int i = min; i < max; i++) {
+			//falta comprobar la ultima posicion para ver si es de nuestro color o no para comer y restar el max en el bucle
+			for (int i = min + 1 ; i < max - 1; i++) {
 			    if (!tablero[fija][i].getColorFicha().equals(" *")) {
 			            setBien(false);
 			    }
@@ -72,7 +72,7 @@ public class Torre extends Queen {
 					max = mover_fila;
 				}
 				
-				for (int i = min ; i < max ; i++) {
+				for (int i = min + 1 ; i < max - 1 ; i++) {
 					
 					if (!tablero[i][fija].getColorFicha().equals(" *")) {
 						//if que compruebe si hay ficha por el camino

@@ -53,19 +53,19 @@ public class Alfil extends Queen {
 				maxF = mover_fila;
 			}
 
-			for (int i = minC; i <= maxC; i++) {
-				for (int s = minF; s <= maxF; s++) {
+			for (int i = minC +1 ; i <= maxC - 1; i++) {
+				for (int s = minF + 1; s <= maxF - 1; s++) {
 
-					if (tablero[seleccionar_fila - s][seleccionar_columna + i].getColorFicha().equals(" *")) {
+					if (!tablero[seleccionar_fila - s][seleccionar_columna + i].getColorFicha().equals(" *")) {
 						setBien(false);
 					} else {
-						if (tablero[seleccionar_fila - s][seleccionar_columna - i].getColorFicha().equals(" *")) {
+						if (!tablero[seleccionar_fila - s][seleccionar_columna - i].getColorFicha().equals(" *")) {
 							setBien(false);
 						} else {
-							if (tablero[seleccionar_fila + s][seleccionar_columna + i].getColorFicha().equals(" *")) {
+							if (!tablero[seleccionar_fila + s][seleccionar_columna + i].getColorFicha().equals(" *")) {
 								setBien(false);
 							} else {
-								if (tablero[seleccionar_fila + s][seleccionar_columna - i].getColorFicha().equals(" *")) {
+								if (!tablero[seleccionar_fila + s][seleccionar_columna - i].getColorFicha().equals(" *")) {
 									setBien(false);
 								}
 							}
