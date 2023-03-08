@@ -4,22 +4,15 @@ import java.util.Scanner;
 
 public class Torre extends Queen {
 	
-	private String name;
-	private boolean blanco;
 	private int min;
 	private int max;
 	private int fija;
 	private boolean camVacio = true;
-	public boolean bien = true;
-	public static Piezas Vacio = new Vacio(" *","");
 
 
 	//constructores
-	public Torre(String name, boolean blanco, boolean bien, int min, int max, int fija,
-			boolean camVacio) {
-		super(name, blanco, bien);
-		this.name = name;
-		this.blanco = blanco;
+	public Torre(String name, String colorFicha, boolean bien, int min, int max, int fija, boolean camVacio) {
+		super(name, colorFicha, bien);
 		this.min = min;
 		this.max = max;
 		this.fija = fija;
@@ -29,12 +22,12 @@ public class Torre extends Queen {
 	
 	@Override
 	public String toString() {
-		if (blanco == true) {
-			name = "tB";
-			return name;
+		if (getColorFicha() == "Blanco") {
+			setName("tB");
+			return getName();
 		} else {
-			name = "tN";
-			return name;
+			setName("tN");
+			return getName();
 		}
 		
 	}
@@ -57,8 +50,8 @@ public class Torre extends Queen {
 			
 			
 			for (int i = min; i < max; i++) {
-			    if (!tablero[fija][i].equals(Vacio)) {
-			            bien = false;
+			    if (!tablero[fija][i].getColorFicha().equals(" *")) {
+			            setBien(false);
 			    }
 			    
 			}
@@ -81,9 +74,9 @@ public class Torre extends Queen {
 				
 				for (int i = min ; i < max ; i++) {
 					
-					if (!tablero[i][fija].equals(Vacio)) {
+					if (!tablero[i][fija].getColorFicha().equals(" *")) {
 						//if que compruebe si hay ficha por el camino
-							bien = false;
+						setBien(false);
 					}	
 					
 				}
@@ -95,30 +88,15 @@ public class Torre extends Queen {
 				
 			} else {
 				System.out.println("no es ni horizontal ni vertical");
-				bien = false;
+				setBien(false);
 			}
 		}
-		return bien;
+		return isBien();
 	}
 	
 
 	
 		// getters y setters
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public boolean isBlanco() {
-			return blanco;
-		}
-
-		public void setBlanco(boolean blanco) {
-			this.blanco = blanco;
-		}
 
 		public int getMin() {
 			return min;

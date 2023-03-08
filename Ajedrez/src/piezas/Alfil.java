@@ -2,19 +2,15 @@ package piezas;
 
 public class Alfil extends Queen {
 
-	private String name;
-	private boolean blanco;
 	private int minC;
 	private int minF;
 	private int maxC;
 	private int maxF;
-	private boolean bien = true;
-	public static Piezas Vacio = new Vacio(" *");
+
 
 	// constructor
-	public Alfil(String name, boolean blanco, boolean bien, int minC, int maxC, int minF, int maxF) {
-		this.name = name;
-		this.blanco = blanco;
+	public Alfil(String name, String colorFicha, boolean bien, int minC, int maxC, int minF, int maxF) {
+		super(name, colorFicha, bien);
 		this.minC = minC;
 		this.minF = minF;
 		this.maxC = maxC;
@@ -23,14 +19,14 @@ public class Alfil extends Queen {
 
 	@Override
 	public String toString() {
-		if (blanco == true) {
-			name = "aB";
-			return name;
+		if (getColorFicha() == "Blanco") {
+			setName("tB");
+			return getName();
 		} else {
-			name = "aN";
-			return name;
+			setName("tN");
+			return getName();
 		}
-
+		
 	}
 	
 	
@@ -38,7 +34,7 @@ public class Alfil extends Queen {
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		
-		if (tablero[mover_fila][mover_columna].isBlanco() != blanco) {
+		if (tablero[mover_fila][mover_columna].getColorFicha().equals("Blanco")) {
 
 			if (seleccionar_columna > mover_columna) {
 				minC = mover_columna;
@@ -60,17 +56,17 @@ public class Alfil extends Queen {
 			for (int i = minC; i <= maxC; i++) {
 				for (int s = minF; s <= maxF; s++) {
 
-					if (tablero[seleccionar_fila - s][seleccionar_columna + i] != Vacio) {
-						bien = false;
+					if (tablero[seleccionar_fila - s][seleccionar_columna + i].getColorFicha().equals(" *")) {
+						setBien(false);
 					} else {
-						if (tablero[seleccionar_fila - s][seleccionar_columna - i] != Vacio) {
-							bien = false;
+						if (tablero[seleccionar_fila - s][seleccionar_columna - i].getColorFicha().equals(" *")) {
+							setBien(false);
 						} else {
-							if (tablero[seleccionar_fila + s][seleccionar_columna + i] != Vacio) {
-								bien = false;
+							if (tablero[seleccionar_fila + s][seleccionar_columna + i].getColorFicha().equals(" *")) {
+								setBien(false);
 							} else {
-								if (tablero[seleccionar_fila + s][seleccionar_columna - i] != Vacio) {
-									bien = false;
+								if (tablero[seleccionar_fila + s][seleccionar_columna - i].getColorFicha().equals(" *")) {
+									setBien(false);
 								}
 							}
 						}
@@ -80,25 +76,10 @@ public class Alfil extends Queen {
 
 			}
 		}
-		return bien; 
+		return isBien();
 	}
 
 	// getters y setters
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public boolean isBlanco() {
-		return blanco;
-	}
-
-	public void setBlanco(boolean blanco) {
-		this.blanco = blanco;
-	}
 
 	public int getMinC() {
 		return minC;
@@ -132,21 +113,6 @@ public class Alfil extends Queen {
 		this.maxF = maxF;
 	}
 
-	public boolean isBien() {
-		return bien;
-	}
-
-	public void setBien(boolean bien) {
-		this.bien = bien;
-	}
-
-	public static Piezas getVacio() {
-		return Vacio;
-	}
-
-	public static void setVacio(Piezas vacio) {
-		Vacio = vacio;
-	}
 	
 
 }
