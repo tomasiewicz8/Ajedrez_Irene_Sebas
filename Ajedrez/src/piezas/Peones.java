@@ -2,19 +2,13 @@ package piezas;
 
 public class Peones extends King {
 
-	private String name;
-	private boolean blanco;
 	private int fija;
 	private boolean bien = true;
-	private String colorFicha;
 
 	// constructor
-	public Peones(String name, boolean blanco, int fija, String colorFicha) {
-		super(name, blanco, fija, colorFicha);
-		this.name = name;
-		this.blanco = blanco;
+	public Peones(String name, String colorFicha, int fija) {
+		super(name, colorFicha, fija);
 		this.fija = fija;
-		this.colorFicha = colorFicha;
 	}
 
 	@Override
@@ -175,25 +169,13 @@ public class Peones extends King {
 				}
 
 		}
-	}return bien;
+	}
+
+	return bien;
 
 	}
 
 	// getters y setters
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public boolean isBlanco() {
-		return blanco;
-	}
-
-	public void setBlanco(boolean blanco) {
-		this.blanco = blanco;
 	}
 
 	public int getFija() {
@@ -210,14 +192,6 @@ public class Peones extends King {
 
 	public void setBien(boolean bien) {
 		this.bien = bien;
-	}
-
-	public String getColorFicha() {
-		return colorFicha;
-	}
-
-	public void setColorFicha(String colorFicha) {
-		this.colorFicha = colorFicha;
 	}
 
 }

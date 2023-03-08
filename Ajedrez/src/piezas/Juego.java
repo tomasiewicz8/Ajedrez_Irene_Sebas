@@ -25,21 +25,21 @@ public class Juego {
 	 */
 	public static void inicializarTablero() {
 		// creamos todas las fichas Blancas
-		Piezas qB = new Queen("qB",true, true);
-		Piezas kB = new King("kB",true, buena, mover_columna, mover_columna, mover_columna, mover_columna);
-		Piezas aB = new Alfil("aB",true, buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas qB = new Queen("qB","Blanco", true);
+		Piezas kB = new King("kB","Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas aB = new Alfil("aB","Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cB = new Caballo("cB","Blanco", true);
-		Piezas tB = new Torre("tB",true, buena, mover_columna, mover_columna, mover_columna, buena);
-		Piezas pB = new Peones("pB",true, mover_columna);
+		Piezas tB = new Torre("tB","Blanco", buena, mover_columna, mover_columna, mover_columna, buena);
+		Piezas pB = new Peones("pB","Blanco", mover_columna);
 		
 
 		// creamos todas las fichas Negras
-		Piezas qN = new Queen("qN",false, true);
-		Piezas kN = new King("kN",false, buena, mover_columna, mover_columna, mover_columna, mover_columna);
-		Piezas aN = new Alfil("aN",false, buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas qN = new Queen("qN","Negro", true);
+		Piezas kN = new King("kN","Negro", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas aN = new Alfil("aN","Negro", buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cN = new Caballo("cN","Negro", true);
-		Piezas tN = new Torre("tN",false, buena, mover_columna, mover_columna, mover_columna, buena);
-		Piezas pN = new Peones("pN",false, mover_columna);
+		Piezas tN = new Torre("tN","Negro", buena, mover_columna, mover_columna, mover_columna, buena);
+		Piezas pN = new Peones("pN","Negro", mover_columna);
 		
 		Piezas vacio = new Vacio(" *", "verde");
 
