@@ -38,8 +38,8 @@ public class King extends Queen{
 	    
 		if (!tablero[mover_fila][mover_columna].getColorFicha().equals("Blanco")) {
 
-		int dif_fila = mover_fila - seleccionar_fila;
-		int dif_columna = mover_columna - seleccionar_columna;
+		int dif_fila = Math.abs(mover_fila - seleccionar_fila);
+		int dif_columna = Math.abs(mover_columna - seleccionar_columna);
 	    
 		    // El rey se puede mover una casilla en cualquier dirección.
 		    if (dif_fila <= 1 && dif_columna <= 1) {
@@ -50,13 +50,44 @@ public class King extends Queen{
 		    }
 	    
 	  
-		}
-		
-		  return isBien(); 
+		} 
+
+		return isBien(); 
+	}
+	
+	//getters y setters
+	public int getMinC() {
+		return minC;
+	}
+
+	public void setMinC(int minC) {
+		this.minC = minC;
+	}
+
+	public int getMinF() {
+		return minF;
+	}
+
+	public void setMinF(int minF) {
+		this.minF = minF;
+	}
+
+	public int getMaxC() {
+		return maxC;
+	}
+
+	public void setMaxC(int maxC) {
+		this.maxC = maxC;
+	}
+
+	public int getMaxF() {
+		return maxF;
+	}
+
+	public void setMaxF(int maxF) {
+		this.maxF = maxF;
 	}
 	
 	
-	//getters y setters
-
-
 }
+	
