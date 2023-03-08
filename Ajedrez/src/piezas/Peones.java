@@ -4,7 +4,7 @@ public class Peones extends King {
 
 	private int fija;
 
-	private int 
+	
 
 	// constructor
 	public Peones(String name, String colorFicha, boolean bien, int fija) {

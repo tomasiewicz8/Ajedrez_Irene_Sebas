@@ -15,7 +15,7 @@ public class Juego {
 	public static int mover_fila;
 	public static int mover_columna;
 	public static boolean buena = true;
-	public static String jugador;
+	public static String jugador = "Blanco";
 	
 
 	
@@ -158,7 +158,7 @@ public class Juego {
 			if (posicion_actual.getColorFicha().equals(jugador)) {
 				condicion = false;
 			} else {
-				System.out.print(" no se puede mover, no es tu ficha, ");
+				System.out.print(", no se puede mover, no es tu ficha, ");
 
 			}
 		} else {
@@ -181,7 +181,7 @@ public class Juego {
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
 
 			posicion_futura = tablero[mover_fila][mover_columna];
-			System.out.println("has elegido mover hacia" + tablero[mover_fila][mover_columna]);
+			System.out.print("has elegido mover hacia " + tablero[mover_fila][mover_columna]);
 
 			// si ya hay una ficha nuestra, no nos va a dejar mover
 			if (!posicion_futura.getColorFicha().equals(jugador)) {
