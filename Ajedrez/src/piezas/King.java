@@ -15,6 +15,10 @@ public class King extends Queen{
 		this.maxC = maxC;
 		this.maxF = maxF;
 	}
+	
+	public King(String name, String colorFicha, boolean bien) {
+		super(name, colorFicha, bien);
+	}
 
 	@Override
 	public String toString() {
