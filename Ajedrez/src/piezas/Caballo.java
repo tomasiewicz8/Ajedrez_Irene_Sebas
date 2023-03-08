@@ -1,10 +1,5 @@
 package piezas;
 
-/**
- * 
- * @author USUARIO CCC
- *
- */
 public class Caballo implements Piezas {
 
 	private String name;

@@ -6,20 +6,20 @@ public class Queen implements Piezas{
 	//poner los metodos de los movimientos
 	
 	private String name;
-	private boolean blanco;
+	private String colorFicha;
 	private boolean bien;
 
 	//constructor
-	public Queen(String name, boolean blanco, boolean bien) {
+	public Queen(String name, String colorFicha, boolean bien) {
 		this.name = name;
-		this.blanco=blanco;
+		this.colorFicha = colorFicha;
 		this.bien=bien;
 	}
 	
 	public Queen() {}
 	
 	public String toString() {
-		if (blanco == true) {
+		if (colorFicha == "Blanco") {
 			name = "qB";
 			return name;
 		} else {
@@ -46,13 +46,6 @@ public class Queen implements Piezas{
 		this.bien = bien;
 	}
 
-	public boolean isBlanco() {
-		return blanco;
-	}
-
-	public void setBlanco(boolean blanco) {
-		this.blanco = blanco;
-	}
 
 	//getters y setters
 	public String getName() {
@@ -63,11 +56,12 @@ public class Queen implements Piezas{
 		this.name = name;
 	}
 
-	@Override
-	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
-			Piezas[][] tablero) {
-		// TODO Auto-generated method stub
-		return false;
+	public String getColorFicha() {
+		return colorFicha;
+	}
+
+	public void setColorFicha(String colorFicha) {
+		this.colorFicha = colorFicha;
 	}
 
 	

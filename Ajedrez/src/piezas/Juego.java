@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Juego {
 
-	private static final Piezas Vacio = null;
+	private static Piezas Vacio;
 	public static Piezas[][] tablero;
 	public static boolean finBla = true;
 	public static boolean finNeg = true;
@@ -41,7 +41,7 @@ public class Juego {
 		Piezas tN = new Torre("tN",false, buena, mover_columna, mover_columna, mover_columna, buena);
 		Piezas pN = new Peones("pN",false, mover_columna);
 		
-		
+		Piezas vacio = new Vacio(" *", "verde");
 
 		
 		
@@ -91,7 +91,7 @@ public class Juego {
 		// bucle para rellenar los espacios en blanco
 		for (int i = 3; i <= 6; i++) {
 			for (int s = 1; s <= 8; s++) {
-				tablero[i][s] = Vacio;
+				tablero[i][s] = vacio;
 			}
 		}
 

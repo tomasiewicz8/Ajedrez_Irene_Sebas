@@ -9,13 +9,13 @@ public class King extends Queen{
 	public int minF;
 	public int maxC;
 	public int maxF;
-	public static Piezas Vacio = new Vacio(" *");
+	public static Piezas Vacio = new Vacio(" *","verde");
 
 	//constructor
-	public King(String name, boolean blanco, boolean bien, int minC, int minF, int maxC, int maxF) {
-		super(name, blanco, bien);
+	public King(String name, String colorFicha, boolean bien, int minC, int minF, int maxC, int maxF) {
+		super(name, colorFicha, bien);
 		this.name = name;
-		this.blanco = blanco;
+		this.colorFicha = colorFicha;
 		this.bien = bien;
 		this.minC = minC;
 		this.minF = minF;
@@ -39,7 +39,7 @@ public class King extends Queen{
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 	    
-		if (tablero[mover_fila][mover_columna].isBlanco() != blanco) {
+		if (!tablero[mover_fila][mover_columna].getColorFicha().equals(blanco)) {
 
 		int dif_fila = mover_fila - seleccionar_fila;
 		int dif_columna = mover_columna - seleccionar_columna;
