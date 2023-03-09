@@ -41,6 +41,8 @@ public class King extends Queen {
 
 		// El rey se puede mover una casilla en cualquier dirección.
 		if (dif_fila <= 1 && dif_columna <= 1) {
+			
+			setBien(true);
 
 		} else {
 			System.out.println("no entra porque no son los parametros");

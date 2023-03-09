@@ -49,27 +49,27 @@ public class Alfil extends Queen {
 			maxF = mover_fila;
 		}
 
-		for (int i = minC + 1; i <= maxC - 1; i++) {
-			for (int s = minF + 1; s <= maxF - 1; s++) {
+		int dif_columna = Math.abs(maxC - minC);
+		int dif_fila = Math.abs(maxF - minF);
 
-				if (!tablero[seleccionar_fila - s][seleccionar_columna + i].getColorFicha().equals(" *")) {
-					setBien(false);
-				} else {
-					if (!tablero[seleccionar_fila - s][seleccionar_columna - i].getColorFicha().equals(" *")) {
+		if (dif_columna == dif_fila) {
+			for (int i = minC + 1; i <= maxC - 1 && i >= 2 && i <= 7; i++) {
+				for (int s = minF + 1; s <= maxF - 1 && s >= 2 && s <= 7; s++) {
+
+					System.out.println(minF + " " + minC + " " + maxF + " " + maxC);
+					System.out.println((seleccionar_fila - s) + "," + (seleccionar_columna + i));
+
+					if (!tablero[s][i].getColorFicha().equals(" *")) {
 						setBien(false);
+
 					} else {
-						if (!tablero[seleccionar_fila + s][seleccionar_columna + i].getColorFicha().equals(" *")) {
-							setBien(false);
-						} else {
-							if (!tablero[seleccionar_fila + s][seleccionar_columna - i].getColorFicha().equals(" *")) {
-								setBien(false);
-							}
-						}
+						setBien(true);
 					}
 
 				}
 			}
-
+		} else {
+			setBien(true);
 		}
 
 		return isBien();

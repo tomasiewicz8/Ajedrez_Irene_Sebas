@@ -77,7 +77,7 @@ public class Torre extends Queen {
 					if (!tablero[i][fija].getColorFicha().equals(" *")) {
 						//if que compruebe si hay ficha por el camino
 						setBien(false);
-					}	
+					}
 					
 				}
 

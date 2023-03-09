@@ -45,6 +45,8 @@ public class Peones extends King {
 							
 							if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 								
+								setBien(true);
+								
 							} else {
 								setBien(false);
 							}
@@ -53,6 +55,8 @@ public class Peones extends King {
 								
 								if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")&&
 										tablero[mover_fila-1][mover_columna].getColorFicha().equals(" *")) {
+									
+									setBien(true);
 									
 								} else {
 									setBien(false);
@@ -70,6 +74,7 @@ public class Peones extends King {
 							
 							if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 								
+								setBien(true);
 								
 							} else {
 								setBien(false);
@@ -87,6 +92,9 @@ public class Peones extends King {
 				if (dif_fila == 1 && (dif_colum == 1 || dif_colum == -1)) {
 					if ((tablero[seleccionar_fila + 1][seleccionar_columna - 1].getColorFicha().equals("Negro"))
 							|| (tablero[seleccionar_fila + 1][seleccionar_columna + 1].getColorFicha().equals("Negro"))) {
+						
+						setBien(true);
+						
 					} else {
 						System.out.println("no hay ninguna pieza para comer");
 						setBien(false);
@@ -112,6 +120,8 @@ public class Peones extends King {
 								
 								if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 									
+									setBien(true);
+									
 								} else {
 									setBien(false);
 								}
@@ -120,6 +130,8 @@ public class Peones extends King {
 									
 									if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")&&
 											tablero[mover_fila+1][mover_columna].getColorFicha().equals(" *")) {
+										
+										setBien(true);
 										
 									} else {
 										setBien(false);
@@ -137,6 +149,7 @@ public class Peones extends King {
 								
 								if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 									
+									setBien(true);
 									
 								} else {
 									setBien(false);
@@ -154,6 +167,9 @@ public class Peones extends King {
 					if (dif_fila == 1 && (dif_colum == 1 || dif_colum == -1)) {
 						if ((tablero[seleccionar_fila - 1][seleccionar_columna - 1].getColorFicha().equals("Blanco"))
 								|| (tablero[seleccionar_fila - 1][seleccionar_columna + 1].getColorFicha().equals("Blanco"))) {
+							
+							setBien(true);
+							
 						} else {
 							System.out.println("no hay ninguna pieza para comer");
 							setBien(false);

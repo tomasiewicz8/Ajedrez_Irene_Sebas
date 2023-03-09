@@ -32,26 +32,42 @@ public class Caballo implements Piezas {
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
 		        
+			setBien(true);
+			
 		    } else {
 		    	if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila+1) {
+		    		
+		    		setBien(true);
 			        
 		    	} else {
 		    		if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila-1) {
+		    			
+		    			setBien(true);
 
 		    		} else {
 		    			if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila+1) {
 		    				
+		    				setBien(true);
+		    				
 		    			} else {
 		    				if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila-2) {
+		    					
+		    					setBien(true);
 		    					
 		    				} else {
 		    					if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila-2) {
 		    						
+		    						setBien(true);
+		    						
 		    					} else {
 		    						if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila+2) {
 		    							
+		    							setBien(true);
+		    							
 		    						} else {
 		    							if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila+2) {
+		    								
+		    								setBien(true);
 		    								
 		    							} else {
 		    								System.out.println(" primo asi no mueve el caballo");
