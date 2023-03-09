@@ -8,6 +8,7 @@ public class Queen implements Piezas{
 	private String name;
 	private String colorFicha;
 	private boolean bien;
+	boolean buena;
 
 	//constructor
 	public Queen(String name, String colorFicha, boolean bien) {
@@ -31,7 +32,39 @@ public class Queen implements Piezas{
 	
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
-		return bien;
+		
+		
+		Piezas a = new Alfil("aB", "Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas t = new Torre("tB", "Blanco", buena, mover_columna, mover_columna, mover_columna, buena);
+		
+		if (colorFicha == "Blanco") {
+			a = new Alfil("aB", "Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+			t = new Torre("tB", "Blanco", buena, mover_columna, mover_columna, mover_columna, buena);
+			if (bien == a.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero)) {
+				setBien(true);
+			} else {
+				if (bien == t.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero)) {
+					setBien(true);
+				} else {
+					setBien(false);
+				}
+			}
+		} else {
+			a = new Alfil("aN", "Negro", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+			t = new Torre("tN", "Negro", buena, mover_columna, mover_columna, mover_columna, buena);
+			if (bien == a.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero)) {
+				setBien(true);
+			} else {
+				if (bien == t.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila, tablero)) {
+					setBien(true);
+				} else {
+					setBien(false);
+				}
+			}
+		}
+		
+		
+		return isBien();
 	}
 	
 	

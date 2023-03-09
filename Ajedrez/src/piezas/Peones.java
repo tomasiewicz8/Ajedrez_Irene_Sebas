@@ -178,6 +178,8 @@ public class Peones extends King {
 							System.out.println("no hay ninguna pieza para comer");
 							setBien(false);
 						}
+					} else {
+						setBien(false);
 					}
 				}
 
