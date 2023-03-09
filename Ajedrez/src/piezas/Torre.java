@@ -49,14 +49,15 @@ public class Torre extends Queen {
 			}
 			
 			//falta comprobar la ultima posicion para ver si es de nuestro color o no para comer y restar el max en el bucle
-			for (int i = min + 1 ; i < max - 1; i++) {
+			for (int i = min + 1 ; i <= max - 1; i++) {
 			    if (!tablero[fija][i].getColorFicha().equals(" *")) {
+			    	System.out.print(" Hay piezas por el camino, ");
 			            setBien(false);
-			    }
+			    } 
 			    
 			}
 			
-		    System.out.print("Hay piezas por el camino, ");
+			setBien(true); 
 
 		} else {
 			if (seleccionar_fila != mover_fila && seleccionar_columna == mover_columna) {
@@ -72,22 +73,18 @@ public class Torre extends Queen {
 					max = mover_fila;
 				}
 				
-				for (int i = min + 1 ; i < max - 1 ; i++) {
+				for (int i = min + 1 ; i <= max - 1 ; i++) {
 					
 					if (!tablero[i][fija].getColorFicha().equals(" *")) {
 						//if que compruebe si hay ficha por el camino
+						System.out.print(" Hay piezas por el camino, ");
 						setBien(false);
-					}
+					} 
 					
-				}
-
-				
-				System.out.print("Hay piezas por el camino, ");
-
-				
-				
+				}	
+				setBien(true);
 			} else {
-				System.out.println("no es ni horizontal ni vertical");
+				System.out.println(" no es ni horizontal ni vertical");
 				setBien(false);
 			}
 		}

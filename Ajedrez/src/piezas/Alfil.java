@@ -53,6 +53,7 @@ public class Alfil extends Queen {
 		int dif_fila = Math.abs(maxF - minF);
 
 		if (dif_columna == dif_fila) {
+			
 			for (int i = minC + 1; i <= maxC - 1 && i >= 2 && i <= 7; i++) {
 				for (int s = minF + 1; s <= maxF - 1 && s >= 2 && s <= 7; s++) {
 
@@ -62,14 +63,13 @@ public class Alfil extends Queen {
 					if (!tablero[s][i].getColorFicha().equals(" *")) {
 						setBien(false);
 
-					} else {
-						setBien(true);
-					}
+					} 
 
 				}
 			}
-		} else {
 			setBien(true);
+		} else {
+			setBien(false);
 		}
 
 		return isBien();
