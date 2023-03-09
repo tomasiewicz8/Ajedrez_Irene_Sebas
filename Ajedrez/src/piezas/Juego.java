@@ -93,7 +93,7 @@ public class Juego {
 	/**
 	 * 
 	 */
-	public static void imprimirTablero(boolean finJuegoBlancas, boolean finJuegoNegras) {
+	public static void imprimirTablero(boolean gananNegras, boolean gananBlancas) {
 
 		System.out.println("");
 
@@ -117,11 +117,11 @@ public class Juego {
 					System.out.print(tablero[i][s] + "  ");
 
 					if (tablero[i][s].getName().equals("kB")) {
-						finJuegoBlancas = true;
+						gananNegras = true;
 					}
 
 					if (tablero[i][s].getName().equals("kN")) {
-						finJuegoNegras = true;
+						gananBlancas = true;
 					}
 				}
 
@@ -185,8 +185,6 @@ public class Juego {
 					finBla = false;
 
 					// Imprimimos todo para ver el movimiento
-					finJuegoNegras = false;
-					finJuegoBlancas = false;
 					imprimirTablero(finJuegoBlancas, finJuegoNegras);
 
 				} else {
@@ -239,20 +237,23 @@ public class Juego {
 		Piezas posicion_futura = tablero[0][0];
 		String jugador;
 		boolean fallo = true;
-		boolean finJuegoBlancas = true;
-		boolean finJuegoNegras = true;
-		boolean finDePartida = true;
+		boolean gananNegras = false;
+		boolean gananBlancas = false;
+		boolean turno = true;
 
-		imprimirTablero(finJuegoBlancas, finJuegoNegras);
+		imprimirTablero(gananNegras, gananBlancas);
 
 		/*
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
 		 * bucle por si elige una ficha del rival o un espacio sin ficha
 		 */
 
-		while (finDePartida) {
+		while (turno) {
+			
 
-			while (finJuegoBlancas || finJuegoNegras) {
+			while (!gananNegras||!gananBlancas) {
+				
+	
 				while (finBla) {
 
 					while (fallo) {
@@ -286,15 +287,17 @@ public class Juego {
 
 						fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
 								posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-								finJuegoNegras, finJuegoBlancas);
+								gananBlancas, gananNegras);
 					}
 				}
 			} 
+			
 
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
 			// siguiente bucle
 
-			while (finJuegoBlancas || finJuegoNegras) {
+			while (!gananBlancas||!gananNegras) {
+				
 
 				while (finNeg) {
 
@@ -329,7 +332,7 @@ public class Juego {
 
 						fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
 								posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-								finJuegoNegras, finJuegoBlancas);
+								gananBlancas, gananNegras);
 					}
 
 					if (fallo == true) {
