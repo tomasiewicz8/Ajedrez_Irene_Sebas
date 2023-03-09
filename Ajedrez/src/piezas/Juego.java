@@ -15,7 +15,8 @@ public class Juego {
 	public static int mover_fila;
 	public static int mover_columna;
 	public static boolean buena = true;
-	public static String jugador = "Blanco";
+	public static boolean condicion;
+	public static String colorFicha;
 	
 
 	
@@ -145,7 +146,7 @@ public class Juego {
 	
 	
 	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, Piezas posicion_actual,
-			boolean condicion, String colorFicha) {
+			boolean condicion, String colorFicha, String jugador) {
 		
 		// verificamos que las coordenadas sean validas
 		if (seleccionar_fila >= 1 && seleccionar_columna >= 1 && seleccionar_fila <= 8 && seleccionar_columna <= 8) {
@@ -174,7 +175,7 @@ public class Juego {
 
 	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
 			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna, String colorFicha,
-			boolean fallo) {
+			boolean fallo, String jugador) {
 		Piezas vacio = new Vacio(" *", " *");
 		// verificamos que las coordenadas sean validas
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
@@ -271,18 +272,21 @@ public class Juego {
 		 * bucle por si elige una ficha del rival o un espacio sin ficha
 		 */
 		boolean fallo = true;
+		
+		
 
 		while (finBla) {
 
-			jugador = "Blanco";
-
 			while (fallo) {
+				
+				jugador = "Blanco";
 
 				seleccionar_fila = select_fila(reader, jugador);
 
 				seleccionar_columna = select_columna(reader, jugador);
 
-				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, jugador);
+				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual,
+						condicion, colorFicha, jugador);
 
 			} // Fin primer while
 
@@ -295,30 +299,36 @@ public class Juego {
 			 */
 
 			while (fallo == false) {
+				
+				jugador = "Blanco";
 
 				mover_fila = mover_fila(reader, jugador);
 
 				mover_columna = mover_columna(reader, jugador);
 
-				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-						posicion_actual, seleccionar_fila, seleccionar_columna, jugador, fallo);
+				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada,
+						 posicion_futura, posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha,
+						fallo, jugador);
 			}
 
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
 			// siguiente bucle
 
-			jugador = "Negro";
+			
 			
 			while (finNeg) {
 
 				// turno del jugador Negro
 				while (fallo) {
+					
+					jugador = "Negro";
 
 					seleccionar_fila = select_fila(reader, jugador);
 
 					seleccionar_columna = select_columna(reader, jugador);
 
-					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, fallo, jugador);
+					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual,
+							condicion, colorFicha, jugador);
 				}
 
 				System.out.println();
@@ -330,13 +340,16 @@ public class Juego {
 				 */
 
 				while (fallo == false) {
+					
+					jugador = "Negro";
 
 					mover_fila = mover_fila(reader, jugador);
 
 					mover_columna = mover_columna(reader, jugador);
 
-					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-							posicion_actual, seleccionar_fila, seleccionar_columna, jugador, fallo);
+					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada,
+							 posicion_futura, posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha,
+							fallo, jugador);
 
 				}
 			}
