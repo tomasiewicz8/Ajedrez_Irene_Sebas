@@ -19,10 +19,10 @@ public class Alfil extends Queen {
 	@Override
 	public String toString() {
 		if (getColorFicha() == "Blanco") {
-			setName("tB");
+			setName("aB");
 			return getName();
 		} else {
-			setName("tN");
+			setName("aN");
 			return getName();
 		}
 
