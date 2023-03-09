@@ -4,6 +4,8 @@ public class Peones extends King {
 
 	private int fija;
 	private static Piezas Vacio;
+	int dif_fila;
+	int dif_colum;
 	
 
 	// constructor
@@ -32,8 +34,8 @@ public class Peones extends King {
 
 		if (tablero[seleccionar_fila][seleccionar_columna].getColorFicha().equals("Blanco")) {
 			
-			int dif_fila = mover_fila - seleccionar_fila;
-			int dif_colum = mover_columna - seleccionar_columna;
+			dif_fila = mover_fila - seleccionar_fila;
+			dif_colum = mover_columna - seleccionar_columna;
 
 			// iria la columna recta
 			if (seleccionar_columna == mover_columna) {
@@ -99,6 +101,8 @@ public class Peones extends King {
 						System.out.println("no hay ninguna pieza para comer");
 						setBien(false);
 					}
+				} else {
+					setBien(false);
 				}
 			}
 
@@ -107,8 +111,8 @@ public class Peones extends King {
 			if (tablero[seleccionar_fila][seleccionar_columna].getColorFicha().equals("Negro")) {
 				
 				
-				int dif_fila = seleccionar_fila - mover_fila;
-				int dif_colum = seleccionar_columna - mover_columna;
+				dif_fila = seleccionar_fila - mover_fila;
+				dif_colum = seleccionar_columna - mover_columna;
 				
 				// iria la columna recta
 				if (seleccionar_columna == mover_columna) {
