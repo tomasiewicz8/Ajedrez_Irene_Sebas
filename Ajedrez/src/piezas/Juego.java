@@ -94,7 +94,7 @@ public class Juego {
 	 * 
 	 */
 	public static void imprimirTablero(boolean finJuegoBlancas, boolean finJuegoNegras) {
-		
+
 		System.out.println("");
 
 		String[] primeraFila = { "1/1 ", "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 " };
@@ -116,11 +116,11 @@ public class Juego {
 				if (s != 0 && i != 0) {
 					System.out.print(tablero[i][s] + "  ");
 
-					if (tablero[i][s].getName().equals("kN")) {
+					if (tablero[i][s].getName().equals("kB")) {
 						finJuegoBlancas = true;
 					}
 
-					if (tablero[i][s].getName().equals("kB")) {
+					if (tablero[i][s].getName().equals("kN")) {
 						finJuegoNegras = true;
 					}
 				}
@@ -165,7 +165,7 @@ public class Juego {
 
 			posicion_futura = tablero[mover_fila][mover_columna];
 			System.out.print("has elegido mover hacia " + tablero[mover_fila][mover_columna]);
-			
+
 			// si ya hay una ficha nuestra, no nos va a dejar mover
 			if (posicion_futura.getColorFicha().equals(jugador)) {
 
@@ -183,7 +183,6 @@ public class Juego {
 					fallo = true;
 					finNeg = true;
 					finBla = false;
-					
 
 					// Imprimimos todo para ver el movimiento
 					finJuegoNegras = false;
@@ -240,8 +239,9 @@ public class Juego {
 		Piezas posicion_futura = tablero[0][0];
 		String jugador;
 		boolean fallo = true;
-		boolean finJuegoBlancas = false;
-		boolean finJuegoNegras = false;
+		boolean finJuegoBlancas = true;
+		boolean finJuegoNegras = true;
+		boolean finDePartida = true;
 
 		imprimirTablero(finJuegoBlancas, finJuegoNegras);
 
@@ -249,95 +249,96 @@ public class Juego {
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
 		 * bucle por si elige una ficha del rival o un espacio sin ficha
 		 */
-		
 
-		while (finJuegoBlancas==false || finJuegoNegras==false) {
-		
-		while (finBla) {
+		while (finDePartida) {
 
-			while (fallo) {
+			while (finJuegoBlancas || finJuegoNegras) {
+				while (finBla) {
 
-				jugador = "Blanco";
+					while (fallo) {
 
-				seleccionar_fila = select_fila(reader, jugador);
+						jugador = "Blanco";
 
-				seleccionar_columna = select_columna(reader, jugador);
+						seleccionar_fila = select_fila(reader, jugador);
 
-				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion, colorFicha,
-						jugador);
+						seleccionar_columna = select_columna(reader, jugador);
 
-			} // Fin primer while
+						fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion,
+								colorFicha, jugador);
 
-			System.out.println();
+					} // Fin primer while
 
-			/*
-			 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
-			 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
-			 * moverse
-			 */
+					System.out.println();
 
-			while (fallo == false) {
+					/*
+					 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
+					 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
+					 * moverse
+					 */
 
-				jugador = "Blanco";
+					while (fallo == false) {
 
-				mover_fila = mover_fila(reader, jugador);
+						jugador = "Blanco";
 
-				mover_columna = mover_columna(reader, jugador);
+						mover_fila = mover_fila(reader, jugador);
 
-				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-						posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-						finJuegoNegras, finJuegoBlancas);
+						mover_columna = mover_columna(reader, jugador);
+
+						fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+								posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
+								finJuegoNegras, finJuegoBlancas);
+					}
+				}
+			} 
+
+			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
+			// siguiente bucle
+
+			while (finJuegoBlancas || finJuegoNegras) {
+
+				while (finNeg) {
+
+					// turno del jugador Negro
+					while (fallo) {
+
+						jugador = "Negro";
+
+						seleccionar_fila = select_fila(reader, jugador);
+
+						seleccionar_columna = select_columna(reader, jugador);
+
+						fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion,
+								colorFicha, jugador);
+					}
+
+					System.out.println();
+
+					/*
+					 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
+					 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
+					 * moverse
+					 */
+
+					while (fallo == false) {
+
+						jugador = "Negro";
+
+						mover_fila = mover_fila(reader, jugador);
+
+						mover_columna = mover_columna(reader, jugador);
+
+						fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+								posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
+								finJuegoNegras, finJuegoBlancas);
+					}
+
+					if (fallo == true) {
+						finNeg = false;
+						finBla = true;
+					}
+				}
 			}
 		}
-		// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
-		// siguiente bucle
-
-		while (finNeg) {
-
-			// turno del jugador Negro
-			while (fallo) {
-
-				jugador = "Negro";
-
-				seleccionar_fila = select_fila(reader, jugador);
-
-				seleccionar_columna = select_columna(reader, jugador);
-
-				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion, colorFicha,
-						jugador);
-			}
-
-			System.out.println();
-
-			/*
-			 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
-			 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
-			 * moverse
-			 */
-
-			while (fallo == false) {
-
-				jugador = "Negro";
-
-				mover_fila = mover_fila(reader, jugador);
-
-				mover_columna = mover_columna(reader, jugador);
-
-				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-						posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-						finJuegoNegras, finJuegoBlancas);
-			}
-			
-			if (fallo == true) {
-				finNeg = false;
-				finBla = true;
-			}
-		}
-		
-		
-		}
-		
-
 	}
 
 }
