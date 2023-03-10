@@ -9,6 +9,12 @@ public class Torre extends Queen {
 	private int fija;
 	private boolean camVacio = true;
 
+	/**
+	 * En este constructor recogemos los siguientes parametros:
+	 * @param tipoBate: contiene el tipo de bate que juegan en el beisbol
+	 * @param medidasCancha: dependiendo de la cancha, tiene unas medidas u otras
+	 * @param jugadores: el listado de jugadores quienes juegan
+	 */
 
 	//constructores
 	public Torre(String name, String colorFicha, boolean bien, int min, int max, int fija, boolean camVacio) {
@@ -32,8 +38,16 @@ public class Torre extends Queen {
 		
 	}
 	
-	
 
+	/**
+	 * Este metodo nos hace el movimiento de la torre, la cual se recorre en horizontal o vertical y verifica si al recorrerla hay pieza por el camino, no se mueve
+	 * @param mover_fila.. es la posicion que el usuario introduce para que mueva en fila solamente
+	 * @param mover_columna.. es la posicion que el usuario introduce para que mueva en columna solamente
+	 * @param seleccionar_columna.. el la posicion de la columna que el usuario elije para mover, es decir, la eleccion de su pieza 
+	 * @param seleccionar_fila.. el la posicion de la fila que el usuario elije para mover, es decir, la eleccion de su pieza
+	 * @param tablero.. es un array bidimensional donde guardamos todas las posiciones de las fichas y en la cual, se mueven a eleccion del usuario
+	 * @return un booleano que dependiendo si es true o false, si hay pieza por el camino o no u se ha movido bien o mal
+	 */
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		if (seleccionar_fila == mover_fila && seleccionar_columna != mover_columna) {
@@ -89,6 +103,8 @@ public class Torre extends Queen {
 			}
 		}
 		return isBien();
+		
+
 	}
 	
 

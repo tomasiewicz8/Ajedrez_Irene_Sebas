@@ -29,7 +29,15 @@ public class Queen implements Piezas{
 		}
 		
 	}
-	
+	/**
+	 * Este metodo nos hace el movimiento de la reina, la cual, hereda los movimientos del alfil y la torre, es decir, se mueve en horizontal, vertical y en diagomal y verifica si al recorrerla hay pieza por el camino, no se mueve
+	 * @param mover_fila.. es la posicion que el usuario introduce para que mueva en fila solamente
+	 * @param mover_columna.. es la posicion que el usuario introduce para que mueva en columna solamente
+	 * @param seleccionar_columna.. el la posicion de la columna que el usuario elije para mover, es decir, la eleccion de su pieza 
+	 * @param seleccionar_fila.. el la posicion de la fila que el usuario elije para mover, es decir, la eleccion de su pieza
+	 * @param tablero.. es un array bidimensional donde guardamos todas las posiciones de las fichas y en la cual, se mueven a eleccion del usuario
+	 * @return un booleano que dependiendo si es true o false, si hay pieza por el camino o no u se ha movido bien o mal
+	 */
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		

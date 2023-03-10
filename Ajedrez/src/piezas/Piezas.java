@@ -1,7 +1,10 @@
 package piezas;
 
 public interface Piezas {
-
+	/**
+	 * Piezas es la interfaz donde vamos a heredar aquellas acciones a nuestras clases padres y hijas
+	 * @return mover, getName, getColorFicha y isBien
+	 */
 	
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero);
 	
