@@ -26,20 +26,20 @@ public class Juego {
 	public static void inicializarTablero() {
 		// creamos todas las fichas Blancas
 		Piezas qB = new Queen("qB", "Blanco", true);
-		Piezas kB = new King("kB", "Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas kB = new King("kB", "Blanco", buena);
 		Piezas aB = new Alfil("aB", "Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cB = new Caballo("cB", "Blanco", true);
-		Piezas tB = new Torre("tB", "Blanco", buena, mover_columna, mover_columna, mover_columna, buena);
-		Piezas pB = new Peones("pB", "Blanco", buena, mover_columna);
+		Piezas tB = new Torre("tB", "Blanco", buena, mover_columna, mover_columna, mover_columna);
+		Piezas pB = new Peones("pB", "Blanco", buena);
 
 		// creamos todas las fichas Negras
 		Piezas qN = new Queen("qN", "Negro", true);
-		Piezas kN = new King("kN", "Negro", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas kN = new King("kN", "Negro", buena);
 		Piezas aN = new Alfil("aN", "Negro", buena, mover_columna, mover_columna, mover_columna, mover_columna);
 		Piezas cN = new Caballo("cN", "Negro", true);
-		Piezas tN = new Torre("tN", "Negro", buena, mover_columna, mover_columna, mover_columna, buena);
-		Piezas pN = new Peones("pN", "Negro", buena, mover_columna);
-		Piezas vacio = new Vacio(" *", " *");
+		Piezas tN = new Torre("tN", "Negro", buena, mover_columna, mover_columna, mover_columna);
+		Piezas pN = new Peones("pN", "Negro", buena);
+		Piezas vacio = new Vacio(" *");
 
 		// Colocamos las figuras Blancas
 		tablero[1][1] = tB;
@@ -159,7 +159,7 @@ public class Juego {
 	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
 			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna,
 			String colorFicha, boolean fallo, String jugador, boolean finJuegoNegras, boolean finJuegoBlancas) {
-		Piezas vacio = new Vacio(" *", " *");
+		Piezas vacio = new Vacio(" *");
 		// verificamos que las coordenadas sean validas
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
 
@@ -237,111 +237,112 @@ public class Juego {
 		Piezas posicion_futura = tablero[0][0];
 		String jugador;
 		boolean fallo = true;
-		boolean gananNegras = false;
-		boolean gananBlancas = false;
+		boolean finJuegoNegras = false;
+		boolean finJuegoBlancas = false;
 		boolean turno = true;
 
-		imprimirTablero(gananNegras, gananBlancas);
+		imprimirTablero(finJuegoNegras, finJuegoBlancas);
 
 		/*
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
 		 * bucle por si elige una ficha del rival o un espacio sin ficha
 		 */
 
-		while (turno) {
+		while (finJuegoBlancas==false || finJuegoNegras==false) {
 			
+			while (finBla) {
 
-			while (!gananNegras||!gananBlancas) {
-				
-	
-				while (finBla) {
+				while (fallo) {
 
-					while (fallo) {
+					jugador = "Blanco";
 
-						jugador = "Blanco";
+					seleccionar_fila = select_fila(reader, jugador);
 
-						seleccionar_fila = select_fila(reader, jugador);
+					seleccionar_columna = select_columna(reader, jugador);
 
-						seleccionar_columna = select_columna(reader, jugador);
+					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion, colorFicha,
+							jugador);
 
-						fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion,
-								colorFicha, jugador);
+				} // Fin primer while
 
-					} // Fin primer while
+				System.out.println();
 
-					System.out.println();
+				/*
+				 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
+				 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
+				 * moverse
+				 */
 
-					/*
-					 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
-					 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
-					 * moverse
-					 */
+				while (fallo == false) {
 
-					while (fallo == false) {
+					jugador = "Blanco";
 
-						jugador = "Blanco";
+					mover_fila = mover_fila(reader, jugador);
 
-						mover_fila = mover_fila(reader, jugador);
+					mover_columna = mover_columna(reader, jugador);
 
-						mover_columna = mover_columna(reader, jugador);
-
-						fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-								posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-								gananBlancas, gananNegras);
-					}
+					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+							posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
+							finJuegoNegras, finJuegoBlancas);
 				}
-			} 
-			
-
+			}
 			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
 			// siguiente bucle
 
-			while (!gananBlancas||!gananNegras) {
+			while (finNeg) {
+
+				// turno del jugador Negro
+				while (fallo) {
+
+					jugador = "Negro";
+
+					seleccionar_fila = select_fila(reader, jugador);
+
+					seleccionar_columna = select_columna(reader, jugador);
+
+					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion, colorFicha,
+							jugador);
+				}
+
+				System.out.println();
+
+				/*
+				 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
+				 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
+				 * moverse
+				 */
+
+				while (fallo == false) {
+
+					jugador = "Negro";
+
+					mover_fila = mover_fila(reader, jugador);
+
+					mover_columna = mover_columna(reader, jugador);
+
+					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+							posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
+							finJuegoNegras, finJuegoBlancas);
+				}
 				
-
-				while (finNeg) {
-
-					// turno del jugador Negro
-					while (fallo) {
-
-						jugador = "Negro";
-
-						seleccionar_fila = select_fila(reader, jugador);
-
-						seleccionar_columna = select_columna(reader, jugador);
-
-						fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion,
-								colorFicha, jugador);
-					}
-
-					System.out.println();
-
-					/*
-					 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
-					 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
-					 * moverse
-					 */
-
-					while (fallo == false) {
-
-						jugador = "Negro";
-
-						mover_fila = mover_fila(reader, jugador);
-
-						mover_columna = mover_columna(reader, jugador);
-
-						fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-								posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-								gananBlancas, gananNegras);
-					}
-
-					if (fallo == true) {
-						finNeg = false;
-						finBla = true;
-					}
+				if (fallo == true) {
+					finNeg = false;
+					finBla = true;
 				}
 			}
+			
+			
+			}
+			
+
 		}
+
+	public static Piezas getVacio() {
+		return Vacio;
 	}
 
-}
+	public static void setVacio(Piezas vacio) {
+		Vacio = vacio;
+	}
+
+	}

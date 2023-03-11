@@ -7,24 +7,27 @@ public class Torre extends Queen {
 	private int min;
 	private int max;
 	private int fija;
-	private boolean camVacio = true;
 
 	/**
-	 * En este constructor recogemos los siguientes parametros:
-	 * @param tipoBate: contiene el tipo de bate que juegan en el beisbol
-	 * @param medidasCancha: dependiendo de la cancha, tiene unas medidas u otras
-	 * @param jugadores: el listado de jugadores quienes juegan
+	 * En el super nos recoge aquellos parametros que se heredan del padre, en este caso Queen. En este constructor recogemos los siguientes parametros:
+	 * @param min.. es una variable donde se guarda el valor minimo comparado en un if, recogerá el valor o de seleccionar o de mover para despues, tomarlo como rango para recorrerlo en el bucle
+	 * @param max.. es una variable donde se guarda el valor maximo comparado en un if, recogerá el valor o de seleccionar o de mover para despues, tomarlo como rango para recorrerlo en el bucle
+	 * @param fija..variable donde se guarda el valor fijo de seleccionar para despues, tomarlo como rango para recorrerlo en el bucle
 	 */
 
 	//constructores
-	public Torre(String name, String colorFicha, boolean bien, int min, int max, int fija, boolean camVacio) {
-		super(name, colorFicha, bien);
+	public Torre(String name, String colorFicha, boolean movimientoValido, int min, int max, int fija) {
+		super(name, colorFicha, movimientoValido);
 		this.min = min;
 		this.max = max;
 		this.fija = fija;
-		this.camVacio = camVacio;
 	}
-
+	
+	/**
+	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
+	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
+	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 */
 	
 	@Override
 	public String toString() {
@@ -46,6 +49,7 @@ public class Torre extends Queen {
 	 * @param seleccionar_columna.. el la posicion de la columna que el usuario elije para mover, es decir, la eleccion de su pieza 
 	 * @param seleccionar_fila.. el la posicion de la fila que el usuario elije para mover, es decir, la eleccion de su pieza
 	 * @param tablero.. es un array bidimensional donde guardamos todas las posiciones de las fichas y en la cual, se mueven a eleccion del usuario
+	 * @param movimientoValido.. boobleano que nos devuelve true o false dependiendo si el movimiento es valido 
 	 * @return un booleano que dependiendo si es true o false, si hay pieza por el camino o no u se ha movido bien o mal
 	 */
 	@Override
@@ -66,12 +70,12 @@ public class Torre extends Queen {
 			for (int i = min + 1 ; i <= max - 1; i++) {
 			    if (!tablero[fija][i].getColorFicha().equals(" *")) {
 			    	System.out.print(" Hay piezas por el camino, ");
-			            setBien(false);
+			            setMovimientoValido(false);
 			    } 
 			    
 			}
 			
-			setBien(true); 
+			setMovimientoValido(true); 
 
 		} else {
 			if (seleccionar_fila != mover_fila && seleccionar_columna == mover_columna) {
@@ -92,17 +96,17 @@ public class Torre extends Queen {
 					if (!tablero[i][fija].getColorFicha().equals(" *")) {
 						//if que compruebe si hay ficha por el camino
 						System.out.print(" Hay piezas por el camino, ");
-						setBien(false);
+						setMovimientoValido(false);
 					} 
 					
 				}	
-				setBien(true);
+				setMovimientoValido(true);
 			} else {
 				System.out.println(" no es ni horizontal ni vertical");
-				setBien(false);
+				setMovimientoValido(false);
 			}
 		}
-		return isBien();
+		return isMovimientoValido();
 		
 
 	}
@@ -110,37 +114,59 @@ public class Torre extends Queen {
 
 	
 		// getters y setters
-
+	
+		/**
+		 * Nos devuelve el valor min porque era privado
+		 * @return nos devuelve el min tanto de seleccionar como mover
+		 */
+			
 		public int getMin() {
 			return min;
 		}
+		
+		/**
+		 * Con el set nos deja modificar la variable min porque era privado
+		 * @param min: en el se encuentra la posicion minima
+		 */
 
 		public void setMin(int min) {
 			this.min = min;
 		}
+		
+		/**
+		 * Nos devuelve el valor max porque era privado
+		 * @return nos devuelve el max tanto de seleccionar como mover
+		 */
 
 		public int getMax() {
 			return max;
 		}
+		
+		/**
+		 * Con el set nos deja modificar la variable max porque era privado
+		 * @param max: en el se encuentra la posicion maxima
+		 */
 
 		public void setMax(int max) {
 			this.max = max;
 		}
+		
+		/**
+		 * Nos devuelve el valor fijo porque era privado
+		 * @return nos devuelve el fijo tanto de seleccionar como mover
+		 */
 
 		public int getFija() {
 			return fija;
 		}
+		
+		/**
+		 * Con el set nos deja modificar la variable fija porque era privado
+		 * @param fija: en el se encuentra la posicion fija
+		 */
 
 		public void setFija(int fija) {
 			this.fija = fija;
-		}
-
-		public boolean isCamVacio() {
-			return camVacio;
-		}
-
-		public void setCamVacio(boolean camVacio) {
-			this.camVacio = camVacio;
 		}
 
 }

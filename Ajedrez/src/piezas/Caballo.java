@@ -4,14 +4,27 @@ public class Caballo implements Piezas {
 
 	private String name;
 	private String colorFicha;
-	private boolean bien = true;
+	private boolean movimientoValido = true;
 
+	/**
+	 * En este constructor recogemos los siguientes parametros:
+	 * @param ColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
+	 * @param Name... le guardamos la ficha que está en cada caso del if
+	 * @param movimientoValido.. boobleano que nos devuelve true o false dependiendo si el movimiento es valido
+	 */
+	
 	//constructor
-	public Caballo(String name, String colorFicha, boolean bien) {
+	public Caballo(String name, String colorFicha, boolean movimientoValido) {
 		this.name = name;
 		this.colorFicha = colorFicha;
-		this.bien = bien;
+		this.movimientoValido = movimientoValido;
 	}
+	
+	/**
+	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
+	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
+	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 */
 	
 	@Override
 	public String toString() {
@@ -40,46 +53,46 @@ public class Caballo implements Piezas {
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
 		        
-			setBien(true);
+			setMovimientoValido(true);
 			
 		    } else {
 		    	if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila+1) {
 		    		
-		    		setBien(true);
+		    		setMovimientoValido(true);
 			        
 		    	} else {
 		    		if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila-1) {
 		    			
-		    			setBien(true);
+		    			setMovimientoValido(true);
 
 		    		} else {
 		    			if (mover_columna == seleccionar_columna+2 && mover_fila == seleccionar_fila+1) {
 		    				
-		    				setBien(true);
+		    				setMovimientoValido(true);
 		    				
 		    			} else {
 		    				if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila-2) {
 		    					
-		    					setBien(true);
+		    					setMovimientoValido(true);
 		    					
 		    				} else {
 		    					if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila-2) {
 		    						
-		    						setBien(true);
+		    						setMovimientoValido(true);
 		    						
 		    					} else {
 		    						if (mover_columna == seleccionar_columna-1 && mover_fila == seleccionar_fila+2) {
 		    							
-		    							setBien(true);
+		    							setMovimientoValido(true);
 		    							
 		    						} else {
 		    							if (mover_columna == seleccionar_columna+1 && mover_fila == seleccionar_fila+2) {
 		    								
-		    								setBien(true);
+		    								setMovimientoValido(true);
 		    								
 		    							} else {
 		    								System.out.println(" primo asi no mueve el caballo");
-		    								bien = false;
+		    								movimientoValido = false;
 		    							}
 		    						}
 		    					}
@@ -88,37 +101,67 @@ public class Caballo implements Piezas {
 		    		}
 		    	}
 		    }
-		return bien;
+		return movimientoValido;
 	}
 	
 
 	
 	
 	//getters y setters
+	
+	/**
+	 * Nos devuelve el valor name porque era privado
+	 * @return nos devuelve el name que es donde estará guardada nuestra pieza
+	 */
+	
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	 * Con el set nos deja modificar la variable name porque era privado
+	 * @param name: en el se encuentra el nombre de nuestra ficha
+	 */
 
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * Nos devuelve el valor movimienvoValido porque era privado
+	 * @return nos devuelve el boobleano de movimientoValido para saber si el movimiento es correcto o no
+	 */
 
-	public boolean isBien() {
-		return bien;
+	public boolean isMovimientoValido() {
+		return movimientoValido;
 	}
+	
+	/**
+	 * Con el set nos deja modificar la variable movimientoValido porque era privado
+	 * @param movimientoValiedo: en el se encuentra un booleano en el que nos dice si es un movimiento propio de esa pieza o no
+	 */
 
-	public void setBien(boolean bien) {
-		this.bien = bien;
+	public void setMovimientoValido(boolean movimientoValido) {
+		this.movimientoValido = movimientoValido;
 	}
+	
+	/**
+	 * Nos devuelve el ColorFicha porque era privado
+	 * @return nos devuelve el ColorFicha que es donde estará guardada el color de la ficha
+	 */
 
 	public String getColorFicha() {
 		return colorFicha;
 	}
+	
+	/**
+	 * Con el set nos deja modificar la variable colorFicha porque era privado
+	 * @param colorFicha: en el se encuentra color de nuestra ficha
+	 */
 
 	
 	public void setColorFicha(String colorFicha) {	
+		this.colorFicha = colorFicha;
 	}
-	
 
 }

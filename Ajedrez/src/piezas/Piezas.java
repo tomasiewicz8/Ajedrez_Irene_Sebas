@@ -3,7 +3,7 @@ package piezas;
 public interface Piezas {
 	/**
 	 * Piezas es la interfaz donde vamos a heredar aquellas acciones a nuestras clases padres y hijas
-	 * @return mover, getName, getColorFicha y isBien
+	 * @return mover, getName, getColorFicha y isMovimiendoValido
 	 */
 	
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero);
@@ -14,7 +14,7 @@ public interface Piezas {
 	public String getColorFicha();
 	public void setColorFicha(String colorFicha);
 	
-	public boolean isBien();
-	public void setBien(boolean bien);
+	public boolean isMovimientoValido();
+	public void setMovimientoValido(boolean movimiendoValido);
 
 }

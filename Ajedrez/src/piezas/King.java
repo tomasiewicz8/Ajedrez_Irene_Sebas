@@ -2,23 +2,23 @@ package piezas;
 
 public class King extends Queen {
 
-	public int minC;
-	public int minF;
-	public int maxC;
-	public int maxF;
+	/**
+	 * En el super nos recoge aquellos parametros que se heredan del padre, en este caso Queen. En este constructor recogemos los siguientes parametros:
+	 * @param colorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
+	 * @param name... le guardamos la ficha que está en cada caso del if
+	 * @param movimientoValido.. boobleano que nos devuelve true o false dependiendo si el movimiento es valido
+	 */
 
 	// constructor
-	public King(String name, String colorFicha, boolean bien, int minC, int minF, int maxC, int maxF) {
-		super(name, colorFicha, bien);
-		this.minC = minC;
-		this.minF = minF;
-		this.maxC = maxC;
-		this.maxF = maxF;
+	public King(String name, String colorFicha, boolean movimientoValido) {
+		super(name, colorFicha, movimientoValido);
 	}
-
-	public King(String name, String colorFicha, boolean bien) {
-		super(name, colorFicha, bien);
-	}
+	
+	/**
+	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
+	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
+	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 */
 
 	@Override
 	public String toString() {
@@ -50,47 +50,14 @@ public class King extends Queen {
 		// El rey se puede mover una casilla en cualquier dirección.
 		if (dif_fila <= 1 && dif_columna <= 1) {
 			
-			setBien(true);
+			setMovimientoValido(true);
 
 		} else {
 			System.out.println("no entra porque no son los parametros");
-			setBien(false);
+			setMovimientoValido(false);
 		}
 
-		return isBien();
-	}
-
-	// getters y setters
-	public int getMinC() {
-		return minC;
-	}
-
-	public void setMinC(int minC) {
-		this.minC = minC;
-	}
-
-	public int getMinF() {
-		return minF;
-	}
-
-	public void setMinF(int minF) {
-		this.minF = minF;
-	}
-
-	public int getMaxC() {
-		return maxC;
-	}
-
-	public void setMaxC(int maxC) {
-		this.maxC = maxC;
-	}
-
-	public int getMaxF() {
-		return maxF;
-	}
-
-	public void setMaxF(int maxF) {
-		this.maxF = maxF;
+		return isMovimientoValido();
 	}
 
 }

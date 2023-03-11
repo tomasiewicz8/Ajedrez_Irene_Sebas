@@ -2,18 +2,29 @@ package piezas;
 
 public class Peones extends King {
 
-	private int fija;
-	private static Piezas Vacio;
+
 	int dif_fila;
 	int dif_colum;
 	
 
+	/**
+	 * En el super nos recoge aquellos parametros que se heredan del padre, en este caso King. En este constructor recogemos los siguientes parametros:
+	 * @param colorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
+	 * @param name... le guardamos la ficha que está en cada caso del if
+	 * @param movimientoValido.. boobleano que nos devuelve true o false dependiendo si el movimiento es valido
+	 */
+	
 	// constructor
-	public Peones(String name, String colorFicha, boolean bien, int fija) {
-		super(name, colorFicha, bien);
-		this.fija = fija;
+	public Peones(String name, String colorFicha, boolean movimientoValido) {
+		super(name, colorFicha, movimientoValido);
 	}
 
+	/**
+	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
+	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
+	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 */
+	
 	@Override
 	public String toString() {
 		if (getColorFicha() == "Blanco") {
@@ -32,7 +43,7 @@ public class Peones extends King {
 	 * @param mover_columna.. es la posicion que el usuario introduce para que mueva en columna solamente
 	 * @param seleccionar_columna.. el la posicion de la columna que el usuario elije para mover, es decir, la eleccion de su pieza 
 	 * @param seleccionar_fila.. el la posicion de la fila que el usuario elije para mover, es decir, la eleccion de su pieza
-	 * @param tablero.. es un array bidimensional donde guardamos todas las posiciones de las fichas y en la cual, se mueven a eleccion del usuario
+	 * @param tablero.. es un array bidimensional donde guardamos todas las posiciones de las fichas y en la cual, se mueven a eleccion del usuario 
 	 * @return un booleano que dependiendo si es true o false, si hay pieza por el camino o no u se ha movido bien o mal
 	 */
 	@Override
@@ -57,10 +68,10 @@ public class Peones extends King {
 							
 							if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 								
-								setBien(true);
+								setMovimientoValido(true);
 								
 							} else {
-								setBien(false);
+								setMovimientoValido(false);
 							}
 						} else {
 							if (seleccionar_fila + 2 == mover_fila) {
@@ -68,15 +79,15 @@ public class Peones extends King {
 								if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")&&
 										tablero[mover_fila-1][mover_columna].getColorFicha().equals(" *")) {
 									
-									setBien(true);
+									setMovimientoValido(true);
 									
 								} else {
-									setBien(false);
+									setMovimientoValido(false);
 								}
 							}
 						}
 					} else {
-						setBien(false);
+						setMovimientoValido(false);
 					}
 				} else {
 					
@@ -86,16 +97,16 @@ public class Peones extends King {
 							
 							if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 								
-								setBien(true);
+								setMovimientoValido(true);
 								
 							} else {
-								setBien(false);
+								setMovimientoValido(false);
 							}
 						} else {
-							setBien(false);
+							setMovimientoValido(false);
 						}
 					} else {
-						setBien(false);
+						setMovimientoValido(false);
 					}
 				}
 
@@ -105,14 +116,14 @@ public class Peones extends King {
 					if ((tablero[seleccionar_fila + 1][seleccionar_columna - 1].getColorFicha().equals("Negro"))
 							|| (tablero[seleccionar_fila + 1][seleccionar_columna + 1].getColorFicha().equals("Negro"))) {
 						
-						setBien(true);
+						setMovimientoValido(true);
 						
 					} else {
 						System.out.println("no hay ninguna pieza para comer");
-						setBien(false);
+						setMovimientoValido(false);
 					}
 				} else {
-					setBien(false);
+					setMovimientoValido(false);
 				}
 			}
 
@@ -134,10 +145,10 @@ public class Peones extends King {
 								
 								if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 									
-									setBien(true);
+									setMovimientoValido(true);
 									
 								} else {
-									setBien(false);
+									setMovimientoValido(false);
 								}
 							} else {
 								if (seleccionar_fila - 2  == mover_fila) {
@@ -145,15 +156,15 @@ public class Peones extends King {
 									if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")&&
 											tablero[mover_fila+1][mover_columna].getColorFicha().equals(" *")) {
 										
-										setBien(true);
+										setMovimientoValido(true);
 										
 									} else {
-										setBien(false);
+										setMovimientoValido(false);
 									}
 								}
 							}
 						} else {
-							setBien(false);
+							setMovimientoValido(false);
 						}
 					} else {
 						
@@ -163,16 +174,16 @@ public class Peones extends King {
 								
 								if (tablero[mover_fila][mover_columna].getColorFicha().equals(" *")) {
 									
-									setBien(true);
+									setMovimientoValido(true);
 									
 								} else {
-									setBien(false);
+									setMovimientoValido(false);
 								}
 							} else {
-								setBien(false);
+								setMovimientoValido(false);
 							}
 						} else {
-							setBien(false);
+							setMovimientoValido(false);
 						}
 					}
 
@@ -182,33 +193,23 @@ public class Peones extends King {
 						if ((tablero[seleccionar_fila - 1][seleccionar_columna - 1].getColorFicha().equals("Blanco"))
 								|| (tablero[seleccionar_fila - 1][seleccionar_columna + 1].getColorFicha().equals("Blanco"))) {
 							
-							setBien(true);
+							setMovimientoValido(true);
 							
 						} else {
 							System.out.println("no hay ninguna pieza para comer");
-							setBien(false);
+							setMovimientoValido(false);
 						}
 					} else {
-						setBien(false);
+						setMovimientoValido(false);
 					}
 				}
 
 			} else {
-				setBien(false);
+				setMovimientoValido(false);
 			}
 		}
 
-		return isBien();
-	}
-
-	// getters y setters
-
-	public int getFija() {
-		return fija;
-	}
-
-	public void setFija(int fija) {
-		this.fija = fija;
+		return isMovimientoValido();
 	}
 
 }
