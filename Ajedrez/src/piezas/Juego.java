@@ -160,7 +160,7 @@ public class Juego {
 				fallo = false;
 			} else {
 				System.out.print(", no se puede mover, no es tu ficha, ");
-
+				fallo = true;
 			}
 		} else {
 			System.out.print("las coordenadas elegidas se salen del tablero, ");
@@ -220,6 +220,7 @@ public class Juego {
 
 				} else {
 					System.out.print(", esta figura no puede mover a esa direccion, ");
+					
 				}
 			}
 
