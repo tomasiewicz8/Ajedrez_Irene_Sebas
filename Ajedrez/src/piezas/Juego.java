@@ -44,7 +44,7 @@ public class Juego {
 		tablero[1][1] = tB;
 		tablero[1][2] = cB;
 		tablero[1][3] = aB;
-		tablero[1][4] = vacio;
+		tablero[1][4] = qB;
 		tablero[1][5] = kB;
 		tablero[1][6] = aB;
 		tablero[1][7] = cB;
