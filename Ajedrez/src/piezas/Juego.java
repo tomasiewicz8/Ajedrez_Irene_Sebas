@@ -44,7 +44,7 @@ public class Juego {
 		tablero[1][1] = tB;
 		tablero[1][2] = cB;
 		tablero[1][3] = aB;
-		tablero[1][4] = qB;
+		tablero[1][4] = vacio;
 		tablero[1][5] = kB;
 		tablero[1][6] = aB;
 		tablero[1][7] = cB;
@@ -97,7 +97,8 @@ public class Juego {
 	public static void imprimirTablero(boolean finJuegoBlancas, boolean finJuegoNegras) {
 		
 		System.out.println("");
-
+		System.out.println("////////////MASTER CHESS////////////");
+		System.out.println("");
 		String[] primeraFila = { "1/1 ", "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 " };
 		String[] lateral = { "1/1 ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 " };
 		/* Creamos las letras de los bordes */
@@ -118,10 +119,14 @@ public class Juego {
 					System.out.print(tablero[i][s] + "  ");
 
 					if (tablero[i][s].getName().equals("kN")) {
+						finJuegoBlancas = false;
+					} else {
 						finJuegoBlancas = true;
 					}
 
 					if (tablero[i][s].getName().equals("kB")) {
+						finJuegoNegras = false;
+					} else {
 						finJuegoNegras = true;
 					}
 				}
@@ -216,6 +221,7 @@ public class Juego {
 					// Imprimimos todo para ver el movimiento
 					finJuegoNegras = false;
 					finJuegoBlancas = false;
+					System.out.println("");
 					imprimirTablero(finJuegoBlancas, finJuegoNegras);
 
 				} else {
@@ -305,7 +311,7 @@ public class Juego {
 		
 
 		while (finJuegoBlancas==false || finJuegoNegras==false) {
-		
+
 		while (finBla) {
 
 			while (fallo) {
