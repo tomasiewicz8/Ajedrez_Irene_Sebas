@@ -6,6 +6,8 @@ public class Caballo implements Piezas {
 	private String colorFicha;
 	private boolean movimientoValido = true;
 
+	//constructor
+	
 	/**
 	 * En este constructor recogemos los siguientes parametros:
 	 * @param ColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
@@ -13,7 +15,6 @@ public class Caballo implements Piezas {
 	 * @param movimientoValido.. boobleano que nos devuelve true o false dependiendo si el movimiento es valido
 	 */
 	
-	//constructor
 	public Caballo(String name, String colorFicha, boolean movimientoValido) {
 		this.name = name;
 		this.colorFicha = colorFicha;
@@ -24,6 +25,7 @@ public class Caballo implements Piezas {
 	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
 	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
 	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 * @return el nombre de la pieza
 	 */
 	
 	@Override
@@ -39,7 +41,6 @@ public class Caballo implements Piezas {
 	}
 	
 	
-	// poner los metodos de los movimientos
 	/**
 	 * Este metodo nos hace el movimiento del caballo, la cual se mueve en L y puede saltar otras piezas, y verifica si al recorrerla hay pieza por el camino, no se mueve
 	 * @param mover_fila.. es la posicion que el usuario introduce para que mueva en fila solamente
@@ -49,6 +50,7 @@ public class Caballo implements Piezas {
 	 * @param tablero.. es un array bidimensional donde guardamos todas las posiciones de las fichas y en la cual, se mueven a eleccion del usuario
 	 * @return un booleano que dependiendo si es true o false, si hay pieza por el camino o no u se ha movido bien o mal
 	 */
+	
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		if (mover_columna == seleccionar_columna-2 && mover_fila == seleccionar_fila-1) {
@@ -153,15 +155,16 @@ public class Caballo implements Piezas {
 	public String getColorFicha() {
 		return colorFicha;
 	}
-	
+
 	/**
 	 * Con el set nos deja modificar la variable colorFicha porque era privado
 	 * @param colorFicha: en el se encuentra color de nuestra ficha
 	 */
-
 	
 	public void setColorFicha(String colorFicha) {	
-		this.colorFicha = colorFicha;
 	}
+
+
+	
 
 }

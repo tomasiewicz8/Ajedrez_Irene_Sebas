@@ -14,7 +14,7 @@ public class Torre extends Queen {
 	 * @param max.. es una variable donde se guarda el valor maximo comparado en un if, recogerá el valor o de seleccionar o de mover para despues, tomarlo como rango para recorrerlo en el bucle
 	 * @param fija..variable donde se guarda el valor fijo de seleccionar para despues, tomarlo como rango para recorrerlo en el bucle
 	 */
-
+	
 	//constructores
 	public Torre(String name, String colorFicha, boolean movimientoValido, int min, int max, int fija) {
 		super(name, colorFicha, movimientoValido);
@@ -22,11 +22,12 @@ public class Torre extends Queen {
 		this.max = max;
 		this.fija = fija;
 	}
-	
+
 	/**
 	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
 	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
 	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 * @return el nombre de la pieza
 	 */
 	
 	@Override
@@ -41,7 +42,6 @@ public class Torre extends Queen {
 		
 	}
 	
-
 	/**
 	 * Este metodo nos hace el movimiento de la torre, la cual se recorre en horizontal o vertical y verifica si al recorrerla hay pieza por el camino, no se mueve
 	 * @param mover_fila.. es la posicion que el usuario introduce para que mueva en fila solamente
@@ -52,6 +52,7 @@ public class Torre extends Queen {
 	 * @param movimientoValido.. boobleano que nos devuelve true o false dependiendo si el movimiento es valido 
 	 * @return un booleano que dependiendo si es true o false, si hay pieza por el camino o no u se ha movido bien o mal
 	 */
+
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila, Piezas[][] tablero) {
 		if (seleccionar_fila == mover_fila && seleccionar_columna != mover_columna) {
@@ -107,19 +108,17 @@ public class Torre extends Queen {
 			}
 		}
 		return isMovimientoValido();
-		
-
 	}
 	
 
 	
 		// getters y setters
-	
+
 		/**
 		 * Nos devuelve el valor min porque era privado
 		 * @return nos devuelve el min tanto de seleccionar como mover
 		 */
-			
+		
 		public int getMin() {
 			return min;
 		}
@@ -155,6 +154,7 @@ public class Torre extends Queen {
 		 * Nos devuelve el valor fijo porque era privado
 		 * @return nos devuelve el fijo tanto de seleccionar como mover
 		 */
+
 
 		public int getFija() {
 			return fija;

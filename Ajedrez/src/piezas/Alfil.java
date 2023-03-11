@@ -28,8 +28,8 @@ public class Alfil extends Queen {
 	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
 	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
 	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 * @return el nombre de la pieza
 	 */
-	
 
 	@Override
 	public String toString() {
@@ -42,6 +42,7 @@ public class Alfil extends Queen {
 		}
 
 	}
+
 	/**
 	 * Este metodo nos hace el movimiento del alfil, la cual se mueve en diagonal, si al recorrerla hay pieza por el camino no se mueve
 	 * @param mover_fila.. es la posicion que el usuario introduce para que mueva en fila solamente
@@ -52,6 +53,7 @@ public class Alfil extends Queen {
 	 * @param movimientoValido.. boobleano que nos devuelve true o false dependiendo si el movimiento es valido 
 	 * @return un booleano que dependiendo si es true o false, si hay pieza por el camino o no u se ha movido bien o mal
 	 */
+	
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
 			Piezas[][] tablero) {
@@ -105,6 +107,7 @@ public class Alfil extends Queen {
 	 * Nos devuelve el valor min de columna porque era privado
 	 * @return nos devuelve el min de columna tanto de seleccionar como mover
 	 */
+	
 	public int getMinC() {
 		return minC;
 	}

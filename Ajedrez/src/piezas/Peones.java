@@ -6,7 +6,6 @@ public class Peones extends King {
 	int dif_fila;
 	int dif_colum;
 	
-
 	/**
 	 * En el super nos recoge aquellos parametros que se heredan del padre, en este caso King. En este constructor recogemos los siguientes parametros:
 	 * @param colorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
@@ -18,13 +17,14 @@ public class Peones extends King {
 	public Peones(String name, String colorFicha, boolean movimientoValido) {
 		super(name, colorFicha, movimientoValido);
 	}
-
+	
 	/**
 	 * En este metodo se recogen los parametros del super, es decir, del padre, que hace que le indiquemos que ficha es negra o cual es blanca
 	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en este caso blanco y en el else el negro
 	 * @param setName... le guardamos la ficha que está en cada caso del if
+	 * @return el nombre de la pieza
 	 */
-	
+
 	@Override
 	public String toString() {
 		if (getColorFicha() == "Blanco") {
@@ -36,7 +36,7 @@ public class Peones extends King {
 		}
 
 	}
-
+	
 	/**
 	 * Este metodo nos hace el movimiento de los peones, la cual se mueve por primera vez o una o dos posiciones hacia delante, luego de una en una solo para delante tambien y para comer en diagonal obligatoriamente, si al recorrerla hay pieza por el camino no se mueve
 	 * @param mover_fila.. es la posicion que el usuario introduce para que mueva en fila solamente
@@ -211,5 +211,6 @@ public class Peones extends King {
 
 		return isMovimientoValido();
 	}
+
 
 }
