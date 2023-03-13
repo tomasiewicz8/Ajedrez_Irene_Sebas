@@ -21,9 +21,11 @@ public class Juego {
 	public static boolean finJuegoNegras = true;
 
 	/**
-	 * Este metodo nos rellena piezas del tablero que se van rellenando mediante un
-	 * for en cada pieza que se ha creado mediante un objeto y con los parametros de
-	 * sus clases
+	 * Este metodo inicializa el tablero, rellenandolo con piezas que son objetos y
+	 * colocandolos en una posicion concreta, en los lugares donde no hayan piezas
+	 * estara el objeto vacio que representara una posicion de tablero vacia y
+	 * visualmente la veremos con un asterisco, estas posiciones en vacio las
+	 * rellenaremos con un bucle para optimizar codigo
 	 */
 
 	public static void inicializarTablero() {
@@ -96,11 +98,6 @@ public class Juego {
 	/**
 	 * Mediante un for y un if imprimimos el tablero y nos comprueba si el rey de
 	 * uno de los 2 colores está para que termine la partida
-	 * 
-	 * @param finJuegoBlancas.. es un boobleano del cual nos indica si sigue o no el
-	 *                          rey blanco en la partida
-	 * @param finJuegoNegras..  es un boobleano del cual nos indica si sigue o no el
-	 *                          rey negro en la partida
 	 */
 	public static void imprimirTablero() {
 
@@ -145,9 +142,9 @@ public class Juego {
 	}
 
 	/**
-	 * En este metodo validamos la ficha que hemos elegido y que queremos mover,
-	 * mediante if comprobamos primero si se sale del tablero las coordenadas y si
-	 * es nuestra ficha
+	 * En este metodo comprobamos la ficha que hemos elegido y que queremos mover,
+	 * si se sale del tablero las coordenadas de eleccion de piezas y si es nuestra
+	 * ficha
 	 * 
 	 * @param seleccionar_fila..    se guarda la posicion de la fila que hemos
 	 *                              seleccionado
@@ -185,9 +182,9 @@ public class Juego {
 	}
 
 	/**
-	 * En este metodo validamos la posicion a donde queremos mover, mediante if
-	 * compribamos primero si se sale del tablero las coordenadas y hay una ficha
-	 * nuestra, para que no pueda mover
+	 * En este metodo validamos la posicion a donde queremos mover, comprobando que
+	 * no se salgan del tablero las coordenadas de donde elegimos mover y si hay
+	 * piezas nuestras para no autocomernos
 	 * 
 	 * @param seleccionar_fila..    se guarda la posicion de la fila que hemos
 	 *                              seleccionado
@@ -370,9 +367,9 @@ public class Juego {
 							posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador);
 				}
 			}
-			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
-			// siguiente bucle
 
+			// iniciamos un nuevo turno igual que al anterior pero con el otro jugador, pero
+			// antes comprobaremos si los reyes siguen vivos
 			if (finJuegoBlancas == true && finJuegoNegras == true) {
 
 				while (finNeg) {
@@ -419,6 +416,8 @@ public class Juego {
 
 		}
 
+		// este mensaje aparecera si la partida se finaliza a causa de que uno de los
+		// reyes sea eliminado de la partida
 		System.out.println("El rey a muerto,  partida finalizada");
 
 	}
