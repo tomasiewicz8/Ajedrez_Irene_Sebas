@@ -3,7 +3,9 @@ package piezas;
 public interface Piezas {
 
 	/**
-	 * Piezas es la interfaz donde vamos a heredar aquellas acciones a nuestras clases padres y hijas
+	 * Piezas es la interfaz donde vamos a heredar aquellas acciones a nuestras
+	 * clases padres y hijas
+	 * 
 	 * @return mover, getName, getColorFicha y isMovimiendoValido
 	 */
 	
