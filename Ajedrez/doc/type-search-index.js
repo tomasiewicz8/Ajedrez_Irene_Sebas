@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"piezas","l":"Alfil"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"piezas","l":"Caballo"},{"p":"piezas","l":"Juego"},{"p":"piezas","l":"King"},{"p":"piezas","l":"Peones"},{"p":"piezas","l":"Piezas"},{"p":"piezas","l":"Queen"},{"p":"piezas","l":"Torre"},{"p":"piezas","l":"Vacio"}];updateSearchResults();
