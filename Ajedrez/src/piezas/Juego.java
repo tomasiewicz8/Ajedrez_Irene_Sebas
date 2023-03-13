@@ -17,9 +17,13 @@ public class Juego {
 	public static boolean buena = true;
 	public static boolean condicion;
 	public static String colorFicha;
+	public static boolean finJuegoBlancas = true;
+	public static boolean finJuegoNegras = true;
 
 	/**
-	 * Este metodo nos rellena piezas del tablero que se van rellenando mediante un for en cada pieza que se ha creado mediante un objeto y con los parametros de sus clases
+	 * Este metodo nos rellena piezas del tablero que se van rellenando mediante un
+	 * for en cada pieza que se ha creado mediante un objeto y con los parametros de
+	 * sus clases
 	 */
 
 	public static void inicializarTablero() {
@@ -74,7 +78,7 @@ public class Juego {
 		tablero[7][1] = pN;
 		tablero[7][2] = pN;
 		tablero[7][3] = pN;
-		tablero[7][4] = pN;
+		tablero[7][4] = kN;
 		tablero[7][5] = pN;
 		tablero[7][6] = pN;
 		tablero[7][7] = pN;
@@ -90,12 +94,16 @@ public class Juego {
 	}
 
 	/**
-	 * Mediante un for y un if imprimimos el tablero y nos comprueba si el rey de uno de los 2 colores está para que termine la partida
-	 * @param finJuegoBlancas.. es un boobleano del cual nos indica si sigue o no el rey blanco en la partida
-	 * @param finJuegoNegras.. es un boobleano del cual nos indica si sigue o no el rey negro en la partida
+	 * Mediante un for y un if imprimimos el tablero y nos comprueba si el rey de
+	 * uno de los 2 colores está para que termine la partida
+	 * 
+	 * @param finJuegoBlancas.. es un boobleano del cual nos indica si sigue o no el
+	 *                          rey blanco en la partida
+	 * @param finJuegoNegras..  es un boobleano del cual nos indica si sigue o no el
+	 *                          rey negro en la partida
 	 */
-	public static void imprimirTablero(boolean finJuegoBlancas, boolean finJuegoNegras) {
-		
+	public static void imprimirTablero() {
+
 		System.out.println("");
 		System.out.println("////////////MASTER CHESS////////////");
 		System.out.println("");
@@ -119,14 +127,10 @@ public class Juego {
 					System.out.print(tablero[i][s] + "  ");
 
 					if (tablero[i][s].getName().equals("kN")) {
-						finJuegoBlancas = false;
-					} else {
 						finJuegoBlancas = true;
 					}
 
 					if (tablero[i][s].getName().equals("kB")) {
-						finJuegoNegras = false;
-					} else {
 						finJuegoNegras = true;
 					}
 				}
@@ -141,16 +145,23 @@ public class Juego {
 	}
 
 	/**
-	 * En este metodo validamos la ficha que hemos elegido y que queremos mover, mediante if comprobamos primero si se sale del tablero las coordenadas y si es nuestra ficha
-	 * @param seleccionar_fila.. se guarda la posicion de la fila que hemos seleccionado
-	 * @param seleccionar_columna.. se guarda la posicion de la columna que hemos seleccionado
-	 * @param fallo es un booleano que nos indica si es nuestra ficha o no
-	 * @param posicion_actual.. nos indica la posicion que hemos seleccionado
-	 * @param colorFicha.. se guarda el color de nuestra ficha
-	 * @param jugador.. nos indica que turno que está jugando si negras o blancas
+	 * En este metodo validamos la ficha que hemos elegido y que queremos mover,
+	 * mediante if comprobamos primero si se sale del tablero las coordenadas y si
+	 * es nuestra ficha
+	 * 
+	 * @param seleccionar_fila..    se guarda la posicion de la fila que hemos
+	 *                              seleccionado
+	 * @param seleccionar_columna.. se guarda la posicion de la columna que hemos
+	 *                              seleccionado
+	 * @param fallo                 es un booleano que nos indica si es nuestra
+	 *                              ficha o no
+	 * @param posicion_actual..     nos indica la posicion que hemos seleccionado
+	 * @param colorFicha..          se guarda el color de nuestra ficha
+	 * @param jugador..             nos indica que turno que está jugando si negras
+	 *                              o blancas
 	 * @return nos devuelve si es nuestra ficha o no
 	 */
-	
+
 	public static boolean validarFicha(int seleccionar_fila, int seleccionar_columna, Piezas posicion_actual,
 			boolean fallo, String colorFicha, String jugador) {
 
@@ -172,33 +183,43 @@ public class Juego {
 		}
 		return fallo;
 	}
-	
+
 	/**
-	 * En este metodo validamos la posicion a donde queremos mover, mediante if compribamos primero si se sale del tablero las coordenadas y hay una ficha nuestra, para que no pueda mover
-	 * @param seleccionar_fila.. se guarda la posicion de la fila que hemos seleccionado
-	 * @param seleccionar_columna.. se guarda la posicion de la columna que hemos seleccionado
-	 * @param fallo es un booleano que nos indica si es nuestra ficha o no
-	 * @param posicion_futura.. nos indica la posicion a donde queremos mover
-	 * @param posicion_actual.. nos indica la posicion que hemos seleccionado
-	 * @param colorFicha.. se guarda el color de nuestra ficha
-	 * @param jugador.. nos indica que turno que está jugando si negras o blancas
-	 * @param finJuegoBlancas.. es un boobleano del cual nos indica si sigue o no el rey blanco en la partida
-	 * @param finJuegoNegras.. es un boobleano del cual nos indica si sigue o no el rey negro en la partida
-	 * @param mover_fila.. la fila donde se moverá la pieza
-	 * @param mover_columna.. la columna donde se moverá la pieza
-	 * @return nos devuelve si la ficha esta dentro del tablero y si es nuestra pieza o no
+	 * En este metodo validamos la posicion a donde queremos mover, mediante if
+	 * compribamos primero si se sale del tablero las coordenadas y hay una ficha
+	 * nuestra, para que no pueda mover
+	 * 
+	 * @param seleccionar_fila..    se guarda la posicion de la fila que hemos
+	 *                              seleccionado
+	 * @param seleccionar_columna.. se guarda la posicion de la columna que hemos
+	 *                              seleccionado
+	 * @param fallo                 es un booleano que nos indica si es nuestra
+	 *                              ficha o no
+	 * @param posicion_futura..     nos indica la posicion a donde queremos mover
+	 * @param posicion_actual..     nos indica la posicion que hemos seleccionado
+	 * @param colorFicha..          se guarda el color de nuestra ficha
+	 * @param jugador..             nos indica que turno que está jugando si negras
+	 *                              o blancas
+	 * @param finJuegoBlancas..     es un boobleano del cual nos indica si sigue o
+	 *                              no el rey blanco en la partida
+	 * @param finJuegoNegras..      es un boobleano del cual nos indica si sigue o
+	 *                              no el rey negro en la partida
+	 * @param mover_fila..          la fila donde se moverá la pieza
+	 * @param mover_columna..       la columna donde se moverá la pieza
+	 * @return nos devuelve si la ficha esta dentro del tablero y si es nuestra
+	 *         pieza o no
 	 */
 
 	public static boolean validarPosicion(int mover_fila, int mover_columna, Piezas posicion_reemplazada,
 			Piezas posicion_futura, Piezas posicion_actual, int seleccionar_fila, int seleccionar_columna,
-			String colorFicha, boolean fallo, String jugador, boolean finJuegoNegras, boolean finJuegoBlancas) {
+			String colorFicha, boolean fallo, String jugador) {
 		Piezas vacio = new Vacio(" *", " *");
 		// verificamos que las coordenadas sean validas
 		if (mover_fila >= 1 && mover_columna >= 1 && mover_fila <= 8 && mover_columna <= 8) {
 
 			posicion_futura = tablero[mover_fila][mover_columna];
 			System.out.print("has elegido mover hacia " + tablero[mover_fila][mover_columna]);
-			
+
 			// si ya hay una ficha nuestra, no nos va a dejar mover
 			if (posicion_futura.getColorFicha().equals(jugador)) {
 
@@ -216,17 +237,16 @@ public class Juego {
 					fallo = true;
 					finNeg = true;
 					finBla = false;
-					
 
 					// Imprimimos todo para ver el movimiento
 					finJuegoNegras = false;
 					finJuegoBlancas = false;
 					System.out.println("");
-					imprimirTablero(finJuegoBlancas, finJuegoNegras);
+					imprimirTablero();
 
 				} else {
 					System.out.print(", esta figura no puede mover a esa direccion, ");
-					
+
 				}
 			}
 
@@ -238,19 +258,23 @@ public class Juego {
 
 	/**
 	 * En este metodo pedimos al usuario que nos introduzca la posicion de fila
-	 * @param seleccionar_fila.. se guarda la posicion de la fila que hemos seleccionado
+	 * 
+	 * @param seleccionar_fila.. se guarda la posicion de la fila que hemos
+	 *                           seleccionado
 	 * @return la posicion de seleccionar fila
 	 */
-	
+
 	public static int select_fila(Scanner reader, String jugador) {
 		System.out.println("jugador " + jugador + " elige fila para seleccionar pieza: ");
 		seleccionar_fila = reader.nextInt();
 		return seleccionar_fila;
 	}
-	
+
 	/**
 	 * En este metodo pedimos al usuario que nos introduzca la posicion de columna
-	 * @param seleccionar_columna.. se guarda la posicion de la columna que hemos seleccionado
+	 * 
+	 * @param seleccionar_columna.. se guarda la posicion de la columna que hemos
+	 *                              seleccionado
 	 * @return la posicion de seleccionar columna
 	 */
 
@@ -259,9 +283,10 @@ public class Juego {
 		seleccionar_columna = reader.nextInt();
 		return seleccionar_columna;
 	}
-	
+
 	/**
 	 * En este metodo pedimos al usuario que nos indica a que fila quiere mover
+	 * 
 	 * @param mover_fila.. la fila donde se moverá la pieza
 	 * @return la posicion de mover fila
 	 */
@@ -271,9 +296,10 @@ public class Juego {
 		mover_fila = reader.nextInt();
 		return mover_fila;
 	}
-	
+
 	/**
 	 * En este metodo pedimos al usuario que nos indica a que columna quiere mover
+	 * 
 	 * @param mover_columna.. la columna donde se moverá la pieza
 	 * @return la posicion de mover columna
 	 */
@@ -299,103 +325,101 @@ public class Juego {
 		Piezas posicion_futura = tablero[0][0];
 		String jugador;
 		boolean fallo = true;
-		boolean finJuegoBlancas = false;
-		boolean finJuegoNegras = false;
 
-		imprimirTablero(finJuegoBlancas, finJuegoNegras);
+		imprimirTablero();
 
 		/*
 		 * Elegimos la ficha que queremos mover con sus posiciones y lo hacemos con un
 		 * bucle por si elige una ficha del rival o un espacio sin ficha
 		 */
-		
 
-		while (finJuegoBlancas==false || finJuegoNegras==false) {
+		while (finJuegoBlancas == true && finJuegoNegras == true) {
 
-		while (finBla) {
+			while (finBla) {
 
-			while (fallo) {
+				while (fallo) {
 
-				jugador = "Blanco";
+					jugador = "Blanco";
 
-				seleccionar_fila = select_fila(reader, jugador);
+					seleccionar_fila = select_fila(reader, jugador);
 
-				seleccionar_columna = select_columna(reader, jugador);
+					seleccionar_columna = select_columna(reader, jugador);
 
-				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion, colorFicha,
-						jugador);
+					fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion, colorFicha,
+							jugador);
 
-			} // Fin primer while
+				} // Fin primer while
 
-			System.out.println();
+				System.out.println();
 
-			/*
-			 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
-			 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
-			 * moverse
-			 */
+				/*
+				 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
+				 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
+				 * moverse
+				 */
 
-			while (fallo == false) {
+				while (fallo == false) {
 
-				jugador = "Blanco";
+					jugador = "Blanco";
 
-				mover_fila = mover_fila(reader, jugador);
+					mover_fila = mover_fila(reader, jugador);
 
-				mover_columna = mover_columna(reader, jugador);
+					mover_columna = mover_columna(reader, jugador);
 
-				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-						posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-						finJuegoNegras, finJuegoBlancas);
+					fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+							posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador);
+				}
 			}
+			// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
+			// siguiente bucle
+
+			if (finJuegoBlancas == true && finJuegoNegras == true) {
+
+				while (finNeg) {
+
+					// turno del jugador Negro
+					while (fallo) {
+
+						jugador = "Negro";
+
+						seleccionar_fila = select_fila(reader, jugador);
+
+						seleccionar_columna = select_columna(reader, jugador);
+
+						fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion,
+								colorFicha, jugador);
+					}
+
+					System.out.println();
+
+					/*
+					 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
+					 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
+					 * moverse
+					 */
+
+					while (fallo == false) {
+
+						jugador = "Negro";
+
+						mover_fila = mover_fila(reader, jugador);
+
+						mover_columna = mover_columna(reader, jugador);
+
+						fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
+								posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador);
+					}
+
+					if (fallo == true) {
+						finNeg = false;
+						finBla = true;
+					}
+				}
+			}
+
 		}
-		// cambiamos la condicion de fin de partida que controlaremos de nuevo en el
-		// siguiente bucle
 
-		while (finNeg) {
-
-			// turno del jugador Negro
-			while (fallo) {
-
-				jugador = "Negro";
-
-				seleccionar_fila = select_fila(reader, jugador);
-
-				seleccionar_columna = select_columna(reader, jugador);
-
-				fallo = validarFicha(seleccionar_fila, seleccionar_columna, posicion_actual, condicion, colorFicha,
-						jugador);
-			}
-
-			System.out.println();
-
-			/*
-			 * vemos donde la queremos mover y creamos un bucle por si elige moverse a una
-			 * posicion que no puede, en ese caso le preguntaremos de nuevo a donde quiere
-			 * moverse
-			 */
-
-			while (fallo == false) {
-
-				jugador = "Negro";
-
-				mover_fila = mover_fila(reader, jugador);
-
-				mover_columna = mover_columna(reader, jugador);
-
-				fallo = validarPosicion(mover_fila, mover_columna, posicion_reemplazada, posicion_futura,
-						posicion_actual, seleccionar_fila, seleccionar_columna, colorFicha, fallo, jugador,
-						finJuegoNegras, finJuegoBlancas);
-			}
-			
-			if (fallo == true) {
-				finNeg = false;
-				finBla = true;
-			}
-		}
-		
-		
-		}
-		
+		System.out.println("El rey a muerto,  partida finalizada");
 
 	}
 
