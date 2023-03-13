@@ -32,17 +32,17 @@ public class Juego {
 		// creamos todas las fichas Blancas
 		Piezas qB = new Queen("qB", "Blanco", true);
 		Piezas kB = new King("kB", "Blanco", buena);
-		Piezas aB = new Alfil("aB", "Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas aB = new Alfil("aB", "Blanco", buena);
 		Piezas cB = new Caballo("cB", "Blanco", true);
-		Piezas tB = new Torre("tB", "Blanco", buena, mover_columna, mover_columna, mover_columna);
+		Piezas tB = new Torre("tB", "Blanco", buena);
 		Piezas pB = new Peones("pB", "Blanco", buena);
 
 		// creamos todas las fichas Negras
 		Piezas qN = new Queen("qN", "Negro", true);
 		Piezas kN = new King("kN", "Negro", buena);
-		Piezas aN = new Alfil("aN", "Negro", buena, mover_columna, mover_columna, mover_columna, mover_columna);
+		Piezas aN = new Alfil("aN", "Negro", buena);
 		Piezas cN = new Caballo("cN", "Negro", true);
-		Piezas tN = new Torre("tN", "Negro", buena, mover_columna, mover_columna, mover_columna);
+		Piezas tN = new Torre("tN", "Negro", buena);
 		Piezas pN = new Peones("pN", "Negro", buena);
 		Piezas vacio = new Vacio(" *", " *");
 
@@ -167,8 +167,10 @@ public class Juego {
 			posicion_actual = tablero[seleccionar_fila][seleccionar_columna];
 			System.out.print("has elegido mover " + posicion_actual);
 
-			// hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
-			// de blanca
+			/*
+			 * hacemos un if si la posicion actual es nuestra ficha o no, si contiene un B
+			 * de blanca
+			 */
 			if (posicion_actual.getColorFicha().equals(jugador)) {
 				fallo = false;
 			} else {
@@ -368,8 +370,10 @@ public class Juego {
 				}
 			}
 
-			// iniciamos un nuevo turno igual que al anterior pero con el otro jugador, pero
-			// antes comprobaremos si los reyes siguen vivos
+			/*
+			 * iniciamos un nuevo turno igual que al anterior pero con el otro jugador, pero
+			 * antes comprobaremos si los reyes siguen vivos
+			 */
 			if (finJuegoBlancas == true && finJuegoNegras == true) {
 
 				while (finNeg) {
@@ -416,8 +420,10 @@ public class Juego {
 
 		}
 
-		// este mensaje aparecera si la partida se finaliza a causa de que uno de los
-		// reyes sea eliminado de la partida
+		/*
+		 * este mensaje aparecera si la partida se finaliza a causa de que uno de los
+		 * reyes sea eliminado de la partida
+		 */
 		System.out.println("El rey a muerto,  partida finalizada");
 
 	}

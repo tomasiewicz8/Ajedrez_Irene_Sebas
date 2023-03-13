@@ -23,7 +23,7 @@ public class King extends Queen {
 	 * En este metodo se recogen los parametros del super, es decir, del padre, que
 	 * hace que le indiquemos que ficha es negra o cual es blanca
 	 * 
-	 * @param getColorFicha.. guardamos el color de la ficha que primero juega, en
+	 * @param getColorFicha.. g uardamos el color de la ficha que primero juega, en
 	 *                        este caso blanco y en el else el negro
 	 * @param setName...      le guardamos la ficha que está en cada caso del if
 	 * @return el nombre de la pieza
