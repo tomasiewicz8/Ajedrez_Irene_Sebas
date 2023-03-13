@@ -1,11 +1,11 @@
 package piezas;
 
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class Juego {
 
-	private static Piezas Vacio;
+
 	public static Piezas[][] tablero;
 	public static boolean finBla = true;
 	public static boolean finNeg = true;

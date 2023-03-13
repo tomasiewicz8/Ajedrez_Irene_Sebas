@@ -1,0 +1,17 @@
+En teoría funcionan todos los movimientos, incluido cuando blanca o negra se come al rey, el juego para.
+Nuestro tablero va desde la fila y columna 1 hasta la 8, con la introducción de números para saber sus posiciones,
+esto hace que sea más fácil para el usuario pasar las coordenadas en números que en letras. Por ello, cuando el usuario
+introduce una posicion fuera de los parametros nos lo dice y nos lo vuelve a preguntar.
+Tenemos creado un bucle para que vaya intercalando los turnos de blanco y negro.
+Cuando seleccionamos desde el principio una pieza que no es nuestra nos lo dice y nos deja volver a elegir, pasa lo mismo
+cuando queremos mover nuestra pieza a una posicion donde tenemos una pieza nuestra.
+Cuando en el recorrido que hace la ficha hay otra ficha por el camino, nos lo dice y no nos deja mover.
+
+Cada pieza tiene su propia clase, en ella, tiene sus propios metodos con sus propios movimientos, ya que, cada pieza
+tiene un movimiento distinto. Todas las piezas tienen un método de name y de color, el cual nos indica su nombre y su color
+puesto que en la clase Juego creamos todas las fichas en un objeto (Piezas), una vez creadas, en tablero que también es
+un objeto de piezas introducimos cada posicion con la pieza donde queremos que esté.
+
+Nuestro main está en Juego
+
+
