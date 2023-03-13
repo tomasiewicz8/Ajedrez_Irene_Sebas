@@ -76,12 +76,12 @@ public class Queen implements Piezas {
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
 			Piezas[][] tablero) {
 
-		Piezas a = new Alfil("aB", "Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
-		Piezas t = new Torre("tB", "Blanco", buena, mover_columna, mover_columna, mover_columna);
+		Piezas a = new Alfil("aB", "Blanco", buena);
+		Piezas t = new Torre("tB", "Blanco", buena);
 
 		if (colorFicha == "Blanco") {
-			a = new Alfil("aB", "Blanco", buena, mover_columna, mover_columna, mover_columna, mover_columna);
-			t = new Torre("tB", "Blanco", buena, mover_columna, mover_columna, mover_columna);
+			a = new Alfil("aB", "Blanco", buena);
+			t = new Torre("tB", "Blanco", buena);
 			if (movimientoValido == a.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila,
 					tablero)) {
 				setMovimientoValido(true);
@@ -94,8 +94,8 @@ public class Queen implements Piezas {
 				}
 			}
 		} else {
-			a = new Alfil("aN", "Negro", buena, mover_columna, mover_columna, mover_columna, mover_columna);
-			t = new Torre("tN", "Negro", buena, mover_columna, mover_columna, mover_columna);
+			a = new Alfil("aN", "Negro", buena);
+			t = new Torre("tN", "Negro", buena);
 			if (movimientoValido == a.mover(mover_fila, mover_columna, seleccionar_columna, seleccionar_fila,
 					tablero)) {
 				setMovimientoValido(true);

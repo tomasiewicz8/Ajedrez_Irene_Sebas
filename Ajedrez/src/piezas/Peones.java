@@ -2,9 +2,6 @@ package piezas;
 
 public class Peones extends King {
 
-	int dif_fila;
-	int dif_colum;
-
 	/**
 	 * En el super nos recoge aquellos parametros que se heredan del padre, en este
 	 * caso King. En este constructor recogemos los siguientes parametros:
@@ -68,7 +65,8 @@ public class Peones extends King {
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
 			Piezas[][] tablero) {
 
-		// se crea aqui el atributo??
+		int dif_fila;
+		int dif_colum;
 
 		if (tablero[seleccionar_fila][seleccionar_columna].getColorFicha().equals("Blanco")) {
 

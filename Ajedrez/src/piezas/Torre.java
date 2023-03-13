@@ -4,32 +4,14 @@ import java.util.Scanner;
 
 public class Torre extends Queen {
 
-	private int min;
-	private int max;
-	private int fija;
-
 	/**
 	 * En el super nos recoge aquellos parametros que se heredan del padre, en este
 	 * caso Queen. En este constructor recogemos los siguientes parametros:
-	 * 
-	 * @param min..          es una variable donde se guarda el valor minimo
-	 *                       comparado en un if, recogerá el valor o de seleccionar
-	 *                       o de mover para despues, tomarlo como rango para
-	 *                       recorrerlo en el bucle
-	 * @param max..          es una variable donde se guarda el valor maximo
-	 *                       comparado en un if, recogerá el valor o de seleccionar
-	 *                       o de mover para despues, tomarlo como rango para
-	 *                       recorrerlo en el bucle
-	 * @param fija..variable donde se guarda el valor fijo de seleccionar para
-	 *                       despues, tomarlo como rango para recorrerlo en el bucle
 	 */
 
 	// constructores
-	public Torre(String name, String colorFicha, boolean movimientoValido, int min, int max, int fija) {
+	public Torre(String name, String colorFicha, boolean movimientoValido) {
 		super(name, colorFicha, movimientoValido);
-		this.min = min;
-		this.max = max;
-		this.fija = fija;
 	}
 
 	/**
@@ -80,6 +62,11 @@ public class Torre extends Queen {
 	@Override
 	public boolean mover(int mover_fila, int mover_columna, int seleccionar_columna, int seleccionar_fila,
 			Piezas[][] tablero) {
+
+		int min;
+		int max;
+		int fija;
+
 		if (seleccionar_fila == mover_fila && seleccionar_columna != mover_columna) {
 
 			fija = seleccionar_fila;
@@ -134,68 +121,6 @@ public class Torre extends Queen {
 			}
 		}
 		return isMovimientoValido();
-	}
-
-	// getters y setters
-
-	/**
-	 * Nos devuelve el valor min porque era privado
-	 * 
-	 * @return nos devuelve el min tanto de seleccionar como mover
-	 */
-
-	public int getMin() {
-		return min;
-	}
-
-	/**
-	 * Con el set nos deja modificar la variable min porque era privado
-	 * 
-	 * @param min: en el se encuentra la posicion minima
-	 */
-
-	public void setMin(int min) {
-		this.min = min;
-	}
-
-	/**
-	 * Nos devuelve el valor max porque era privado
-	 * 
-	 * @return nos devuelve el max tanto de seleccionar como mover
-	 */
-
-	public int getMax() {
-		return max;
-	}
-
-	/**
-	 * Con el set nos deja modificar la variable max porque era privado
-	 * 
-	 * @param max: en el se encuentra la posicion maxima
-	 */
-
-	public void setMax(int max) {
-		this.max = max;
-	}
-
-	/**
-	 * Nos devuelve el valor fijo porque era privado
-	 * 
-	 * @return nos devuelve el fijo tanto de seleccionar como mover
-	 */
-
-	public int getFija() {
-		return fija;
-	}
-
-	/**
-	 * Con el set nos deja modificar la variable fija porque era privado
-	 * 
-	 * @param fija: en el se encuentra la posicion fija
-	 */
-
-	public void setFija(int fija) {
-		this.fija = fija;
 	}
 
 }
